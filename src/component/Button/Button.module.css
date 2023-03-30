@@ -1,0 +1,37 @@
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0rem;
+    border: 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    gap: 5px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.medium{
+    padding: 0.5rem 0.5rem;
+}
+
+.primary{
+    background-color: rgb(73, 169, 248);
+    color: white;
+} 
+
+.transparent{
+    background-color: rgba(0,0,0,0);
+    color: white;
+}  
+
+.buttonIcon{
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    stroke: white;
+}
