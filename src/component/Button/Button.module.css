@@ -29,7 +29,11 @@
 .transparent{
     background-color: rgba(0,0,0,0);
     color: white;
-}  
+}
+
+.transparent:hover{
+    filter: brightness(0.9);
+}
 
 .buttonIcon{
     width: 18px;

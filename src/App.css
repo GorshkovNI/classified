@@ -2,3 +2,15 @@ body{
   margin: 0;
   padding: 0;
 }
+.bd{
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+.searchBlock{
+  margin: auto;
+}
+
+.mainInput{
+  margin: auto;
+}

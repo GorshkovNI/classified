@@ -1,0 +1,66 @@
+.wrapper{
+    width: 200px;
+    height: 150px;
+    user-select: none;
+}
+
+.window{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.allPagesContainer{
+    height: 100%;
+    display: flex;
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+.arrowArea{
+    position: absolute;
+    height: 100%;
+    cursor: pointer;
+}
+
+.arrowArea:hover{
+    background-color: rgba(178,249,143,0.07);
+}
+
+.arrowAreaLeft{
+    z-index: 1;
+    display: none;
+    align-items: center;
+}
+
+.wrapper:hover .arrowAreaLeft{
+    display: flex;
+}
+
+.wrapper:hover .arrowAreaRight{
+    display: flex;
+}
+
+.arrowAreaRight{
+    top: 0;
+    right: 0;
+    display: none;
+    align-items: center;
+}
+
+.arrow{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.arrowLeft{
+    transform: rotate(90deg) translateX(-40%);
+}
+
+.arrowRight{
+    transform: rotate(-90deg) translateX(40%);
+}
