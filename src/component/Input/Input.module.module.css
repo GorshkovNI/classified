@@ -1,6 +1,6 @@
 .container{
     display: flex;
-    width: 410px;
+    width: 500px;
     background-color: rgb(0, 170, 255);
     border-radius: 6px;
     border: 2px solid rgb(0, 170, 255);
@@ -8,7 +8,7 @@
 
 .area{
     display: flex;
-    width: 400px;
+    width: 500px;
     height: 36px;
 }
 
