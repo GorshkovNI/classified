@@ -1,0 +1,34 @@
+.wrapper{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userName{
+    color: white;
+    margin-left: 7px;
+}
+
+.userName:hover{
+    color: #da8282;
+}
+
+.userIcon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0;
+    background-color: rgb(212, 227, 74);
+}
+
+.arrow{
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    margin-top: 4px;
+    stroke: white;
+    fill: white;
+    color: white;
+}

@@ -1,0 +1,42 @@
+.wrapper{
+    width: 100%;
+    height: 20px;
+    background: rgb(41,41,41);
+    padding: 12px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin: 0 200px;
+}
+
+.rightSide{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.assistButton{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.button{
+    width: 20px;
+    height: 20px;
+    fill: #aba7a7;
+    cursor: pointer;
+}
+
+.button:hover{
+    filter: brightness(1.3);
+}
+
+.cart{
+    fill: none;
+    stroke: #aba7a7;
+}

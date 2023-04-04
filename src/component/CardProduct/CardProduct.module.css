@@ -1,0 +1,84 @@
+.wrapper{
+    width: 200px;
+    height: 290px;
+    cursor: pointer;
+}
+
+.discription{
+    display: flex;
+    flex-direction: column;
+    padding: 8px 8px 8px 0;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image{
+    width: 200px;
+    height: 150px;
+}
+
+.blockNamed{
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+}
+
+.nameProduct{
+    color: #009CF0;
+    font-weight: 600;
+}
+
+.nameProduct:hover{
+    color: rgb(255,97,99);
+}
+
+.like{
+    fill: #009CF0;
+    margin-right: 10px;
+}
+
+.like:hover{
+    animation: pulse 1s infinite linear;
+}
+
+@keyframes pulse {
+    0%{
+        transform: scale(1);
+    }
+    25%{
+        transform: scale(1.05);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    75%{
+        transform: scale(1.05);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.price{
+    color: #000000;
+    font-weight: 600;
+    padding: 5px 0;
+}
+
+.located{
+    color: #8f8f8f;
+}
+.datePublication{
+    color: #8f8f8f;
+}
+
+.item1{
+    background-color: green;
+}.item2{
+     background-color: #6b92cc;
+ }.item3{
+      background-color: #beb87a;
+  }
