@@ -1,0 +1,48 @@
+.wrapper{
+    position: sticky;
+    top: 45px;
+    background: #ffffff;
+    z-index: 10;
+    width: 99vw;
+    margin-left: -200px;
+
+}
+
+.container{
+    position: relative;
+}
+
+.searchBlock{
+    display: flex;
+    justify-content: center;
+    padding: 25px 0 20px 0;
+    animation: shadow 300ms linear;
+}
+
+.borderVisible{
+    box-shadow: 0px 2px 8px 0px rgba(34, 60, 80, 0.2);
+    animation: shadow 300ms linear;
+}
+
+@keyframes shadow {
+    0%{
+        box-shadow: none;
+    }
+    100%{
+        box-shadow: 0px 2px 8px 0px rgba(34, 60, 80, 0.2);
+    }
+
+}
+
+.input{
+    width: 550px;
+}
+
+.logo{
+    left: 250px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    width: 40px;
+    height: 40px;
+}

@@ -7,11 +7,8 @@ import cn from 'classnames'
 
 export const Header = () => {
 
-
-
-
 return(
-    <div className={styles.wrapper}>
+    <header className={styles.wrapper}>
         <div className={styles.container}>
             <div className={styles.leftSide}>
                 <Button>123</Button>
@@ -26,7 +23,7 @@ return(
                 <Button size='medium' mode='primary' icon='search'>Разместить объявление</Button>
             </div>
         </div>
-    </div>
+    </header>
 )
 
 }
