@@ -10,11 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <SearchBlock />
-      <div className='bd'>
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-      </div>
+      <MainPages />
     </div>
   );
 }

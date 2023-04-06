@@ -1,6 +1,6 @@
 .wrapper{
     position: sticky;
-    top: 45px;
+    top: 44px;
     background: #ffffff;
     z-index: 10;
     width: 99vw;
@@ -9,7 +9,9 @@
 }
 
 .container{
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .searchBlock{
@@ -34,15 +36,13 @@
 
 }
 
+
 .input{
-    width: 550px;
+    width: 750px;
 }
 
 .logo{
-    left: 250px;
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute;
     width: 40px;
     height: 40px;
+    margin-right: 30px;
 }

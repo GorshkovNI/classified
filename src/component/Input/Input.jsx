@@ -13,7 +13,7 @@ export const Input = ({className, placeholder='Поиск по объявлен�
                     placeholder={placeholder}
                 />
             </div>
-            <Button className={styles.button}>Найти</Button>
+            <Button mode='transparent' className={styles.button}>Найти</Button>
         </div>
 
     )
