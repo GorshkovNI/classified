@@ -5,7 +5,7 @@ import {ProfileArea} from "../ProfileArea/ProfileArea";
 import {Icon} from "../Icons/Icon";
 import cn from 'classnames'
 
-export const Header = () => {
+export const Header = ({toggleModal}) => {
 
 return(
     <header className={styles.wrapper}>
@@ -18,7 +18,7 @@ return(
                     <Icon className={cn(styles.button, styles.love)} name='love' />
                     <Icon className={cn(styles.button, styles.cart)} name='cart' />
                 </div>
-                <Button size='medium' mode='transparent'>Вход и регистрация</Button>
+                <Button size='medium' mode='transparent' onClick={toggleModal} >Вход и регистрация</Button>
                 <ProfileArea />
                 <Button size='medium' mode='primary' icon='search'>Разместить объявление</Button>
             </div>

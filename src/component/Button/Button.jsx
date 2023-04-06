@@ -8,7 +8,7 @@ const buttonTypes = {
     transparent: 'transparent'
 }
 
-export const Button = ({size, mode='primary', children, ...props}) => {
+export const Button = ({size, mode='primary', type, onClick, children, ...props}) => {
 
     const buttonClassName = cn(styles.button, {
         [styles.primary]: mode === buttonTypes.primary,
@@ -21,7 +21,7 @@ export const Button = ({size, mode='primary', children, ...props}) => {
     props.className)
 
     return(
-        <button className={buttonClassName} onClick={props.onClick}>
+        <button className={buttonClassName} onClick={onClick} type={type}>
             <Icon name={props.icon} className={styles.buttonIcon} />
             {children}
         </button>

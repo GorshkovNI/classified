@@ -14,3 +14,7 @@ body{
 .App{
   margin: 0 200px;
 }
+
+body.modal-open {
+  overflow: hidden;
+}

@@ -3,6 +3,7 @@ import { ReactComponent as Arrow } from './arrow.svg';
 import { ReactComponent as Love } from './love.svg';
 import { ReactComponent as Cart } from './cart.svg';
 import { ReactComponent as Logo } from './logo.svg';
+import { ReactComponent as Close } from './close.svg';
 
 
 export const iconsTypes = {
@@ -10,5 +11,6 @@ export const iconsTypes = {
     arrow: Arrow,
     love: Love,
     cart: Cart,
-    logo: Logo
+    logo: Logo,
+    close: Close,
 };
