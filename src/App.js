@@ -6,7 +6,7 @@ import {SearchBlock} from "./component/SearchBlock/SearchBlock";
 import React, {useEffect, useState} from "react";
 import {Autorization} from "./Pages/Autorization/Autorization";
 import {useDispatch, useSelector} from "react-redux";
-import {getIsAuth, getIsLoading} from "./store/userSelector";
+import {getIsAuth, getIsLoading, getUserName} from "./store/userSelector";
 import user, {checkAuth, logout} from "./store/user";
 import UserService from "./service/UserService";
 
@@ -69,18 +69,18 @@ function App({store}) {
                 <div>
                     <button onClick={tempCheck}>Выйти</button>
                     <button onClick={getUsers}>Получить пользователей</button>
+                    {users.length !== 0 ?
+                        <div>
+                            {users.map((user) => {
+                                return (
+                                    <div>{user.email}</div>
+                                )
+                            })}
+                        </div> : ''}
                 </div>
 
                 : ''}
             <button onClick={ () => console.log(check)}>Проверка</button>
-            {users.length !== 0 ?
-                <div>
-                    {users.map((user) => {
-                        return (
-                            <div>{user.email}</div>
-                        )
-                    })}
-                </div> : ''}
             <Routes>
                 {/*<Route path='/' element={<MainPages />} />*/}
                 <Route path='/auth' element={<Autorization activeTab={activeTab} toggleActiveTab={toggleActiveTab} openModal={isOpenSignUp} closeModal={closeModal} />} />

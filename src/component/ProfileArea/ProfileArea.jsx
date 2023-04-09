@@ -23,7 +23,7 @@ const menuDropdown = [
 
 ]
 
-export const ProfileArea = () => {
+export const ProfileArea = ({userName}) => {
 
     const [isOpen, setIsOpen] = useState(false)
     const dispath = useDispatch()
@@ -53,7 +53,7 @@ export const ProfileArea = () => {
     return(
         <div className={styles.wrapper} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <img className={styles.userIcon} />
-            <span className={styles.userName}>Nikita</span>
+            <span className={styles.userName}>{userName}</span>
             <Icon className={styles.arrow} name='arrow' />
             {isOpen && <div className={styles.dropdownArea}>
                 <Dropdown className={styles.dropdown}>
