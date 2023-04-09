@@ -1,11 +1,13 @@
-import {configureStore} from "@reduxjs/toolkit";
-import {useDispatch} from "react-redux";
-
+import {configureStore, applyMiddleware} from "@reduxjs/toolkit";
+import thunkMiddleware from "redux-thunk";
 import {logger} from "redux-logger/src";
-import {loginReducer} from "./login/sliceLogin";
-import reducer from "./login/reducer";
+import reducer from "./reducer";
 
 export const store = configureStore({
-    reducer: reducer,
+    reducer,
+    middleware:[thunkMiddleware]
+    // middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    //     serializableCheck: false
+    // }),
    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(...(process.env.NODE_ENV !== 'production' ? [logger] : []))
 })

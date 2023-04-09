@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import styles from './Registration.module.css'
 import {Modal} from "../../../component/Modal/Modal";
 import {Button} from "../../../component/Button/Button";
+import {useDispatch} from "react-redux";
+import {registration} from "../../../store/user";
+
 
 export const Registration = ({openModal, closeModal, toggleActiveTab}) => {
 
@@ -9,16 +12,22 @@ export const Registration = ({openModal, closeModal, toggleActiveTab}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const dispatch = useDispatch()
+
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(`Name: ${name}\nEmail: ${email}\nPassword: ${password}`);
         closeModal();
     };
 
+    const sendData = async (email, password) => {
+        dispatch(registration(email, password))
+    }
+
     return (
         <>
             <Modal isOpen={openModal} onClose={closeModal}>
-                <form className={styles.form} onSubmit={handleSubmit}>
+                <div className={styles.form} >
                     <h2 className={styles.title}>Регистрация</h2>
                     <div className={styles.formGroup}>
                         <label className={styles.label} htmlFor="email">Email</label>
@@ -29,8 +38,8 @@ export const Registration = ({openModal, closeModal, toggleActiveTab}) => {
                         <input className={styles.input} type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Введите пароль" required />
                     </div>
                     {/*<button className={styles.submitButton} type="submit">Зарегистрироваться</button>*/}
-                    <Button className={styles.submitButton} size='medium' type='submit'>Зарегистрироваться</Button>
-                </form>
+                    <Button className={styles.submitButton} size='medium' type='submit' onClick={() => sendData(email, password)}>Зарегистрироваться</Button>
+                </div>
                 <div className={styles.toggleArea}>
                     <h3>Уже есть аккаунт на  ?</h3>
                     <button className={styles.toggleButton} onClick={() => toggleActiveTab('login')}>Войти</button>
