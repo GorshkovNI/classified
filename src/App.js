@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getIsAuth, getIsLoading, getUserName} from "./store/userSelector";
 import user, {checkAuth, logout} from "./store/user";
 import UserService from "./service/UserService";
+import { CardProduct } from './component/CardProduct/CardProduct';
 
 
 function App({store}) {
@@ -36,7 +37,7 @@ function App({store}) {
         dispath(logout())
     }
 
-    const check = useSelector(getIsAuth)
+    const isAuth = useSelector(getIsAuth)
     const isLoading = useSelector(getIsLoading)
 
     useEffect(()=>{
@@ -64,8 +65,8 @@ function App({store}) {
             <SearchBlock />
             <MainPages />
             {isLoading ? <h1>Проверка авторизации</h1> : ''}
-            <h1>{check ? 'Вы авторизованы': 'Авторизуйтесь'}</h1>
-            {check ?
+            <h1>{isAuth ? 'Вы авторизованы': 'Авторизуйтесь'}</h1>
+            {isAuth ?
                 <div>
                     <button onClick={tempCheck}>Выйти</button>
                     <button onClick={getUsers}>Получить пользователей</button>
@@ -78,9 +79,10 @@ function App({store}) {
                             })}
                         </div> : ''}
                 </div>
+                
 
                 : ''}
-            <button onClick={ () => console.log(check)}>Проверка</button>
+            <button onClick={ () => console.log(isAuth)}>Проверка</button>
             <Routes>
                 {/*<Route path='/' element={<MainPages />} />*/}
                 <Route path='/auth' element={<Autorization activeTab={activeTab} toggleActiveTab={toggleActiveTab} openModal={isOpenSignUp} closeModal={closeModal} />} />

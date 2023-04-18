@@ -4,6 +4,7 @@ import { ReactComponent as Love } from './love.svg';
 import { ReactComponent as Cart } from './cart.svg';
 import { ReactComponent as Logo } from './logo.svg';
 import { ReactComponent as Close } from './close.svg';
+import { ReactComponent as Preloader } from './preloader.svg';
 
 
 export const iconsTypes = {
@@ -13,4 +14,5 @@ export const iconsTypes = {
     cart: Cart,
     logo: Logo,
     close: Close,
+    preloader: Preloader
 };

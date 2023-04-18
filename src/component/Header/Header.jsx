@@ -11,7 +11,7 @@ import {getIsAuth, getUserName} from "../../store/userSelector";
 export const Header = ({toggleModal}) => {
 
 const isLoggedIn = useSelector(getIsAuth);
-const userName = useSelector(getUserName);
+const isName = localStorage.getItem('name')
 
 
 return(
@@ -25,8 +25,7 @@ return(
                     <Icon className={cn(styles.button, styles.love)} name='love' />
                     <Icon className={cn(styles.button, styles.cart)} name='cart' />
                 </div>
-                <Link to='/auth'>{!isLoggedIn && <Button size='medium' mode='transparent' onClick={toggleModal} >Вход и регистрация</Button>}</Link>
-                {isLoggedIn && <ProfileArea userName={userName} />}
+                {!isName ? <Link to='/auth'>{!isLoggedIn && <Button size='medium' mode='transparent' onClick={toggleModal} >Вход и регистрация</Button>}</Link> : <ProfileArea userName={isName} />}
                 <Button size='medium' mode='primary' icon='search'>Разместить объявление</Button>
             </div>
         </div>
