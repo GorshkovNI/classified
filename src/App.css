@@ -11,9 +11,9 @@ body{
   margin: auto;
 }
 
-.App{
-  margin: 0 250px;
-}
+/* .App{
+  margin: 0 200px;
+} */
 
 body.modal-open {
   overflow: hidden;

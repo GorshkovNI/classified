@@ -1,6 +1,8 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
 :root {
   --hover-red: rgb(255,97,99);
   --blue-light: rgb(0, 170, 255);
+  --grey-text: #8f8f8f;
 }
 
 body {

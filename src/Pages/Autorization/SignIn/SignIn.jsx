@@ -28,6 +28,7 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
 
   const handleSubmit = async () => {
     dispatch(login(email, password));
+    closeModal()
   };
 
   return (

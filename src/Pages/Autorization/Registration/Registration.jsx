@@ -8,6 +8,7 @@ import { validateEmail } from "../../../utils/checkValidEmail";
 import { Input } from "../../../component/Input/Input";
 import { getIsLoading } from "../../../store/userSelector";
 import { Icon } from "../../../component/Icons/Icon";
+import { useNavigate } from 'react-router-dom'
 
 const WRONG_NAME_LENGTH = "Имя должно быть больше 2 символов";
 const WRONG_FORMAT_EMAIL = "Неверный формат email";
@@ -20,31 +21,34 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
   const [invalidValueForm, setInvalidForm] = useState("");
 
   const dispatch = useDispatch();
-  //const isLoading = useSelector(getIsLoading)
-  const isLoading = true
+  const isLoading = useSelector(getIsLoading)
+
+  const navigate = useNavigate()
+  //const isLoading = true
 
 
   const handleLogin = (e) => {
-    setName(e.target.event)
+    setName(e.target.value)
     setInvalidForm('')
   }
   
   const handleEmail = (e) => {
-    setEmail(e.target.event)
+    setEmail(e.target.value)
     setInvalidForm('')
   }
 
   const handlePassword = (e) => {
-    setPassword(e.target.event)
+    setPassword(e.target.value)
     setInvalidForm('')
   }
 
   const sendData = async (name, email, password) => {
-    if (name.length < 3) {
+    if (String(name).length< 3) {
       setInvalidForm(WRONG_NAME_LENGTH);
       return;
     }
     if (!validateEmail(email)) {
+        console.log(email)
       setInvalidForm(WRONG_FORMAT_EMAIL);
       return;
     }
@@ -53,12 +57,16 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
       return;
     }
     dispatch(registration(name, email, password));
+    closeModal()
+    navigate.push('/')
   };
 
   return (
     <>
       <Modal isOpen={openModal} onClose={closeModal}>
-        {isLoading && <Icon name='preloader' className={styles.preloader} />}
+        {isLoading ? <Icon name='preloader' className={styles.preloader} /> :
+        
+        <>
         <div className={styles.form}>
           <h2 className={styles.title}>Регистрация</h2>
           <div className={styles.formGroup}>
@@ -133,6 +141,7 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
             Войти
           </button>
         </div>
+        </>}
       </Modal>
     </>
   );

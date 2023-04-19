@@ -9,41 +9,30 @@ import two from './2.jpg'
 import three from './3.jpg'
 import four from './4.jpg'
 import {Icon} from "../Icons/Icon";
-const obj = [
-    {
-        id:1,
-        src: one
-    },{
-        id:2,
-        src: two
-    },{
-        id:3,
-        src: three
-    },{
-        id:4,
-        src: four
-    }
-]
+import { Link } from "react-router-dom";
 
 
-export const CardProduct = () => {
+export const CardProduct = ({id = '3645', onClick, title, city, price, date }) => {
     return(
-        <div className={styles.wrapper}>
-            <Slider>
-                <div className={cn(styles.item, styles.item1)}><img className={styles.image} src={one} /></div>
-                <div className={cn(styles.item, styles.item2)}><img className={styles.image} src={two} /></div>
-                <div className={cn(styles.item, styles.item3)}><img className={styles.image} src={three} /></div>
-            </Slider>
-            <div className={styles.discription}>
-                <div className={styles.blockNamed}>
-                    <span className={styles.nameProduct}>Клей пва, оптом</span>
-                    <Icon className={styles.like} name='love' />
+        <Link to={`/product-info/${id}`} className={styles.link}>
+            <div className={styles.wrapper}  >
+                <Slider>
+                    <div className={cn(styles.item, styles.item1)}><img className={styles.image} src={one} /></div>
+                    <div className={cn(styles.item, styles.item2)}><img className={styles.image} src={two} /></div>
+                    <div className={cn(styles.item, styles.item3)}><img className={styles.image} src={three} /></div>
+                </Slider>
+                <div className={styles.discription}>
+                    <div className={styles.blockNamed}>
+                        <span className={styles.nameProduct}>{title || 'Клей пва, оптом'} </span>
+                        <Icon className={styles.like} name='love' />
+                    </div>
+                    <span className={styles.price}>{formatMoney(5000) || formatMoney(price)}</span>
+                    <span className={styles.located}>{city || 'Екатринбург'} </span>
+                    <span className={styles.datePublication}>{date || '26 марта 11:57'} </span>
                 </div>
-                <span className={styles.price}>{formatMoney(5000)}</span>
-                <span className={styles.located}>Екатринбург</span>
-                <span className={styles.datePublication}>26 марта 11:57</span>
-            </div>
 
-        </div>
+            </div>
+        </Link>
+        
     )
 }

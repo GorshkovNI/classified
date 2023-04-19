@@ -28,7 +28,6 @@ export const Slider = ({children}) => {
     useEffect(() => {
       const resizeHandler = () => {
         const windowElWidth = windowElRef.current.offsetWidth
-        console.log('resized', windowElWidth)
         //setWidth(windowElWidth)
         setOffset(-(clonesCount.head * PAGE_WIDTH)) // to prevent wrong offset
       }
@@ -69,7 +68,9 @@ export const Slider = ({children}) => {
       }
     }, [offset, pages, clonesCount, PAGE_WIDTH])
 
-    const handleClickLeftArrow = () => {
+    const handleClickLeftArrow = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
         setOffset((currentOffset) => {
             if (!transitionDuration) {
                 setTransitionDuration(TRANSITION_DURATION);
@@ -77,10 +78,12 @@ export const Slider = ({children}) => {
             const newOffset = currentOffset + PAGE_WIDTH
             return Math.min(newOffset, 0)
         })
+        
     }
 
-    const handleClickRightArrow = () => {
-        console.log(pages);
+    const handleClickRightArrow = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
         setOffset((currentOffset) => {
             if (!transitionDuration) {
                 setTransitionDuration(TRANSITION_DURATION);

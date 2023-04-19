@@ -1,11 +1,9 @@
 .wrapper{
     position: sticky;
-    width: 100vw;
     height: 20px;
     background: rgb(41,41,41);
     padding: 12px 0;
     top: 0;
-    margin-left: -250px;
     z-index: 50;
 }
 

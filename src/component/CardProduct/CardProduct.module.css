@@ -1,3 +1,7 @@
+.link{
+    text-decoration: none;
+}
+
 .wrapper{
     width: 250px;
     height: 290px;

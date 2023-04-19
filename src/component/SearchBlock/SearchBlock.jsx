@@ -3,6 +3,7 @@ import styles from './SearchBlock.module.css'
 import cn from "classnames";
 import {Icon} from "../Icons/Icon";
 import {Input} from "../Input/Input";
+import logo from './lg.png'
 
 export const SearchBlock = ({className}) => {
 
@@ -22,9 +23,10 @@ export const SearchBlock = ({className}) => {
                 scroll > 50 ? styles.borderVisible : ''
             )}>
             <div className={styles.container}>
-                <Icon className={styles.logo} name='logo' />
+                {/* <Icon className={styles.logo} name='logo' /> */}
+                <img src={logo} className={styles.logo}  />
                 <div className={styles.searchBlock}>
-                    <Input className={styles.input} />
+                    <Input className={styles.input} button buttonText='Найти' />
                 </div>
             </div>
 
