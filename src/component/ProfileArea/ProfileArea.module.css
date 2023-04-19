@@ -77,3 +77,13 @@
     font-size: 20px;
     margin-bottom: 2px;
 }   
+
+.wrapper:hover .arrow{
+    transform: rotate(180deg);
+    transition: transform 100ms ease-in 
+}
+
+.wrapper .arrow {
+    transform: rotate(0deg);
+    transition: transform 100ms ease-in;
+  }
