@@ -4,6 +4,7 @@
     background: #ffffff;
     z-index: 10;
     width: 99vw;
+    transition: all 1s ease-out;
 }
 
 .container{
@@ -16,7 +17,7 @@
     display: flex;
     justify-content: center;
     padding: 25px 0 20px 0;
-    animation: shadow 300ms linear;
+    /* animation: shadow 300ms linear; */
 }
 
 .borderVisible{

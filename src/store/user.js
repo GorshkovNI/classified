@@ -66,9 +66,9 @@ export const registration = (name, email, password) => async (dispatch) => {
         dispatch(fetchDataStart())
         const response = await AuthService.registration(name, email, password);
         console.log(response)
-        localStorage.setItem('token', response.data.accessToken);
-        dispatch(setAuth())
-        dispatch(setDataUser(response.data.user.name))
+        localStorage.setItem('token', response.data.accessToken)
+       // dispatch(setAuth())
+       // dispatch(setDataUser(response.data.user.name))
         dispatch(fetchDataSuccess())
 
     } catch (error) {

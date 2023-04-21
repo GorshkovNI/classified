@@ -30,6 +30,10 @@
     outline: none;
 }
 
+.buttonArea{
+    cursor: pointer;
+}
+
 .button{
     padding: 0 15px;
 }

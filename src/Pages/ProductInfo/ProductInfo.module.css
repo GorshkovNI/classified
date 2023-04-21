@@ -51,15 +51,54 @@
 
 .images{
     height: 400px;
-    background-color: rgb(0, 0, 0, 0.2);
+    /* background-color: rgb(0, 0, 0, 0.2); */
+}
+
+.images:focus{
+    border: none;
+    outline: none;
 }
 
 .thumbImage{
-    width: 60px;
+    
+}
+
+.thumbImage img{
+    width: 70px;
+    height: 60px;
+    object-fit: cover;
 }
 
 .images img{
+    height: 100%!important;
     width: auto!important;
+}
+
+.gallery button:nth-child(1){
+    height: 100%;
+}
+
+.gallery button:nth-child(2){
+    height: 100%;
+}
+
+.gallery button:nth-child(1):focus{
+    border: none;
+    outline: none;
+}
+
+.gallery button:nth-child(2){
+    border: none;
+    outline: none;
+}
+
+
+.gallery button:nth-child(1):hover{
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+.gallery button:nth-child(2):hover{
+    background-color: rgba(0, 0, 0, 0.025);
 }
 
 .gallery svg{
@@ -128,6 +167,106 @@
     line-height: 20px;
     font-size: 16px;
 }
+
+.itemContent_right{
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.priceBlock{
+    margin: 0 5px;
+}
+
+.price{
+    margin: 0;
+    padding: 0;
+}
+
+.remouteArea{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.remouteButton{
+    font-size: 20px;
+    color: #fff;
+    user-select: none;
+    background-color: #94e481;
+    width: 300px;
+    height: 50px;
+}
+
+.remouteButtonCall{
+    background-color: #94e481;
+}
+
+.remouteButtonMessage{
+    background-color: #009CF0;
+}
+
+.remouteButton:hover{
+    filter: brightness(1.1);
+}
+
+.infoSeller{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.photo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.descriptionSeller{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.userName{
+    color: var(--blue-light);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.userName:hover{
+    color: var(--hover-red);
+}
+
+.rating{
+    font-weight: 500;
+}
+
+.time{
+    font-weight: 400;
+}
+
+.iconArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 0;
+    background-color: rgb(212, 227, 74);
+    cursor: pointer;
+}
+
+.icon{
+    font-size: 20px;
+    margin-bottom: 2px;
+}   
+
+
 
 
 

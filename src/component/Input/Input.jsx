@@ -21,7 +21,10 @@ export const Input = ({className, placeholder, type = 'text', id, value, onChang
                     id={id}
                 />
             </div>
-            {button && <Button mode='transparent' className={styles.button}>{buttonText}</Button>}
+            <div className={styles.buttonArea}>
+                {button && <Button mode='transparent' className={styles.button}>{buttonText}</Button>}
+            </div>
+            
         </div>
 
     )

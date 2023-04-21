@@ -5,20 +5,22 @@ import ImageGallery from "react-image-gallery";
 import one from "./1.jpg";
 import qwe from "./qwe.jpg";
 import two from "./2.jpg";
-import three from "./3.jpg";
+import four from "./4.jpg";
 import { Layout } from "../../component/Layout/Layout";
 import { Button } from "../../component/Button/Button";
+import { formatMoney } from "../../utils/formatMoney";
+import cn from 'classnames'
 
 const images = [
   {
-    original: qwe,
-    thumbnail: qwe,
+    original: four,
+    thumbnail: four,
     originalClass: styles.images,
     thumbnailClass: styles.thumbImage,
   },
   {
-    original: qwe,
-    thumbnail: qwe,
+    original: two,
+    thumbnail: two,
     originalClass: styles.images,
     thumbnailClass: styles.thumbImage,
   },
@@ -130,11 +132,34 @@ export const ProductInfo = ({ toggleModal, getId }) => {
                     </h2>
                     <pre>
                       Какое-то описание для машины
+
+                      Залупа
+
+
+                      Пенис
                     </pre>
                 </div>
               </div>
             </div>
-            <div className={styles.itemContent_right}></div>
+            <div className={styles.itemContent_right}>
+              <div className={styles.priceBlock}>
+                <h1 className={styles.price}>{formatMoney(1000000)}</h1>
+              </div>
+              <div className={styles.remouteArea}>
+                <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} mode="contained" type='text' >Показать телефон</Button>
+                <Button className={cn(styles.remouteButton, styles.remouteButtonMessage)} mode="contained" type='text'>Написать сообщение</Button>
+              </div>
+              <div className={styles.infoSeller}>
+                <div className={styles.descriptionSeller}>
+                  <span className={styles.userName}>Продавец</span>
+                  <span className={styles.rating}>5,0</span>
+                  <span className={styles.time}>{`На авито с 2021`}</span>
+                </div>
+                  <div className={styles.iconArea}>
+                      <span className={styles.icon}>{'Продавец'[0].toUpperCase()}</span>
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

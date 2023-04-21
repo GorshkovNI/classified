@@ -12,6 +12,7 @@
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .medium{
@@ -48,4 +49,8 @@
     background-color: transparent;
     padding: 4px 12px;
     border-radius: 12px;
+}
+
+.contained{
+    border-radius: 4px;
 }
