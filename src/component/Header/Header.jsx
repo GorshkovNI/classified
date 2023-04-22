@@ -6,8 +6,7 @@ import {Icon} from "../Icons/Icon";
 import cn from 'classnames'
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {getIsAuth, getUserName} from "../../store/userSelector";
-import { SearchBlock } from "../SearchBlock/SearchBlock";
+import {getIsAuth, getUserName} from "../../store/auth/userSelector";
 import { Autorization } from "../../Pages/Autorization/Autorization";
 
 export const Header = ({toggleModal, activeTab, toggleActiveTab, openModal, closeModal}) => {

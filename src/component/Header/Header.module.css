@@ -1,4 +1,5 @@
 .wrapper{
+    box-sizing: content-box;
     position: sticky;
     height: 20px;
     background: rgb(41,41,41);

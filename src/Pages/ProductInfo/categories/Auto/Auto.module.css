@@ -1,0 +1,35 @@
+.parametrsList{
+    margin: 0;
+    padding: 0;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 15px;
+    -moz-column-gap: 15px;
+    column-gap: 15px;
+    margin-bottom: -8px;
+    line-height: 20px;
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+}
+
+.itemUl{
+    margin: 0;
+    padding: 0;
+    min-width: 260px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    page-break-inside: avoid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item{
+    color: var(--grey-text);
+    margin: 0;
+    font-weight: normal;
+    box-sizing: border-box;
+    line-height: 20px;
+    font-size: 16px;
+}

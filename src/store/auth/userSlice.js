@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import AuthService from "../service/AuthService";
+import AuthService from "../../service/AuthService";
 import axios from "axios";
-import { API_URL } from "../http";
+import { API_URL } from "../../http";
 
 const initialState = {
     userData: {

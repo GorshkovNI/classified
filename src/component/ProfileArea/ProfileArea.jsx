@@ -5,8 +5,8 @@ import {Dropdown} from "../Dropdown/Dropdown";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import { logout } from "../../store/user";
-import { getUserName } from "../../store/userSelector";
+import { logout } from "../../store/auth/userSlice";
+
 
 const menuDropdown = [
     {

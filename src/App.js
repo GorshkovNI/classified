@@ -1,17 +1,11 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Header } from './component/Header/Header';
 import {MainPages} from "./Pages/MainPages/MainPages";
-import {SearchBlock} from "./component/SearchBlock/SearchBlock";
 import React, {useEffect, useState} from "react";
-import {Autorization} from "./Pages/Autorization/Autorization";
 import {useDispatch, useSelector} from "react-redux";
-import {getIsAuth, getIsLoading, getUserName} from "./store/userSelector";
-import user, {checkAuth, logout} from "./store/user";
-import UserService from "./service/UserService";
-import { CardProduct } from './component/CardProduct/CardProduct';
+import user, {checkAuth, logout} from "../src/store/auth/userSlice";
 import { ProductInfo } from './Pages/ProductInfo/ProductInfo';
-import { Layout } from './component/Layout/Layout';
+import { AddNewAds } from './Pages/AddNewAds/AddNewAds';
 
 
 function App({store}) {
@@ -37,6 +31,7 @@ function App({store}) {
             <Routes>
                 <Route path='/' element={<MainPages  />} />
                 <Route path='/product-info/:id' element={<ProductInfo  />} />
+                <Route path='/additem' element={<AddNewAds />} />
             </Routes>
         </div>
     </BrowserRouter>

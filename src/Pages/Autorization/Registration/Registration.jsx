@@ -3,12 +3,13 @@ import styles from "./Registration.module.css";
 import { Modal } from "../../../component/Modal/Modal";
 import { Button } from "../../../component/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { registration } from "../../../store/user";
+
 import { validateEmail } from "../../../utils/checkValidEmail";
 import { Input } from "../../../component/Input/Input";
-import { getIsLoading } from "../../../store/userSelector";
+import { getIsLoading } from "../../../store/auth/userSelector";
 import { Icon } from "../../../component/Icons/Icon";
 import { useNavigate } from 'react-router-dom'
+import { registration } from "../../../store/auth/userSlice";
 
 const WRONG_NAME_LENGTH = "Имя должно быть больше 2 символов";
 const WRONG_FORMAT_EMAIL = "Неверный формат email";

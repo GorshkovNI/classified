@@ -4,9 +4,9 @@ import styles from "./SignIn.module.css";
 import { Button } from "../../../component/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { login, removeInvalidLogging, setAuth } from "../../../store/user";
+import { login, removeInvalidLogging, setAuth } from "../../../store/auth/userSlice";
 import { Input } from "../../../component/Input/Input";
-import { getInvalidLogging } from "../../../store/userSelector";
+import { getInvalidLogging } from "../../../store/auth/userSelector";
 
 
 export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
