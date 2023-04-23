@@ -71,7 +71,6 @@ export const ProductInfo = ({ toggleModal, getId }) => {
 
   const [adTypes, setAdTypes] = useState('') // Храним тип объявления: авто, недвижимость и т.д
 
-
   return (
     <Layout>
       <div className={styles.wrapper} id='3645' onClick={getId}>

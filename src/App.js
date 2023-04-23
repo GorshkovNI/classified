@@ -20,9 +20,6 @@ function App({store}) {
         }
     }, [])
 
-    const getId = (e) => {
-
-    }
 
   return (
     <BrowserRouter>

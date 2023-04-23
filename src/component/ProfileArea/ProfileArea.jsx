@@ -49,7 +49,7 @@ export const ProfileArea = ({userName, icon}) => {
         <div className={styles.wrapper} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             {icon ? <img className={styles.userIcon} /> : 
                 <div className={styles.iconArea}>
-                    <span className={styles.icon}>{userName[0].toUpperCase()}</span>
+                    <span className={styles.icon}>{userName && userName[0]?.toUpperCase()}</span>
                 </div>
             }
             <span className={styles.userName}>{userName}</span>
