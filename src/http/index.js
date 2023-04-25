@@ -1,6 +1,6 @@
 import axios from 'axios'
 import async from "async";
-export const API_URL = `http://localhost:8080/api`
+export const API_URL = `http://localhost:8080/`
 
 const $api = axios.create({
     withCredentials: true,
@@ -20,7 +20,7 @@ $api.interceptors.response.use(config => {
         if(error.response.status == 401 && error.config._isRetry){
             originalRequest._isRetry = true
             try {
-                const res = await axios.get(`${API_URL}/refresh`, {withCredentials: true})
+                const res = await axios.get(`${API_URL}api/refresh`, {withCredentials: true})
                 localStorage.setItem('token', res.data.accessToken)
                 return $api.request(originalRequest)
             }

@@ -52,6 +52,7 @@ const user = createSlice({
 export const login = (email, password) => async (dispatch) => {
     try {
         dispatch(fetchDataStart())
+        console.log('начал логинитсья')
         const response = await AuthService.login(email, password)
         localStorage.setItem('token', response.data.accessToken)
         dispatch(setAuth())
@@ -88,7 +89,7 @@ export const checkAuth = () => async (dispatch) => {
     try{
         dispatch(fetchDataStart())
         console.log('ЗАПУЩЕН CHECKAUTH')
-        const res = await axios.get(`${API_URL}/refresh`, { withCredentials: true })
+        const res = await axios.get(`${API_URL}api/refresh`, { withCredentials: true })
         localStorage.setItem('token', res.data.accessToken)
         dispatch(setAuth())
         dispatch(setDataUser(res.data.user.name))

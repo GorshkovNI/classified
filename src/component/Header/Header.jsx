@@ -6,21 +6,21 @@ import {Icon} from "../Icons/Icon";
 import cn from 'classnames'
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {getIsAuth, getUserName} from "../../store/auth/userSelector";
+import {getIsAuth, getIsLoading, getUserName} from "../../store/auth/userSelector";
 import { Autorization } from "../../Pages/Autorization/Autorization";
 import { useEffect } from "react";
 
 export const Header = ({ toggleModal, activeTab, toggleActiveTab, openModal, closeModal}) => {
 
-    const [isLoading, setIsLoading] = useState(true)
+    //const [isLoading, setIsLoading] = useState(true)
 
     const isLoggedIn = useSelector(getIsAuth)
+    const isLoading = useSelector(getIsLoading)
 
-    useEffect(() => {
-        setIsLoading(false)
-    }, [isLoggedIn])
+    // useEffect(() => {
+    //     setIsLoading(false)
+    // }, [isLoggedIn])
 
-    
 
     const isName = localStorage.getItem('name')
     console.log(isName, ' ', isLoggedIn)
@@ -36,7 +36,7 @@ return(
                     <Icon className={cn(styles.button, styles.love)} name='love' />
                     <Icon className={cn(styles.button, styles.cart)} name='cart' />
                 </div>
-                {!isLoggedIn ?  <Button size='medium' mode='transparent' onClick={toggleModal} >{isLoading ? 'Loading...' :'Вход и регистрация'}</Button> :  <ProfileArea userName={isName} />}
+                {!isLoggedIn ?  <Button size='medium' mode='transparent' onClick={toggleModal} >{isLoading ? 'Loading...' : 'Вход и регистрация'}</Button> :  <ProfileArea userName={isName} />}
                 <Button size='medium' mode='primary' icon='search'>Разместить объявление</Button>
             </div>
             
