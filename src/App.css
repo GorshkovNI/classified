@@ -3,14 +3,18 @@ body{
   padding: 0;
 }
 .bd{
-  margin-left: 50px;
-  margin-top: 50px;
+  margin-left: 60px;
+  margin-top: 60px;
 }
 
 .searchBlock{
   margin: auto;
 }
 
-.mainInput{
-  margin: auto;
+/* .App{
+  margin: 0 200px;
+} */
+
+body.modal-open {
+  overflow: hidden;
 }

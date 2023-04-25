@@ -1,5 +1,5 @@
 .wrapper{
-    width: 200px;
+    width: 250px;
     height: 150px;
     user-select: none;
 }
@@ -16,7 +16,7 @@
     display: flex;
     transition: translate;
     transition-property: transform;
-    transition-duration: 200ms;
+    /* transition-duration: 200ms; */
     transition-timing-function: ease-in-out;
 }
 

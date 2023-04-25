@@ -1,5 +1,9 @@
+.link{
+    text-decoration: none;
+}
+
 .wrapper{
-    width: 200px;
+    width: 250px;
     height: 290px;
     cursor: pointer;
 }
@@ -16,13 +20,14 @@
     justify-content: center;
 }
 .image{
-    width: 200px;
+    background-size: contain;
+    width: 250px;
     height: 150px;
 }
 
 .blockNamed{
     display: flex;
-    width: 200px;
+    width: 100%;
     justify-content: space-between;
 }
 
@@ -37,7 +42,7 @@
 
 .like{
     fill: #009CF0;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .like:hover{

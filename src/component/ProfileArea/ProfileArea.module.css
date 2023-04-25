@@ -1,4 +1,5 @@
 .wrapper{
+    position: relative;
     margin: 0;
     padding: 0;
     display: flex;
@@ -32,3 +33,57 @@
     fill: white;
     color: white;
 }
+
+.dropdownArea{
+    position: absolute;
+    top: 30px;
+}
+.dropdown{
+    width: 200px;
+    margin-top: 10px;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title{
+    text-decoration: none;
+    color: #009CF0;
+}
+
+.text{
+    margin-top: 5px;
+}
+
+.text:hover{
+    color: #da8282;
+}
+
+.iconArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0;
+    background-color: rgb(212, 227, 74);
+}
+
+.icon{
+    font-size: 20px;
+    margin-bottom: 2px;
+}   
+
+.wrapper:hover .arrow{
+    transform: rotate(180deg);
+    transition: transform 100ms ease-in 
+}
+
+.wrapper .arrow {
+    transform: rotate(0deg);
+    transition: transform 100ms ease-in;
+  }

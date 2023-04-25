@@ -1,8 +1,11 @@
 .wrapper{
-    width: 100%;
+    box-sizing: content-box;
+    position: sticky;
     height: 20px;
     background: rgb(41,41,41);
-    padding: 12px;
+    padding: 12px 0;
+    top: 0;
+    z-index: 50;
 }
 
 .container{
@@ -10,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    margin: 0 200px;
+    margin: 0 250px;
 }
 
 .rightSide{

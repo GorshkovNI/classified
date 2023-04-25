@@ -1,0 +1,39 @@
+.wrapper{
+    margin: 100px;
+}
+
+.buttonType{
+    width: 200px;
+    padding: 8px;
+}
+
+.dropdown{
+    position: absolute;
+}
+
+.type{
+    display: flex;
+    flex-direction: column;
+}
+
+.typeItem{
+    width: 100%;
+    padding: 5px;
+    color: black;
+}
+
+.typeItem:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.enterInformation{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.input{
+    width: 300px;
+}

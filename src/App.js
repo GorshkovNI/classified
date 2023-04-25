@@ -1,22 +1,38 @@
 import './App.css';
-import { Header } from './component/Header/Header';
-import {CardProduct} from "./component/CardProduct/CardProduct";
-import {Input} from "./component/Input/Input";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {MainPages} from "./Pages/MainPages/MainPages";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import user, {checkAuth, logout} from "../src/store/auth/userSlice";
+import { ProductInfo } from './Pages/ProductInfo/ProductInfo';
+import { AddNewAds } from '../src/Pages/AddNewAds/AddNewAds';
 
-function App() {
+
+function App({store}) {
+
+    
+    const dispath = useDispatch()
+
+    useEffect(()=>{
+        if(localStorage.getItem('token')){
+            console.log(localStorage.getItem('token'))
+            dispath(checkAuth())
+        }
+    }, [])
+
+
   return (
-    <div className="App">
-      <Header />
-      <div className='searchBlock'>
-          <Input className='mainInput' />
-      </div>
-      <div className='bd'>
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-      </div>
+    <BrowserRouter>
+        <div className="App">
+            {/* <MainPages /> */}
+            <Routes>
+                <Route path='/' element={<MainPages  />} />
+                <Route path='/product-info/:id' element={<ProductInfo  />} />
+                <Route path='/additem' element={<AddNewAds />} />
+            </Routes>
+        </div>
+    </BrowserRouter>
 
-    </div>
   );
 }
 

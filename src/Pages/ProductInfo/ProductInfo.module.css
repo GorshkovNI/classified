@@ -1,0 +1,275 @@
+.wrapper{
+
+    margin: 0 200px;
+    line-height: 20px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.itemNavigation{
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 20px 4px 0;
+    /* width: 964px; */
+    width: 100%;
+    color: var(--grey-text);
+}
+
+.itemContent{
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.itemContent_left{
+    width: 636px;
+}
+
+.titleInfoMain{
+    height: 110px;
+}
+
+.titleInfo{
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.titleActions{
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.viewMainContent{
+    margin-bottom: 15px;
+}
+
+.images{
+    height: 400px;
+    /* background-color: rgb(0, 0, 0, 0.2); */
+}
+
+.images:focus{
+    border: none;
+    outline: none;
+}
+
+.thumbImage{
+    
+}
+
+.thumbImage img{
+    width: 70px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.images img{
+    height: 100%!important;
+    width: auto!important;
+}
+
+.gallery button:nth-child(1){
+    height: 100%;
+}
+
+.gallery button:nth-child(2){
+    height: 100%;
+}
+
+.gallery button:nth-child(1):focus{
+    border: none;
+    outline: none;
+}
+
+.gallery button:nth-child(2){
+
+}
+
+
+.gallery button:nth-child(1):hover{
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+.gallery button:nth-child(2):hover{
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+.gallery svg{
+    height: 50px!important;
+    width: 50px;
+}
+
+.buttonIconLove{
+    fill: var(--blue-light);
+}
+
+.actionButton:hover{
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.actionButton:active{
+    opacity: 0.8;
+}
+
+.descriptionBlock{
+    
+}
+
+.parametrs{
+    border-top: 1px solid var(--border-grey);
+    padding: 10px 0;
+}
+
+.parametrsSpan{
+    margin: 10px 0;
+    padding: 0;
+}
+
+.parametrsList{
+    margin: 0;
+    padding: 0;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 15px;
+    -moz-column-gap: 15px;
+    column-gap: 15px;
+    margin-bottom: -8px;
+    line-height: 20px;
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+}
+
+.itemUl{
+    margin: 0;
+    padding: 0;
+    min-width: 260px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    page-break-inside: avoid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item{
+    color: var(--grey-text);
+    margin: 0;
+    font-weight: normal;
+    box-sizing: border-box;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.itemContent_right{
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.priceBlock{
+    margin: 0 5px;
+}
+
+.price{
+    margin: 0;
+    padding: 0;
+}
+
+.remouteArea{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.remouteButton{
+    font-size: 20px;
+    color: #fff;
+    user-select: none;
+    background-color: #94e481;
+    width: 300px;
+    height: 50px;
+}
+
+.remouteButtonCall{
+    background-color: #94e481;
+}
+
+.remouteButtonMessage{
+    background-color: #009CF0;
+}
+
+.remouteButton:hover{
+    filter: brightness(1.1);
+}
+
+.infoSeller{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.photo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.descriptionSeller{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.userName{
+    color: var(--blue-light);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.userName:hover{
+    color: var(--hover-red);
+}
+
+.rating{
+    font-weight: 500;
+}
+
+.time{
+    font-weight: 400;
+}
+
+.iconArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 0;
+    background-color: rgb(212, 227, 74);
+    cursor: pointer;
+}
+
+.icon{
+    font-size: 20px;
+    margin-bottom: 2px;
+}   
+
+
+
+
+
+
+
+
+
