@@ -4,7 +4,7 @@ import { SearchBlock } from "../SearchBlock/SearchBlock";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-export const Layout = ({children}) => {
+export const Layout = ({children, isSearchBlock = true}) => {
 
     const [isOpenSignUp, setIsOpenSignUp] = useState(false)
     const [activeTab, setActiveTab] = useState('login')
@@ -27,7 +27,7 @@ export const Layout = ({children}) => {
     return(
         <div>
             <Header toggleModal={toggleModal} activeTab={activeTab} toggleActiveTab={toggleActiveTab} openModal={isOpenSignUp} closeModal={closeModal} />
-            <SearchBlock  />
+            {isSearchBlock && <SearchBlock  />}
             {children}
         </div>
     )

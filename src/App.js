@@ -5,7 +5,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import user, {checkAuth, logout} from "../src/store/auth/userSlice";
 import { ProductInfo } from './Pages/ProductInfo/ProductInfo';
-import { AddNewAds } from './Pages/AddNewAds/AddNewAds';
+import { AddNewAds } from '../src/Pages/AddNewAds/AddNewAds';
 
 
 function App({store}) {

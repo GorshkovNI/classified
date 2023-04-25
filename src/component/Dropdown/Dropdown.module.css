@@ -1,7 +1,7 @@
 .dropdown{
     display: flex;
     flex-direction: column;
-    padding: 8px 0;
+    /* padding: 8px 0; */
     border-radius: 8px;
     background-color: #ffffff;
     box-sizing: border-box;
@@ -15,7 +15,6 @@
     flex-direction: column;
     width: 100%;
     cursor: pointer;
-    margin-left: 10px;
     color: rgb(0, 170, 255);;
 }
 /*li {*/

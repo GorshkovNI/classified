@@ -36,7 +36,7 @@ return(
                     <Icon className={cn(styles.button, styles.love)} name='love' />
                     <Icon className={cn(styles.button, styles.cart)} name='cart' />
                 </div>
-                {!isLoggedIn ? <Button size='medium' mode='transparent' onClick={toggleModal} >Вход и регистрация</Button> : <ProfileArea userName={isName} />}
+                {!isLoggedIn ?  <Button size='medium' mode='transparent' onClick={toggleModal} >{isLoading ? 'Loading...' :'Вход и регистрация'}</Button> :  <ProfileArea userName={isName} />}
                 <Button size='medium' mode='primary' icon='search'>Разместить объявление</Button>
             </div>
             
