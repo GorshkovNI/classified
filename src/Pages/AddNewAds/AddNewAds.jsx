@@ -8,8 +8,8 @@ import { Layout } from "../../component/Layout/Layout";
 import { Input } from "../../component/Input/Input";
 import {carInputs} from "./categories/car";
 import {useDispatch, useSelector} from "react-redux";
-import {getCategories} from "../../store/ad/adSlice";
-import {getAllCategories} from "../../store/ad/adSelector";
+import {getCategories, getCategoryFields} from "../../store/ad/adSlice";
+import {getAllCategories, getAllFieldsCategory, isLoadingAd} from "../../store/ad/adSelector";
 
 const typeAds = [
     {
@@ -24,49 +24,49 @@ const typeAds = [
 
 export const AddNewAds = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [typeAd, setTypeAd] = useState("");
+  const [typeAd, setTypeAd] = useState({});
   const [values, setValues] = useState({})
 
     const dispatch = useDispatch()
     const allCategoies = useSelector(getAllCategories)
+    const fields = useSelector(getAllFieldsCategory)
+    const isLoading = useSelector(isLoadingAd)
+    console.log(isLoading)
 
     useEffect(() => {
         dispatch(getCategories())
     }, [])
 
   useEffect(() => {
-      // const newObj = carInputs.reduce((acc, current) => {
-      //     return {
-      //         ...acc,
-      //         [current.title]: ''
-      //     }
-      // }, {})
-      // setValues(newObj)
-      // console.log(newObj)
+      dispatch(getCategoryFields(typeAd.categoryName))
   }, [typeAd])
 
-  const handleInputChange = (index, event) => {
-      const newValues = [...values];
-      newValues[index] = event.target.value;
-      setValues(index)
+  useEffect(() => {
+      if(fields.length === 0) return
+      const obj = fields.reduce((acc, item) => {
+          acc[item.title] = '';
+          return acc;
+      }, {});
+      setValues(obj)
+  }, [fields])
+
+  const handleChangeCurrentInputValue = (event) => {
+    const currentTitle = event.target.name
+    const newObj = {...values}
+    newObj[currentTitle] = event.target.value
+    setValues(newObj)
   }
+
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
   };
 
-    const handleChange = (event) => {
-        setValues({ ...values, [event.target.name]: event.target.value });
-    };
-
-  const handleTypeAd = (e) => { // Нужно будет для отправки на серер типо объявления и получения соотвествующих полей
-      allCategoies.forEach((item) => {
-          if(item.translate == e.target.textContent){
-              //dispatch(getCategories(item.label))
-              //return
-          }
-      })
-    setTypeAd(e.target.textContent)
+  const handleTypeAd = (e) => {
+    setTypeAd({
+        transtale: e.target.textContent,
+        categoryName: e.target.id
+    })
     setIsOpen(false)
   }
 
@@ -79,9 +79,9 @@ export const AddNewAds = () => {
     <Layout isSearchBlock={false}>
       <div className={styles.wrapper}>
         <div className={styles.chooseArea}>
-          <Button className={styles.buttonType} onClick={handleButtonClick}>
-            {!typeAd ? 'Выберите категорию' : typeAd}
-          </Button>
+            {isLoading ? <span>Loading...</span> : <Button className={styles.buttonType} onClick={handleButtonClick}>
+            {!typeAd.transtale ? 'Выберите категорию' : typeAd.transtale}
+          </Button>}
           {isOpen && (
             <Dropdown className={styles.dropdown}>
               <div className={styles.type}>
@@ -89,7 +89,7 @@ export const AddNewAds = () => {
                       allCategoies.map((type) => {
                           return(
                               <>
-                                  <span className={styles.typeItem} onClick={handleTypeAd}>{type.translate}</span>
+                                  <span className={styles.typeItem} id={type.category} onClick={handleTypeAd}>{type.translate}</span>
                               </>
                           )
                       })
@@ -98,20 +98,19 @@ export const AddNewAds = () => {
             </Dropdown>
           )}
         </div>
-        <div className={styles.enterInformation}>
-            <form onSubmit={handleSubmit}>
-                {
-                    carInputs.map((item, index) => {
-                        return (
-                            <>
-                                <Input className={styles.input} name={item.title} placeholder={item.placeholder} onChange={handleChange} />
-                            </>
-                        )
-                    })
-                }
-                <button type='submit'>Отправка</button>
-            </form>
-        </div>
+          <div className={styles.enterInformation}>
+              <form className={styles.form} onSubmit={handleSubmit}>
+                  <div className={styles.gridContainer}>
+                      {fields.map((item, index) => (
+                          <div className={styles.gridItem}>
+                              <Input className={styles.input} name={item.title} placeholder={item.placeholder} onChange={(e) => handleChangeCurrentInputValue(e)} />
+                          </div>
+                      ))}
+                  </div>
+                  <button className={styles.submitButton} type="submit">Отправка</button>
+              </form>
+
+          </div>
       </div>
     </Layout>
   );
