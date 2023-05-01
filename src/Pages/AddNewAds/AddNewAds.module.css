@@ -28,10 +28,13 @@
     border-radius: 8px;
 }
 
+.addInformationArea{
+    display: flex;
+}
+
 .enterInformation{
     display: grid;
     grid-template-columns: 1fr 1fr
-
 }
 
 .input{
@@ -42,16 +45,17 @@
 .form {
     display: flex;
     flex-direction: column;
+    gap: 20px;
     width: 600px;
 }
 
-.gridContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-}
+/*.gridContainer {*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(2, 1fr);*/
+/*    grid-gap: 20px;*/
+/*}*/
 
-.gridItem {
+.field {
     display: flex;
 }
 

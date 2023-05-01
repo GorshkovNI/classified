@@ -6,26 +6,19 @@ import { Button } from "../../component/Button/Button";
 import { Icon } from "../../component/Icons/Icon";
 import { Layout } from "../../component/Layout/Layout";
 import { Input } from "../../component/Input/Input";
-import {carInputs} from "./categories/car";
+import {carInputs} from "./categories/Car/Car";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategories, getCategoryFields} from "../../store/ad/adSlice";
 import {getAllCategories, getAllFieldsCategory, isLoadingAd} from "../../store/ad/adSelector";
+import Dropzone from "react-dropzone-uploader";
+import 'react-dropzone-uploader/dist/styles.css'
 
-const typeAds = [
-    {
-        title: 'Авто',
-        label: 'car',
-    },
-    {
-        title: 'Недвижимость',
-        label: 'rent'
-    }
-]
 
 export const AddNewAds = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [typeAd, setTypeAd] = useState({});
   const [values, setValues] = useState({})
+  const [photo, setPhoto] = useState([])
 
     const dispatch = useDispatch()
     const allCategoies = useSelector(getAllCategories)
@@ -75,6 +68,11 @@ export const AddNewAds = () => {
         console.log(values); // Выводим данные из формы в консоль
     };
 
+    const handlePhotoChange = (event) => {
+        const files = Array.from(event.target.files);
+        setPhoto(files);
+    };
+
   return (
     <Layout isSearchBlock={false}>
       <div className={styles.wrapper}>
@@ -98,19 +96,28 @@ export const AddNewAds = () => {
             </Dropdown>
           )}
         </div>
-          <div className={styles.enterInformation}>
-              <form className={styles.form} onSubmit={handleSubmit}>
-                  <div className={styles.gridContainer}>
-                      {fields.map((item, index) => (
-                          <div className={styles.gridItem}>
-                              <Input className={styles.input} name={item.title} placeholder={item.placeholder} onChange={(e) => handleChangeCurrentInputValue(e)} />
-                          </div>
-                      ))}
-                  </div>
-                  <button className={styles.submitButton} type="submit">Отправка</button>
-              </form>
-
+          <div className={styles.addInformationArea}>
+              <div className={styles.enterInformation}>
+                  <form className={styles.form} onSubmit={handleSubmit}>
+                          {fields.map((item, index) => (
+                              <div className={styles.field}>
+                                  <Input className={styles.input} name={item.title} placeholder={item.placeholder} onChange={(e) => handleChangeCurrentInputValue(e)} />
+                              </div>
+                          ))}
+                      <button className={styles.submitButton} type="submit">Отправка</button>
+                  </form>
+              </div>
+              <label htmlFor="photos">Добавьте фото</label>
+              <input
+                  type="file"
+                  name="photos"
+                  accept="image/*"
+                  multiple
+                  onChange={handlePhotoChange}
+                  required
+              />
           </div>
+
       </div>
     </Layout>
   );
