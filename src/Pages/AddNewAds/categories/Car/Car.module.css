@@ -1,0 +1,95 @@
+.wrapper{
+    margin-top: 20px;
+}
+
+.info{
+    width: 100%;
+}
+
+.infoAreaItem{
+    position: relative;
+    width: 35%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px 10px;
+}
+
+.select{
+
+}
+
+.uploader{
+    display: flex;
+    flex-direction: column;
+}
+
+.uploaderPhotoLabel{
+
+}
+
+.uploaderInput{
+    display: none;
+}
+
+.mainPhoto{
+    border: 1px solid var(--grey-text);
+    width: 80px;
+    height: 80px;
+}
+
+.preloaderIcon{
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    gap: 25px;
+}
+
+.galleryContainer{
+    position: relative;
+}
+
+.closePhoto{
+    position: absolute;
+    right: -18px;
+    width: 20px;
+    height: 20px;
+}
+
+.closePhoto:focus{
+    outline: none;
+}
+
+.postscript{
+    position: absolute;
+    right: 8px;
+}
+
+.labelRadio{
+    border: none;
+    padding: 8px;
+}
+
+.ownersInput{
+    text-align: center;
+    width: 30px;
+}
+
+.inputRadio{
+    margin: 0;
+    padding: 0;
+    display: none;
+}

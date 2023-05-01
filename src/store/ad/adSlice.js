@@ -28,7 +28,6 @@ const ad = createSlice({
         },
 
         setCategories(state, action){
-            console.log(action.payload)
             state.categories = [...action.payload]
         },
 
@@ -57,7 +56,6 @@ export const getCategories = () => async (dispatch) => {
                 translate: item.translate
             }
         })
-        console.log(response)
         dispatch(setCategories(category))
         dispatch(fetchAdDataSuccess())
     } catch (e){
@@ -69,7 +67,6 @@ export const getCategoryFields = (category) => async (dispatch) => {
     try {
         dispatch(fetchAdDataStart())
         const response = await AdService.getFieldsCategory(category)
-        console.log(response)
         if(response.data.fields?.length === 0){
             dispatch(setError())
             dispatch(fetchDataSuccess())

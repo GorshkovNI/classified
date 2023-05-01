@@ -1,0 +1,16 @@
+.button{
+    border: 1px solid var(--grey-text);
+
+}
+
+.button:focus{
+    outline: none;
+}
+
+label{
+    cursor: pointer;
+}
+
+.active{
+    filter: brightness(0.8);
+}
