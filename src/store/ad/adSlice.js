@@ -79,5 +79,16 @@ export const getCategoryFields = (category) => async (dispatch) => {
     }
 }
 
+export const createNewAdd = (data) => async (dispatch) => {
+    try {
+        dispatch(fetchAdDataStart())
+        const response = await AdService.createNewAdd(data)
+        dispatch(fetchAdDataSuccess())
+    } catch (e){
+        console.log(e)
+    }
+
+}
+
 export const { fetchAdDataStart, fetchAdDataSuccess, setType, setCategories, setFields, setError, removeError } = ad.actions
 export default ad.reducer

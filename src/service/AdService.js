@@ -9,5 +9,8 @@ export default class AdService{
         return $api.post('add-item/getFieldsType', {category})
     }
 
+    static async createNewAdd(data){
+        return $api.post('add-item/addItem', {data})
+    }
 
 }

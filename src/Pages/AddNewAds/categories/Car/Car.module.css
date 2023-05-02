@@ -93,3 +93,8 @@ input::-webkit-inner-spin-button {
     padding: 0;
     display: none;
 }
+
+.textarea{
+    width: 300px;
+    resize: none;
+}
