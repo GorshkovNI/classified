@@ -55,6 +55,7 @@ export const login = (email, password) => async (dispatch) => {
         console.log('начал логинитсья')
         const response = await AuthService.login(email, password)
         localStorage.setItem('token', response.data.accessToken)
+        localStorage.setItem('user_id', response.data.user._id)
         dispatch(setAuth())
         dispatch(setDataUser(response.data.user.name))
         dispatch(fetchDataSuccess())
@@ -82,6 +83,7 @@ export const logout = () => async (dispatch) => {
     const response = await AuthService.logout(refreshToken)
     localStorage.removeItem('token')
     localStorage.removeItem('name')
+    localStorage.removeItem('user_id')
     dispatch(removeAuth())
 };
 
