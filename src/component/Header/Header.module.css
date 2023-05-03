@@ -43,3 +43,7 @@
     fill: none;
     stroke: #aba7a7;
 }
+
+.link{
+    text-decoration: none;
+}

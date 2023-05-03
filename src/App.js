@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import user, {checkAuth, logout} from "../src/store/auth/userSlice";
 import { ProductInfo } from './Pages/ProductInfo/ProductInfo';
 import { AddNewAds } from '../src/Pages/AddNewAds/AddNewAds';
+import {UserAds} from "./Pages/MyAds/UserAds";
 
 
 function App({store}) {
@@ -29,6 +30,7 @@ function App({store}) {
                 <Route path='/' element={<MainPages  />} />
                 <Route path='/product-info/:id' element={<ProductInfo  />} />
                 <Route path='/additem' element={<AddNewAds />} />
+                <Route path='/profile/:id' element={<UserAds />} />
             </Routes>
         </div>
     </BrowserRouter>

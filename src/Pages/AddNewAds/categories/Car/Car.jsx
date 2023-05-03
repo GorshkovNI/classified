@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {createNewAdd} from "../../../../store/ad/adSlice";
 import {isLoadingAd} from "../../../../store/ad/adSelector";
 import {Modal} from "../../../../component/Modal/Modal";
+import {formatMoney} from "./utils/formMoney";
 
 
 
@@ -223,7 +224,7 @@ export const Car = () => {
                         </div>
                         <div className={styles.infoAreaItem}>
                             <span>VIN</span>
-                            <input type='text' value={vin} onChange={(e) => setVin(e.target.value)} />
+                            <input type='text' value={vin} onChange={(e) => setVin(e.target.value)} maxLength='17' />
                         </div>
                     </div>
                     <div className={styles.infoCarItem}>
@@ -241,9 +242,9 @@ export const Car = () => {
                                 </label>
                                 <input className={styles.uploaderInput} id='photo' type="file" onChange={handleUpload} />
                                 <div className={styles.gallery}>
-                                    {photos.map(photo => (
-                                        <div key={photo.id} className={styles.galleryContainer} >
-                                            <img src={photo.url} alt="uploaded" width="70" height="70" />
+                                    {photos.map((photo, index) => (
+                                        <div key={index} className={styles.galleryContainer} >
+                                            <img src={photo} alt="uploaded" width="70" height="70" />
                                             <Icon name='close' className={styles.closePhoto} onClick={() => handleDelete(photo.id)} />
                                             {/*<button className={styles.closePhoto} onClick={() => handleDelete(photo.id)}>Delete</button>*/}
                                         </div>
@@ -280,7 +281,7 @@ export const Car = () => {
                     <div className={styles.infoCarItem}>
                         <div className={styles.infoAreaItem}>
                             <h3>Цена</h3>
-                            <input className={styles.input} type='number' value={price} onChange={(e) => setPrice(e.target.value)} />
+                            <input type='text' value={formatMoney(price)} onChange={(e) => setPrice(e.target.value)}  />
                         </div>
                         <div className={styles.infoAreaItem}>
                             <h3>Описание</h3>
