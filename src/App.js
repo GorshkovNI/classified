@@ -28,7 +28,7 @@ function App({store}) {
             {/* <MainPages /> */}
             <Routes>
                 <Route path='/' element={<MainPages  />} />
-                <Route path='/product-info/:id' element={<ProductInfo  />} />
+                <Route path='/ad/:id' element={<ProductInfo  />} />
                 <Route path='/additem' element={<AddNewAds />} />
                 <Route path='/profile/:id' element={<UserAds />} />
             </Routes>

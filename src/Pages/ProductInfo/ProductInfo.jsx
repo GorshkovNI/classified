@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./ProductInfo.module.css";
 import { Header } from "../../component/Header/Header";
 import ImageGallery from "react-image-gallery";
@@ -9,6 +9,9 @@ import { formatMoney } from "../../utils/formatMoney";
 import cn from 'classnames'
 import { Auto } from "./categories/Auto/Auto";
 import { useState } from "react";
+import axios from "axios";
+import {API_URL} from "../../http";
+import {useParams} from "react-router-dom";
 
 const images = [
   {
@@ -69,7 +72,9 @@ const images = [
 
 export const ProductInfo = ({ toggleModal, getId }) => {
 
-  const [adTypes, setAdTypes] = useState('') // Храним тип объявления: авто, недвижимость и т.д
+  const { id } = useParams()
+
+
 
   return (
     <Layout>

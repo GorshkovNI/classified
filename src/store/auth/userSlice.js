@@ -92,6 +92,7 @@ export const checkAuth = () => async (dispatch) => {
         dispatch(fetchDataStart())
         console.log('ЗАПУЩЕН CHECKAUTH')
         const res = await axios.get(`${API_URL}api/refresh`, { withCredentials: true })
+        console.log(res)
         localStorage.setItem('token', res.data.accessToken)
         dispatch(setAuth())
         dispatch(setDataUser(res.data.user.name))

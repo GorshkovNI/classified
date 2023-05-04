@@ -4,10 +4,11 @@ import {FC, useState} from "react";
 
 
 interface IProfileInfo {
-    id: string
+    id: string,
+    name: string
 }
 
-export const ProfileInfo:FC<IProfileInfo> = ({id= '1'}) => {
+export const ProfileInfo:FC<IProfileInfo> = ({id= '1', name}) => {
 
     const [photo, setPhoto] = useState<string>('')
 
@@ -15,9 +16,9 @@ export const ProfileInfo:FC<IProfileInfo> = ({id= '1'}) => {
     return(
         <div className={styles.container} >
             <div className={styles.avatarArea}>
-                {photo ? <img src={photo} /> : <div className={styles.secondAvatar}>A</div>}
+                {photo ? <img src={photo} /> : <div className={styles.secondAvatar}>{name[0]}</div>}
             </div>
-            <div className={styles.name}>Антон</div>
+            <div className={styles.name}>{name}</div>
         </div>
     )
 }

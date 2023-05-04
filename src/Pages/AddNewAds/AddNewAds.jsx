@@ -13,6 +13,7 @@ import {getAllCategories, getAllFieldsCategory, isLoadingAd} from "../../store/a
 import Dropzone from "react-dropzone-uploader";
 import 'react-dropzone-uploader/dist/styles.css'
 import {Rent} from "./categories/Rent/Rent";
+import {getIsAuth} from "../../store/auth/userSelector";
 
 const categoryAd = {
     car: <Car />,
@@ -29,6 +30,7 @@ export const AddNewAds = () => {
     const allCategoies = useSelector(getAllCategories)
     //const fields = useSelector(getAllFieldsCategory)
     const isLoading = useSelector(isLoadingAd)
+    const isAuth = useSelector(getIsAuth)
 
     useEffect(() => {
         dispatch(getCategories())
@@ -61,29 +63,32 @@ export const AddNewAds = () => {
   }
 
 
+
   return (
     <Layout isSearchBlock={false}>
       <div className={styles.wrapper}>
-        <div className={styles.chooseArea}>
-            {isLoading ? <span>Loading...</span> : <Button className={styles.buttonType} onClick={handleButtonClick}>
-            {!typeAd.transtale ? 'Выберите категорию' : typeAd.transtale}
-          </Button>}
-          {isOpen && (
-            <Dropdown className={styles.dropdown}>
-              <div className={styles.type}>
-                  {
-                      allCategoies.map((type) => {
-                          return(
-                              <>
-                                  <span className={styles.typeItem} id={type.category} onClick={handleTypeAd}>{type.translate}</span>
-                              </>
-                          )
-                      })
-                  }
-              </div>
-            </Dropdown>
-          )}
-        </div>
+          { isAuth ?
+              <div className={styles.chooseArea}>
+                  {isLoading ? <span>Loading...</span> : <Button className={styles.buttonType} onClick={handleButtonClick}>
+                      {!typeAd.transtale ? 'Выберите категорию' : typeAd.transtale}
+                  </Button>}
+                  {isOpen && (
+                      <Dropdown className={styles.dropdown}>
+                          <div className={styles.type}>
+                              {
+                                  allCategoies.map((type) => {
+                                      return(
+                                          <>
+                                              <span className={styles.typeItem} id={type.category} onClick={handleTypeAd}>{type.translate}</span>
+                                          </>
+                                      )
+                                  })
+                              }
+                          </div>
+                      </Dropdown>
+                  )}
+              </div>  : <div>Сначало нужно авторизоваться(</div>
+          }
           {typeAd.categoryName && categoryAd[typeAd.categoryName]}
       </div>
     </Layout>
