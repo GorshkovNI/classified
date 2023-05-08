@@ -4,14 +4,13 @@ import {MainPages} from "./Pages/MainPages/MainPages";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import user, {checkAuth, logout} from "../src/store/auth/userSlice";
-import { ProductInfo } from './Pages/ProductInfo/ProductInfo';
 import { AddNewAds } from '../src/Pages/AddNewAds/AddNewAds';
 import {UserAds} from "./Pages/MyAds/UserAds";
+import {ProductInfo} from "./Pages/ProductInfo/ProductInfo";
 
 
 function App({store}) {
 
-    
     const dispath = useDispatch()
 
     useEffect(()=>{

@@ -1,17 +1,22 @@
-import React, {useEffect} from "react";
+import * as React from "react";
 import styles from "./ProductInfo.module.css";
-import { Header } from "../../component/Header/Header";
 import ImageGallery from "react-image-gallery";
-import four from "./4.jpg";
 import { Layout } from "../../component/Layout/Layout";
 import { Button } from "../../component/Button/Button";
 import { formatMoney } from "../../utils/formatMoney";
 import cn from 'classnames'
-import { Auto } from "./categories/Auto/Auto";
-import { useState } from "react";
-import axios from "axios";
-import {API_URL} from "../../http";
 import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {getIsLoading, getName, getState} from "./store/ProductInfoSelector";
+import {useEffect} from "react";
+import {fetchProductById} from "./store/ProductInfoSlice";
+import {ThunkDispatch} from "redux-thunk";
+import SkeletonUserArea from "./asset/SkeletonUserArea";
+import SkeletonLine from "./asset/SkeletonTitle";
+import {Auto} from "./categories/Auto/Auto";
+const four = require('./4.jpg');
+
+type DispatchType = ThunkDispatch<any, any, any>;
 
 const images = [
   {
@@ -70,30 +75,46 @@ const images = [
   },
 ];
 
-export const ProductInfo = ({ toggleModal, getId }) => {
+
+export const ProductInfo:React.FC = () => {
 
   const { id } = useParams()
+  const dispatch: DispatchType = useDispatch()
 
+  useEffect(()=>{
+    dispatch(fetchProductById(id))
+  }, [])
 
+  const product = useSelector(getState)
+  const isLoading = useSelector(getIsLoading)
+
+  const typeAD = {
+    car: <Auto data={product} />
+  }
+
+  console.log(isLoading)
 
   return (
     <Layout>
-      <div className={styles.wrapper} id='3645' onClick={getId}>
+      <div className={styles.wrapper} >
         <div className={styles.itemView}>
           <div className={styles.itemNavigation}>
-            {" "}
-            Транспорт - Запчасти и аксессуары - Тюнинг
           </div>
           <div className={styles.itemContent}>
             <div className={styles.itemContent_left}>
               <div className={styles.titleInfoMain}>
                 <div>
                   <h1 className={styles.titleInfo}>
-                    Клей, тюбик 100мл
+                      { isLoading ?
+                          <div className={styles.skeletonTitle}>
+                            <SkeletonLine />
+                          </div>
+
+                          : product.productName}
                   </h1>
                 </div>
                 <div className={styles.titleActions}>
-                  <Button className={styles.actionButton} mode="outlined" type='text' icon='love' classNameIcon={styles.buttonIconLove} >Добавить в избранное</Button>
+                  <Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='love' classNameIcon={styles.buttonIconLove} onClick={() =>{}} >Добавить в избранное</Button>
                 </div>
               </div>
               <div className={styles.viewMainContent}>
@@ -109,7 +130,10 @@ export const ProductInfo = ({ toggleModal, getId }) => {
                   <h2 className={styles.parametrsSpan}>
                     Характеристики
                   </h2>
-                  <Auto />
+
+                  {/*<Auto />*/}
+                  {typeAD[product.category]}
+
                 </div>
                 <div className={styles.parametrs}> 
                     <h2 className={styles.parametrsSpan}>
@@ -128,21 +152,26 @@ export const ProductInfo = ({ toggleModal, getId }) => {
             </div>
             <div className={styles.itemContent_right}>
               <div className={styles.priceBlock}>
-                <h1 className={styles.price}>{formatMoney(1000000)}</h1>
+                <h1 className={styles.price}>{!isLoading ? formatMoney(Number(product.price)) : <SkeletonLine width='200' /> }</h1>
               </div>
               <div className={styles.remouteArea}>
-                <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} mode="contained" type='text' >Показать телефон</Button>
-                <Button className={cn(styles.remouteButton, styles.remouteButtonMessage)} mode="contained" type='text'>Написать сообщение</Button>
+                <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} size='medium' mode="contained" type='text' onClick={() => {}}>Показать телефон</Button>
+                <Button className={cn(styles.remouteButton, styles.remouteButtonMessage)} size='medium' mode="contained" type='text' onClick={() => {}}>Написать сообщение</Button>
               </div>
               <div className={styles.infoSeller}>
-                <div className={styles.descriptionSeller}>
-                  <span className={styles.userName}>Продавец</span>
-                  <span className={styles.rating}>5,0</span>
-                  <span className={styles.time}>{`На авито с 2021`}</span>
-                </div>
-                  <div className={styles.iconArea}>
-                      <span className={styles.icon}>{'Продавец'[0].toUpperCase()}</span>
-                  </div>
+                {
+                  isLoading ? <SkeletonUserArea /> :
+                      <>
+                        <div className={styles.descriptionSeller}>
+                          <span className={styles.userName}>{product.nameSeller}</span>
+                          <span className={styles.rating}>5,0</span>
+                          <span className={styles.time}>{`На авито с 2021`}</span>
+                        </div>
+                        <div className={styles.iconArea}>
+                          <span className={styles.icon}>{product?.nameSeller[0]?.toUpperCase()}</span>
+                        </div>
+                      </>
+                }
               </div>
             </div>
           </div>

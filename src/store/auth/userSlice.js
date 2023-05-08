@@ -64,10 +64,12 @@ export const login = (email, password) => async (dispatch) => {
     }
 };
 
-export const registration = (name, email, password) => async (dispatch) => {
+export const registration = (name, email, phone, password) => async (dispatch) => {
     try {
         dispatch(fetchDataStart())
-        const response = await AuthService.registration(name, email, password);
+        const dateRegistration = new Date().getFullYear()
+        console.log(typeof dateRegistration)
+        const response = await AuthService.registration(name, email, phone, password, dateRegistration);
         localStorage.setItem('token', response.data.accessToken)
        // dispatch(setAuth())
        // dispatch(setDataUser(response.data.user.name))
@@ -92,7 +94,6 @@ export const checkAuth = () => async (dispatch) => {
         dispatch(fetchDataStart())
         console.log('ЗАПУЩЕН CHECKAUTH')
         const res = await axios.get(`${API_URL}api/refresh`, { withCredentials: true })
-        console.log(res)
         localStorage.setItem('token', res.data.accessToken)
         dispatch(setAuth())
         dispatch(setDataUser(res.data.user.name))

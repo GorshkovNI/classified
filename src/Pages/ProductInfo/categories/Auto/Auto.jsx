@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './Auto.module.css'
 
-export const Auto = ({}) => {
+export const Auto = ({data}) => {
     return(
         <ul className={styles.parametrsList}>
                     <li className={styles.itemUl}>
