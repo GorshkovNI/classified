@@ -2,36 +2,45 @@ import React from "react";
 import styles from './Auto.module.css'
 
 export const Auto = ({data}) => {
+    console.log(data)
     return(
         <ul className={styles.parametrsList}>
                     <li className={styles.itemUl}>
-                      <span className={styles.item}>Год выпуска: </span>
-                      2020
+                        <span className={styles.item}>Марка: </span>
+                        {data.marka}
                     </li>
                     <li className={styles.itemUl}>
-                      <span className={styles.item}>Поколение: </span>
-                      III
+                        <span className={styles.item}>Модель: </span>
+                        {data.model}
                     </li>
+                    <li className={styles.itemUl}>
+                      <span className={styles.item}>Год выпуска: </span>
+                        {data.year}
+                    </li>
+                    {/*<li className={styles.itemUl}>*/}
+                    {/*  <span className={styles.item}>Поколение: </span>*/}
+                    {/*  III*/}
+                    {/*</li>*/}
                     <li className={styles.itemUl}>
                       <span className={styles.item}>Пробег: </span>
-                      159000км
+                        {data.mileage} км
                     </li>
                     <li className={styles.itemUl}>
                       <span className={styles.item}>Владельцев:  </span>
-                      1
+                        {data.owners}
                     </li>
-                    <li className={styles.itemUl}>
-                      <span className={styles.item}>Модификация:  </span>
-                      2.0 TDI 4WD DSG (184 л.с.)
-                    </li>
-                    <li className={styles.itemUl}>
-                      <span className={styles.item}>Объём двигателя:  </span>
-                      2.0 л
-                    </li>
-                    <li className={styles.itemUl}>
-                      <span className={styles.item}>Коробка передач:  </span>
-                      Робот
-                    </li>
+                    {/*<li className={styles.itemUl}>*/}
+                    {/*  <span className={styles.item}>Модификация:  </span>*/}
+                    {/*  2.0 TDI 4WD DSG (184 л.с.)*/}
+                    {/*</li>*/}
+                    {/*<li className={styles.itemUl}>*/}
+                    {/*  <span className={styles.item}>Объём двигателя:  </span>*/}
+                    {/*  2.0 л*/}
+                    {/*</li>*/}
+                    {/*<li className={styles.itemUl}>*/}
+                    {/*  <span className={styles.item}>Коробка передач:  </span>*/}
+                    {/*  Робот*/}
+                    {/*</li>*/}
                     <li className={styles.itemUl}>
                       <span className={styles.item}>Привод:  </span>
                       Полный
@@ -46,15 +55,15 @@ export const Auto = ({data}) => {
                     </li>
                     <li className={styles.itemUl}>
                       <span className={styles.item}>Цвет:  </span>
-                      Серый
+                        {data.color}
                     </li>
-                    <li className={styles.itemUl}>
-                      <span className={styles.item}>Руль:  </span>
-                      Левый
-                    </li>
+                    {/*<li className={styles.itemUl}>*/}
+                    {/*  <span className={styles.item}>Руль:  </span>*/}
+                    {/*  Левый*/}
+                    {/*</li>*/}
                     <li className={styles.itemUl}>
                       <span className={styles.item}>VIN или номер кузова:  </span>
-                      TMBL*************
+                        {data.vin}
                     </li>
                   </ul>
     )

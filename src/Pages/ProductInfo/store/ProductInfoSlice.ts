@@ -6,33 +6,86 @@ import {log} from "util";
 export interface IState {
     id: string
     nameSeller: string,
+    idSeller: string,
+    dateRegistration: string,
+
     price: number,
     productName: string,
+    marka: string,
+    model: string,
+    year: string,
+    registrationnumber: string,
+    vin: string,
+    color: string,
+    mileage: string,
+    owners: string,
+    isCrash: string,
+    description: string,
     characteristic: string,
     isLoading: boolean,
     photos: string[],
-    category: string
+    category: string,
+    isLoadingPicture: boolean
 }
 
 const initialState: IState = {
     id: '',
     nameSeller: '',
+    idSeller: '',
+    dateRegistration: '',
+
     price: 0,
     productName: '',
+    marka: '',
+    model: '',
+    year: '',
+    registrationnumber: '',
+    vin: '',
+    color: '',
+    mileage: '',
+    owners:'',
+    isCrash: '',
+    description: '',
     characteristic: '',
     isLoading: false,
     photos: [],
-    category: ''
+    category: '',
+    isLoadingPicture: false
 }
 
 const product = createSlice({
     name: 'productSlice',
     initialState,
     reducers: {
-        setProduct: (state, action) => {
+        setProduct: (state: IState, action) => {
             console.log(action.payload)
             state.productName = action.payload.title
             state.price = action.payload.price
+            state.year = action.payload.year
+            state.marka = action.payload.marka
+            state.model = action.payload.model
+            state.color = action.payload.color
+            state.registrationnumber = action.payload.registrationnumber
+            state.vin = action.payload.vin
+            state.mileage = action.payload.mileage
+            state.owners = action.payload.owners
+            state.isCrash = action.payload.isCrash
+            state.description = action.payload.description
+        },
+
+        setUser: (state: IState, action) => {
+            state.nameSeller = action.payload.name
+            state.idSeller = action.payload._id
+            state.dateRegistration = action.payload.dateRegistration
+        },
+
+        setCategory: (state: IState, action) => {
+            state.category = action.payload.category
+        },
+
+        setPhoto: (state: IState, action) => {
+            console.log(action)
+            state.photos = action.payload
         },
 
         fetchingDataStart: (state: IState) => {
@@ -42,13 +95,11 @@ const product = createSlice({
         fetchingDataFinished: (state: IState) => {
             state.isLoading = false
         },
-
-        setUser: (state, action) => {
-            state.nameSeller = action.payload.name
+        fetchingPhotoStart: (state: IState) => {
+            state.isLoadingPicture = true
         },
-
-        setCategory: (state, action) => {
-            state.category = action.payload.category
+        fetchingPhotoSucces: (state: IState) => {
+            state.isLoadingPicture = false
         }
     }
 })
@@ -66,10 +117,12 @@ export const fetchProductById = createAsyncThunk(
         dispatch(setProduct(data))
         dispatch(setUser(user))
         dispatch(setCategory(category))
+        dispatch(setPhoto(response.data.currentAd.photos))
         dispatch(fetchingDataFinished())
         return response.data
     }
 )
 
-export const { setProduct, setUser, setCategory, fetchingDataStart, fetchingDataFinished } = product.actions
+
+export const { setProduct, setUser, setCategory, setPhoto, fetchingDataStart, fetchingDataFinished, fetchingPhotoStart, fetchingPhotoSucces } = product.actions
 export default product.reducer

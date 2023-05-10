@@ -18,62 +18,7 @@ const four = require('./4.jpg');
 
 type DispatchType = ThunkDispatch<any, any, any>;
 
-const images = [
-  {
-    original: four,
-    thumbnail: four,
-    originalClass: styles.images,
-    thumbnailClass: styles.thumbImage,
-  },
-  {
-    original: four,
-    thumbnail: four,
-    originalClass: styles.images,
-    thumbnailClass: styles.thumbImage,
-  },
-  {
-    original: four,
-    thumbnail: four,
-    originalClass: styles.images,
-    thumbnailClass: styles.thumbImage,
-  },
-  {
-    original: four,
-    thumbnail: four,
-    originalClass: styles.images,
-    thumbnailClass: styles.thumbImage,
-  },
-  {
-    original: four,
-    thumbnail: four,
-    originalClass: styles.images,
-    thumbnailClass: styles.thumbImage,
-  },
-  {
-    original: four,
-    thumbnail: four,
-    originalClass: styles.images,
-    thumbnailClass: styles.thumbImage,
-  },
-  {
-    original: four,
-    thumbnail: four,
-    originalClass: styles.images,
-    thumbnailClass: styles.thumbImage,
-  },
-  {
-    original: four,
-    thumbnail: four,
-    originalClass: styles.images,
-    thumbnailClass: styles.thumbImage,
-  },
-  {
-    original: four,
-    thumbnail: four,
-    originalClass: styles.images,
-    thumbnailClass: styles.thumbImage,
-  },
-];
+
 
 
 export const ProductInfo:React.FC = () => {
@@ -92,7 +37,30 @@ export const ProductInfo:React.FC = () => {
     car: <Auto data={product} />
   }
 
-  console.log(isLoading)
+  const images = [
+    {
+      original: four,
+      thumbnail: four,
+      originalClass: styles.images,
+      thumbnailClass: styles.thumbImage,
+    },
+  ];
+
+  const photos = product.photos.map((item) => {
+    return{
+      original: item,
+      thumbnail: item,
+      originalClass: styles.images,
+      thumbnailClass: styles.thumbImage,
+    }
+  })
+
+
+  const description = product.description.split('/n').map((paragraph, index) => {
+    return (
+        <p key={index}>{paragraph}</p>
+    )
+  })
 
   return (
     <Layout>
@@ -119,7 +87,7 @@ export const ProductInfo:React.FC = () => {
               </div>
               <div className={styles.viewMainContent}>
                 <ImageGallery
-                  items={images}
+                  items={photos}
                   showPlayButton={false}
                   showFullscreenButton={false}
                   additionalClass={styles.gallery}
@@ -139,20 +107,17 @@ export const ProductInfo:React.FC = () => {
                     <h2 className={styles.parametrsSpan}>
                       Описание
                     </h2>
-                    <pre>
-                      Какое-то описание для машины
-
-                      Залупа
-
-
-                      Пенис
-                    </pre>
+                    <div className={styles.description}>
+                      {/*Какое-то описание*/}
+                      {/*{product.description}*/}
+                      {description}
+                    </div>
                 </div>
               </div>
             </div>
             <div className={styles.itemContent_right}>
               <div className={styles.priceBlock}>
-                <h1 className={styles.price}>{!isLoading ? formatMoney(Number(product.price)) : <SkeletonLine width='200' /> }</h1>
+                <h1 className={styles.price}>{!isLoading ? formatMoney(product.price) : <SkeletonLine width='200' /> }</h1>
               </div>
               <div className={styles.remouteArea}>
                 <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} size='medium' mode="contained" type='text' onClick={() => {}}>Показать телефон</Button>
@@ -165,7 +130,7 @@ export const ProductInfo:React.FC = () => {
                         <div className={styles.descriptionSeller}>
                           <span className={styles.userName}>{product.nameSeller}</span>
                           <span className={styles.rating}>5,0</span>
-                          <span className={styles.time}>{`На авито с 2021`}</span>
+                          <span className={styles.time}>{'На гетит с ' + product.dateRegistration + ' года'}</span>
                         </div>
                         <div className={styles.iconArea}>
                           <span className={styles.icon}>{product?.nameSeller[0]?.toUpperCase()}</span>
