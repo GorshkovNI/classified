@@ -11,7 +11,7 @@ import { logout } from "../../store/auth/userSlice";
 const menuDropdown = [
     {
         title: 'Мои объявления',
-        path: '/moi_obyavlenia'
+        path: `profile/${localStorage.getItem('user_id')}`
     },
     {
         title: 'Избранное',
@@ -66,7 +66,9 @@ export const ProfileArea = ({userName, icon}) => {
                             </>
                         )
                     })}
-                    <span className={styles.text} onClick={handleLogout}>Выйти</span>
+                    <div className={styles.title}>
+                        <span className={styles.text} onClick={handleLogout}>Выйти</span>
+                    </div>
                     </div>
                 </Dropdown>
             </div>}

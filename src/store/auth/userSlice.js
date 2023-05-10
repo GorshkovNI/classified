@@ -9,7 +9,8 @@ const initialState = {
     },
     isAuth: false,
     isLoading: false,
-    invalidLogging: false
+    invalidLogging: false,
+    serverError: false
 }
 
 const user = createSlice({
@@ -45,6 +46,10 @@ const user = createSlice({
             state.isLoading = false
         },
 
+        fetchDataError(state) {
+            state.isLoading = false
+            state.invalidLogging = true
+        },
     }
 })
 
@@ -55,19 +60,22 @@ export const login = (email, password) => async (dispatch) => {
         console.log('начал логинитсья')
         const response = await AuthService.login(email, password)
         localStorage.setItem('token', response.data.accessToken)
-        localStorage.setItem('user_id', response.data.user._id)
+        localStorage.setItem('user_id', response.data.user['_id'])
         dispatch(setAuth())
         dispatch(setDataUser(response.data.user.name))
         dispatch(fetchDataSuccess())
     } catch (e) {
-        dispatch(setInvalidLogging())
+        console.log(e)
+        dispatch(fetchDataError())
     }
 };
 
-export const registration = (name, email, password) => async (dispatch) => {
+export const registration = (name, email, phone, password) => async (dispatch) => {
     try {
         dispatch(fetchDataStart())
-        const response = await AuthService.registration(name, email, password);
+        const dateRegistration = new Date().getFullYear()
+        console.log(typeof dateRegistration)
+        const response = await AuthService.registration(name, email, phone, password, dateRegistration);
         localStorage.setItem('token', response.data.accessToken)
        // dispatch(setAuth())
        // dispatch(setDataUser(response.data.user.name))
@@ -98,10 +106,11 @@ export const checkAuth = () => async (dispatch) => {
         dispatch(fetchDataSuccess())
     }
     catch(e){
+
         console.log('Ошибка при проверке авторизации')
     }
     
 }
 
-export const { setAuth, removeAuth, fetchDataStart, fetchDataSuccess, setDataUser, setInvalidLogging, removeInvalidLogging } = user.actions;
+export const { setAuth, removeAuth, fetchDataStart, fetchDataSuccess, setDataUser, setInvalidLogging, removeInvalidLogging, fetchDataError } = user.actions;
 export default user.reducer

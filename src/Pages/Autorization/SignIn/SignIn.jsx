@@ -28,6 +28,7 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
 
   const handleLogin = (event) => {
     setEmail(event.target.value);
+    dispatch(removeInvalidLogging())
   };
 
   const handlePassword = (event) => {
@@ -41,7 +42,10 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
   };
 
   useEffect(()=>{
-    closeModal()
+    if(!isLoggedIn && !isLoading){
+      closeModal()
+    }
+
 }, [isLoading])
 
   return (

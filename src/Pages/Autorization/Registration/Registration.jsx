@@ -19,6 +19,7 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
   const [invalidValueForm, setInvalidForm] = useState("");
 
   const dispatch = useDispatch();
@@ -35,6 +36,11 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
   
   const handleEmail = (e) => {
     setEmail(e.target.value)
+    setInvalidForm('')
+  }
+
+  const handlePhone = (e) => {
+    setPhone(e.target.value)
     setInvalidForm('')
   }
 
@@ -57,9 +63,9 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
       setInvalidForm(WRONG_FORMAT_PASSWORD);
       return;
     }
-    dispatch(registration(name, email, password));
+    dispatch(registration(name, email, phone, password));
     closeModal()
-    navigate.push('/')
+    //navigate.push('/')
   };
 
   return (
@@ -96,6 +102,20 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
               value={email}
               onChange={handleEmail}
               placeholder="Введите email"
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.label} htmlFor="phone">
+              Phone
+            </label>
+            {/* <input className={styles.input} type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Введите email" required /> */}
+            <Input
+              className={styles.input}
+              type="phone"
+              id="phone"
+              value={phone}
+              onChange={handlePhone}
+              placeholder="Введите номер телефона"
             />
           </div>
           <div className={styles.formGroup}>

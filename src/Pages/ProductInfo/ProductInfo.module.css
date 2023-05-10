@@ -265,6 +265,18 @@
     margin-bottom: 2px;
 }   
 
+.skeletonTitle{
+    position: relative;
+}
+
+.description{
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+
 
 
 
