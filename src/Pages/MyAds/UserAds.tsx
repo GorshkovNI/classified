@@ -40,7 +40,7 @@ export const UserAds:React.FC = () => {
                         <div className={styles.adsAres}>
                             {!isLoading ?
                                 !isEmpty ? ads.map((item: ICardAd) => {
-                                return <CardAd key={item['_id']} id={item['_id']} description={item.description} photos={item.photos} price={item.price} title={item.title} />
+                                return <CardAd key={item['_id']} id={item['_id']} description={item.description} photos={item.photos} price={item.price} title={item.title} categoryId={item.categoryId} />
                             }) : <div>У вас нет размещенных объявлений</div> : <MyLoader />}
                         </div>
                     </div>

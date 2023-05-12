@@ -46,6 +46,7 @@ export const Car = () => {
     // Цена и описание
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
+    const [correctedDescription, setCorrectedDescription] = useState('')
 
     // Для модалки
     const isLoading = useSelector(isLoadingAd)
@@ -91,10 +92,8 @@ export const Car = () => {
     };
 
     const handleTextArea = (event) => {
-        console.log(event)
-        const value = refTextarea?.current?.innerHTML
-
-        setDescription(value.replace(/\n/g, '<br/>'))
+        setDescription(event.target.value)
+        setCorrectedDescription(event.target.value.replace(/\n/g, '<br/>'))
     }
 
     useEffect(() => {
@@ -188,7 +187,7 @@ export const Car = () => {
             owners: selectedOwner,
             isCrash: selectedValue,
             photos,
-            description: description,
+            description: correctedDescription,
             price: price,
             user_id: localStorage.getItem('user_id')
         }

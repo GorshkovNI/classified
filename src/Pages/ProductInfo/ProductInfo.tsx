@@ -56,7 +56,7 @@ export const ProductInfo:React.FC = () => {
   })
 
 
-  const description = product.description.split('/n').map((paragraph, index) => {
+  const description = product.description.split('<br/>').map((paragraph, index) => {
     return (
         <p key={index}>{paragraph}</p>
     )

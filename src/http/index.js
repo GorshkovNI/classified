@@ -1,7 +1,7 @@
 import axios from 'axios'
 import async from "async";
 export const API_URL = `http://localhost:8080/`
-//export const API_URL = 'https://getit.herokuapp.com/'
+// export const API_URL = 'https://getit.herokuapp.com/'
 
 const $api = axios.create({
     withCredentials: true,

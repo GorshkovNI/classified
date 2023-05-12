@@ -83,6 +83,7 @@ export const createNewAdd = (data) => async (dispatch) => {
     try {
         dispatch(fetchAdDataStart())
         const response = await AdService.createNewAdd(data)
+        console.log(data)
         dispatch(fetchAdDataSuccess())
     } catch (e){
         console.log(e)
