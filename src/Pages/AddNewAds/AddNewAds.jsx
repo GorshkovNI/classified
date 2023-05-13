@@ -9,11 +9,12 @@ import { Input } from "../../component/Input/Input";
 import {Car} from "./categories/Car/Car";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategories, getCategoryFields} from "../../store/ad/adSlice";
-import {getAllCategories, getAllFieldsCategory, isLoadingAd} from "../../store/ad/adSelector";
+import {getAllCategories, getAllFieldsCategory, getLoadingAd} from "../../store/ad/adSelector";
 import Dropzone from "react-dropzone-uploader";
 import 'react-dropzone-uploader/dist/styles.css'
 import {Rent} from "./categories/Rent/Rent";
 import {getIsAuth} from "../../store/auth/userSelector";
+import axios from "axios";
 
 const categoryAd = {
     car: <Car />,
@@ -29,7 +30,7 @@ export const AddNewAds = () => {
     const dispatch = useDispatch()
     const allCategoies = useSelector(getAllCategories)
     //const fields = useSelector(getAllFieldsCategory)
-    const isLoading = useSelector(isLoadingAd)
+    const isLoading = useSelector(getLoadingAd)
     const isAuth = useSelector(getIsAuth)
 
     useEffect(() => {
@@ -61,7 +62,6 @@ export const AddNewAds = () => {
     })
     setIsOpen(false)
   }
-
 
 
   return (

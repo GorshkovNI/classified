@@ -96,6 +96,12 @@ export const ProductInfo:React.FC = () => {
               <div className={styles.descriptionBlock}>
                 <div className={styles.parametrs}>
                   <h2 className={styles.parametrsSpan}>
+                    Город
+                  </h2>
+                  <span className={styles.city}>{product.city}</span>
+                </div>
+                <div className={styles.parametrs}>
+                  <h2 className={styles.parametrsSpan}>
                     Характеристики
                   </h2>
 
