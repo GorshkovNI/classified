@@ -5,9 +5,12 @@ import { API_URL } from "../../http";
 
 const initialState = {
     userData: {
-        name: localStorage.getItem('name') | 'User'
+        name: '',
+        userId: '',
+        email: '',
+        phone: '',
     },
-    userId: '',
+
     isAuth: false,
     isLoading: false,
     invalidLogging: false,
@@ -35,10 +38,11 @@ const user = createSlice({
         },
 
         setDataUser(state, action) {
-            console.log(action)
+            const name = action.payload
+            console.log(action.payload.name)
+            localStorage.setItem('name', action.payload.name)
             state.userData.name = action.payload.name
-            state.userId = action.payload['_id']
-            localStorage.setItem('name', action.payload)
+            state.userData.userId = action.payload['_id']
         },
 
         fetchDataStart(state) {
@@ -104,10 +108,10 @@ export const checkAuth = () => async (dispatch) => {
         dispatch(fetchDataStart())
         console.log('ЗАПУЩЕН CHECKAUTH')
         const res = await axios.get(`${API_URL}api/refresh`, { withCredentials: true })
-        console.log(res)
+        console.log('RES CERF: ', res)
         localStorage.setItem('token', res.data.accessToken)
         dispatch(setAuth())
-        dispatch(setDataUser(res.data.user.name))
+        dispatch(setDataUser(res.data.user))
         dispatch(fetchDataSuccess())
     }
     catch(e){

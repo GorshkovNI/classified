@@ -43,8 +43,8 @@ export const UserAds:React.FC = () => {
     const ads = useSelector(getAds)
     const isLoading = useSelector(getIsLoading)
     const isEmpty = useSelector(getEmptyData)
-    const name = useSelector(getUserName)
-    console.log(ads)
+    const userName = useSelector(getUserName)
+    console.log(userName)
 
     useEffect(()=>{
         dispatch(getProfileInfo())
@@ -56,7 +56,7 @@ export const UserAds:React.FC = () => {
                 <div className={styles.container}>
                     <div className={styles.userArea}>
                         {/*<div className={styles.test}></div>*/}
-                        <ProfileInfo id={'1'} name={name} />
+                        <ProfileInfo id={'1'} name={userName} />
                     </div>
                     <div>
                         <h3>Мои объявления</h3>

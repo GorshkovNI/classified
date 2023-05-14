@@ -25,9 +25,9 @@ export const CardProduct = ({ id = '3645', title = 'Penis', city = 'Екатер
         <div className={styles.wrapper}  >
             <Link to={`/product-info/${id}`} className={styles.link}>
                 <Slider>
-                    <div className={cn(styles.item, styles.item1)}><img className={styles.image} src={one} /></div>
-                    <div className={cn(styles.item, styles.item2)}><img className={styles.image} src={two} /></div>
-                    <div className={cn(styles.item, styles.item3)}><img className={styles.image} src={three} /></div>
+                    <div key={1} className={cn(styles.item, styles.item1)}><img className={styles.image} src={one} /></div>
+                    <div key={2}  className={cn(styles.item, styles.item2)}><img className={styles.image} src={two} /></div>
+                    <div key={3} className={cn(styles.item, styles.item3)}><img className={styles.image} src={three} /></div>
                 </Slider>
             </Link>
             <div className={styles.discription}>
@@ -36,8 +36,8 @@ export const CardProduct = ({ id = '3645', title = 'Penis', city = 'Екатер
                         <span className={styles.nameProduct}>{title || 'Клей пва, оптом'} </span>
                     </Link>
                     {
-                        !(orders.some(element => element.id === id)) ? <i  id = {id} class="bi bi-heart" style={{fontSize: '21px', color: '#009CF0'}} onClick={()=>{addToFavoritesList({id,title,price})}}></i> 
-                        : <i id = {id} class="bi bi-heart-fill" style={{fontSize: '21px', color: 'red'}} onClick={()=>{addToFavoritesList({id,title,price})}}></i>
+                        !(orders.some(element => element.id === id)) ? <i  id = {id} className="bi bi-heart" style={{fontSize: '21px', color: '#009CF0'}} onClick={()=>{addToFavoritesList({id,title,price})}}></i>
+                        : <i id = {id} className="bi bi-heart-fill" style={{fontSize: '21px', color: 'red'}} onClick={()=>{addToFavoritesList({id,title,price})}}></i>
                     }
                 </div>
                 <span className={styles.price}>{formatMoney(5000) || formatMoney(price)}</span>

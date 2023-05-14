@@ -38,7 +38,7 @@ return(
     <header className={styles.wrapper}>
         <div className={styles.container}>
             <div className={styles.leftSide}>
-                <Link to="/about" style={{textDecoration: "none"}}><Button size='medium' mode='primary'><i class="bi bi-building"></i>About</Button></Link>
+                <Link to="/about" style={{textDecoration: "none"}}><Button size='medium' mode='primary'><i className="bi bi-building"></i>About</Button></Link>
             </div>
                 <div className={styles.rightSide}>
                 <div className={styles.assistButton}>
