@@ -41,8 +41,7 @@ return(
                     <Button size='medium' mode='primary' icon='search' >Разместить объявление</Button>
                 </Link>
             </div>
-            
-            
+
         </div>
         <Autorization activeTab={activeTab} toggleActiveTab={toggleActiveTab} openModal={openModal} closeModal={closeModal} />
     </header>
