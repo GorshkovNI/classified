@@ -7,6 +7,7 @@ const initialState = {
     userData: {
         name: localStorage.getItem('name') | 'User'
     },
+    userId: '',
     isAuth: false,
     isLoading: false,
     invalidLogging: false,
@@ -34,7 +35,9 @@ const user = createSlice({
         },
 
         setDataUser(state, action) {
-            state.userData.name = action.payload
+            console.log(action)
+            state.userData.name = action.payload.name
+            state.userId = action.payload['_id']
             localStorage.setItem('name', action.payload)
         },
 
@@ -59,10 +62,11 @@ export const login = (email, password) => async (dispatch) => {
         dispatch(fetchDataStart())
         console.log('начал логинитсья')
         const response = await AuthService.login(email, password)
+        console.log(response.data)
         localStorage.setItem('token', response.data.accessToken)
         localStorage.setItem('user_id', response.data.user['_id'])
         dispatch(setAuth())
-        dispatch(setDataUser(response.data.user.name))
+        dispatch(setDataUser(response.data.user))
         dispatch(fetchDataSuccess())
     } catch (e) {
         console.log(e)

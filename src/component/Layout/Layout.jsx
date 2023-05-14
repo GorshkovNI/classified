@@ -4,7 +4,8 @@ import { SearchBlock } from "../SearchBlock/SearchBlock.jsx";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-export const Layout = ({removeToFavoritesList,orders,showFavoriteModal,showFavorites,children, isSearchBlock = true}) => {
+
+export const Layout:ILayout = ({removeToFavoritesList ,orders,showFavoriteModal,showFavorites,children, isSearchBlock = true}) => {
 
     const [isOpenSignUp, setIsOpenSignUp] = useState(false)
     const [activeTab, setActiveTab] = useState('login')
