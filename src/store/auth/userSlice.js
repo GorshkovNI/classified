@@ -68,7 +68,7 @@ export const login = (email, password) => async (dispatch) => {
         const response = await AuthService.login(email, password)
         console.log(response.data)
         localStorage.setItem('token', response.data.accessToken)
-        document.cookie = `refreshToken=${response.data.refreshToken}; domain=https://getit.herokuapp.com/; path=/; max-age=86400; secure`;
+        sessionStorage.setItem('refreshToken', response.data.refreshToken)
         localStorage.setItem('user_id', response.data.user['_id'])
         dispatch(setAuth())
         dispatch(setDataUser(response.data.user))
@@ -85,7 +85,7 @@ export const registration = (name, email, phone, password) => async (dispatch) =
         const dateRegistration = new Date().getFullYear()
         console.log(typeof dateRegistration)
         const response = await AuthService.registration(name, email, phone, password, dateRegistration);
-        localStorage.setItem('token', response.data.accessToken)
+        //localStorage.setItem('token', response.data.accessToken)
        // dispatch(setAuth())
        // dispatch(setDataUser(response.data.user.name))
         dispatch(fetchDataSuccess())
@@ -108,9 +108,12 @@ export const checkAuth = () => async (dispatch) => {
     try{
         dispatch(fetchDataStart())
         console.log('ЗАПУЩЕН CHECKAUTH')
-        const res = await axios.get(`${API_URL}api/refresh`, { withCredentials: true })
+        const refreshToken = sessionStorage.getItem('refreshToken')
+        console.log(refreshToken)
+        const res = await AuthService.refresh(refreshToken)
         console.log('RES CERF: ', res)
         localStorage.setItem('token', res.data.accessToken)
+        sessionStorage.setItem('refreshToken', res.data.refreshToken)
         dispatch(setAuth())
         dispatch(setDataUser(res.data.user))
         dispatch(fetchDataSuccess())

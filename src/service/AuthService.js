@@ -12,4 +12,8 @@ export default class AuthService{
     static async logout(token){
         return $api.post('api/logout', {token})
     }
+
+    static async refresh(token){
+        return $api.post('api/refresh', {token})
+    }
 }
