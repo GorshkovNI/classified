@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "start": "serve -s build"
-  },
-  "env": {
-    "API_BASE_URL": "https://my-api.com"
-  }
-}
