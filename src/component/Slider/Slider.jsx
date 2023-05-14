@@ -4,21 +4,22 @@ import cn from 'classnames'
 import {Icon} from "../Icons/Icon";
 
 const PAGE_WIDTH = 250
-const TRANSITION_DURATION = 300
+const TRANSITION_DURATION = 0
 
 export const Slider = ({children}) => {
-
+    
     const [pages, setPages] = useState([])
     const [offset, setOffset] = useState(0)
     const [clonesCount, setClonesCount] = useState({head: 0, tail: 0})
     const [transitionDuration, setTransitionDuration] = useState(300)
 
     const windowElRef = useRef()
-
+    
     useEffect(() => {
         setPages([
           cloneElement(children[Children.count(children)-1]), // head: 1
-          ...children,
+          children,
+          
           cloneElement(children[0]), // tail: 1
         ])
         setClonesCount({ head: 1, tail: 1 })
@@ -53,16 +54,24 @@ export const Slider = ({children}) => {
       // с элемента 0 (clone) -> к предпоследнему (реальный)
       if (offset === 0) {
         setTimeout(() => {
-          setTransitionDuration(0)
-          setOffset(-(PAGE_WIDTH * (pages.length - 1 - clonesCount.tail)))
+          setOffset(0)
+          /* setOffset(-(PAGE_WIDTH * (pages.length - 1 - clonesCount.tail))) */
+          
         }, TRANSITION_DURATION)
         return
       }
       // с элемента n (clone) -> к элементу 1 (реальный)
-      if (offset === -(PAGE_WIDTH * (pages.length - 1))) {
+      /* if (offset === -(PAGE_WIDTH * (pages.length - 1))) {
         setTimeout(() => {
           setTransitionDuration(0)
           setOffset(-(clonesCount.head * PAGE_WIDTH))
+        }, TRANSITION_DURATION)
+        return
+      } */
+      if (offset === offset[offset.length]) {
+        setTimeout(() => {
+          setTransitionDuration(0)
+          setOffset(offset.length)
         }, TRANSITION_DURATION)
         return
       }
@@ -80,7 +89,6 @@ export const Slider = ({children}) => {
         })
         
     }
-
     const handleClickRightArrow = (e) => {
         e.stopPropagation();
         e.preventDefault();
