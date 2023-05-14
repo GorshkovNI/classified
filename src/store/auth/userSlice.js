@@ -68,7 +68,7 @@ export const login = (email, password) => async (dispatch) => {
         const response = await AuthService.login(email, password)
         console.log(response.data)
         localStorage.setItem('token', response.data.accessToken)
-        document.cookie = `refreshToken=${response.data.refreshToken}; domain=https://getit-khaki.vercel.app; path=/; max-age=86400; secure`;
+        document.cookie = `refreshToken=${response.data.refreshToken}; domain=https://getit.herokuapp.com/; path=/; max-age=86400; secure`;
         localStorage.setItem('user_id', response.data.user['_id'])
         dispatch(setAuth())
         dispatch(setDataUser(response.data.user))
