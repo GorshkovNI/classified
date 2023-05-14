@@ -1,0 +1,67 @@
+.images{
+    max-width: 13vw;
+    max-height: 20vh;
+    border-radius: 8px;
+    width: 15vw;
+}
+
+.container{
+    display: flex;
+    gap: 10px;
+    padding: 20px 0;
+}
+
+.infoItems{
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    margin: 0px;
+    font-weight: normal;
+    box-sizing: border-box;
+    line-height: 1.1;
+    display: inline;
+    color: var(--blue-light);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.title:hover{
+    color: var(--hover-red);
+}
+
+.containerInfo{
+    width: 270px;
+}
+
+.priceArea{
+    white-space: nowrap;
+    margin: 4px 0 6px;
+}
+
+.price{
+    margin: 0px;
+    box-sizing: border-box;
+    line-height: 1.375;
+    font-weight: 600;
+    width: 100%;
+    display: block;
+}
+
+.located{
+    margin: 0px;
+    font-weight: normal;
+    box-sizing: border-box;
+    line-height: 1.375;
+    font-size: 14px;
+    color: rgb(117, 117, 117);
+    width: 100%;
+    display: block;
+}
+
+.delete{
+    cursor: pointer;
+    font-size: 20px;
+}
+

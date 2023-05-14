@@ -9,10 +9,12 @@ import { Input } from "../../component/Input/Input";
 import {Car} from "./categories/Car/Car";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategories, getCategoryFields} from "../../store/ad/adSlice";
-import {getAllCategories, getAllFieldsCategory, isLoadingAd} from "../../store/ad/adSelector";
+import {getAllCategories, getAllFieldsCategory, getLoadingAd} from "../../store/ad/adSelector";
 import Dropzone from "react-dropzone-uploader";
 import 'react-dropzone-uploader/dist/styles.css'
 import {Rent} from "./categories/Rent/Rent";
+import {getIsAuth} from "../../store/auth/userSelector";
+import axios from "axios";
 
 const categoryAd = {
     car: <Car />,
@@ -28,7 +30,8 @@ export const AddNewAds = () => {
     const dispatch = useDispatch()
     const allCategoies = useSelector(getAllCategories)
     //const fields = useSelector(getAllFieldsCategory)
-    const isLoading = useSelector(isLoadingAd)
+    const isLoading = useSelector(getLoadingAd)
+    const isAuth = useSelector(getIsAuth)
 
     useEffect(() => {
         dispatch(getCategories())
@@ -64,26 +67,28 @@ export const AddNewAds = () => {
   return (
     <Layout isSearchBlock={false}>
       <div className={styles.wrapper}>
-        <div className={styles.chooseArea}>
-            {isLoading ? <span>Loading...</span> : <Button className={styles.buttonType} onClick={handleButtonClick}>
-            {!typeAd.transtale ? 'Выберите категорию' : typeAd.transtale}
-          </Button>}
-          {isOpen && (
-            <Dropdown className={styles.dropdown}>
-              <div className={styles.type}>
-                  {
-                      allCategoies.map((type) => {
-                          return(
-                              <>
-                                  <span className={styles.typeItem} id={type.category} onClick={handleTypeAd}>{type.translate}</span>
-                              </>
-                          )
-                      })
-                  }
-              </div>
-            </Dropdown>
-          )}
-        </div>
+          { isAuth ?
+              <div className={styles.chooseArea}>
+                  {isLoading ? <span>Loading...</span> : <Button className={styles.buttonType} onClick={handleButtonClick}>
+                      {!typeAd.transtale ? 'Выберите категорию' : typeAd.transtale}
+                  </Button>}
+                  {isOpen && (
+                      <Dropdown className={styles.dropdown}>
+                          <div className={styles.type}>
+                              {
+                                  allCategoies.map((type) => {
+                                      return(
+                                          <>
+                                              <span className={styles.typeItem} id={type.category} onClick={handleTypeAd}>{type.translate}</span>
+                                          </>
+                                      )
+                                  })
+                              }
+                          </div>
+                      </Dropdown>
+                  )}
+              </div>  : <div>Сначало нужно авторизоваться(</div>
+          }
           {typeAd.categoryName && categoryAd[typeAd.categoryName]}
       </div>
     </Layout>

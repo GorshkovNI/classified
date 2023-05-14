@@ -46,7 +46,9 @@ return(
                     {/* <Icon className={cn(styles.button, styles.cart)} name='cart' /> */}
                 </div>
                 {!isLoggedIn ?  <Button size='medium' mode='transparent' onClick={toggleModal} >{isLoading ? 'Loading...' : 'Вход и регистрация'}</Button> :  <ProfileArea userName={isName} />}
-                <Button size='medium' mode='primary' icon='search'>Разместить объявление</Button>
+                <Link className={styles.link} to={'/addItem'}>
+                    <Button size='medium' mode='primary' icon='search' >Разместить объявление</Button>
+                </Link>
             </div>
         </div>
         {showFavorites ? <FavoritesModal orders={orders} removeToFavoritesList={removeToFavoritesList}/> : null}

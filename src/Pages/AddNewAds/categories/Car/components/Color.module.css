@@ -1,0 +1,18 @@
+.color{
+    width: 30px;
+    height: 30px;
+}
+
+.colorsArea{
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.colorIcon{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+}

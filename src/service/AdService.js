@@ -13,4 +13,8 @@ export default class AdService{
         return $api.post('add-item/addItem', {data})
     }
 
+    static async getCurrentAd(id){
+        return $api.post(`ad/${id}`, {id} )
+    }
+
 }

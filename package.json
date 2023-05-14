@@ -2,12 +2,12 @@
   "name": "classified",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.3",
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/css-modules": "^1.0.2",
     "async": "^3.2.4",
     "axios": "^1.3.5",
     "bootstrap": "^5.3.0-alpha3",
@@ -16,19 +16,22 @@
     "http-proxy-middleware": "^2.0.6",
     "infinite-react-carousel": "^1.2.11",
     "react": "^18.2.0",
+    "react-autocomplete": "^1.8.1",
+    "react-content-loader": "^6.2.1",
     "react-dom": "^18.2.0",
     "react-dropzone-uploader": "^2.11.0",
     "react-image-gallery": "^1.2.11",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "tsc",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,7 +54,12 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^18.16.3",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "@types/react-image-gallery": "^1.2.0",
     "prettier": "2.8.7",
+    "ts-loader": "^9.4.2",
     "typescript": "^5.0.4"
   }
 }

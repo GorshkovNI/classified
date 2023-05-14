@@ -1,0 +1,15 @@
+.wrapper{
+    margin: 50px 400px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.test{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: green;
+}

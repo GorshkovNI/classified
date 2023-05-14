@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styles from './Car.module.css'
 import {Input} from "../../../../component/Input/Input";
 import axios from "axios";
@@ -8,23 +8,32 @@ import {car} from "./tempJsonCar";
 import * as events from "events";
 import {Button} from "../../../../component/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {createNewAdd} from "../../../../store/ad/adSlice";
-import {isLoadingAd} from "../../../../store/ad/adSelector";
+import {createNewAdd, fetchAdDataError} from "../../../../store/ad/adSlice";
+import {getError, getLoadingAd, getRedirect} from "../../../../store/ad/adSelector";
 import {Modal} from "../../../../component/Modal/Modal";
+import {formatMoney} from "./utils/formMoney";
+import {Color} from "./components/Color";
+import {validateVIN} from "../../../../utils/validateVIN";
+import {Navigate, redirect, useLocation, useNavigate} from "react-router-dom";
+import Autocomplete from 'react-autocomplete'
+import {cities} from "../../cities/cities";
 
-
+const cityPlusCountry = cities.map((item) => {
+    return item.name + ' ' + item.country
+})
 
 export const Car = () => {
     // Характеристики
     const [marks, setMarka] = useState([{}])
+    const [selectedMarkId, setSelectedMarkId] = useState('')
     const [selectedMark, setSelectedMark] = useState('')
 
     const [model, setModel] = useState([{}])
+    const [selectedModelId, setSelectedModelId] = useState('')
     const [selectedModel, setSelectedModel] = useState('')
 
     const [year, setYear] = useState([])
     const [selectedYear, setSelectedYear] = useState('')
-
 
     // Регистрационные даные
     const [registrationnubmer, setRegistrationNumber] = useState('')
@@ -36,25 +45,48 @@ export const Car = () => {
     const [mileage, setMileage] = useState('')
     const [selectedValue, setSelectedValue] = useState('');
     const [selectedOwner, setSelectedOwner] = useState('');
-    //Флаг на все заполненые поля
+    // Флаг на все заполненые поля
     const [isFilled, setiSFilled] = useState(true)
-    //Цена и описание
+    // Цена и описание
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
+    const [correctedDescription, setCorrectedDescription] = useState('')
+    // Для города
+    const [city, setCity] = useState('');
+    const [options, setOptions] = useState([]);
 
-    //Для модалки
-    const isLoading = useSelector(isLoadingAd)
+    // Для модалки
+    const isLoading = useSelector(getLoadingAd)
+    // Для редиректа
+    const redirect = useSelector(getRedirect)
+    const location = useLocation()
+    const navigate = useNavigate()
     //const [isOpen, setIsOpen] = useState(isLoading)
+    // Error
+    const isError = useSelector(getError)
+
+    const refTextarea = useRef(null)
 
     const dispatch = useDispatch()
 
+
     const handleSelectedMark = (event) => {
-        setSelectedMark(event.target.value)
+        const selectedIndex = event.target.selectedIndex;
+        const selectedOption = event.target.options[selectedIndex];
+        const selectedValue = selectedOption.text;
+
+        setSelectedMarkId(event.target.value)
+        setSelectedMark(selectedValue)
         setiSFilled(true)
     }
 
     const handleSelectedModel = (event) => {
-        setSelectedModel(event.target.value)
+        const selectedIndex = event.target.selectedIndex;
+        const selectedOption = event.target.options[selectedIndex];
+        const selectedValue = selectedOption.text;
+
+        setSelectedModel(selectedValue)
+        setSelectedModelId(event.target.value)
         setiSFilled(true)
     }
 
@@ -73,6 +105,15 @@ export const Car = () => {
         setiSFilled(true)
     };
 
+    const handleTextArea = (event) => {
+        setDescription(event.target.value)
+        setCorrectedDescription(event.target.value.replace(/\n/g, '<br/>'))
+    }
+
+    const handleColor = (color) => {
+        setColor(color)
+    }
+
     useEffect(() => {
         const allMarks = car.map((item) => {
             return {
@@ -86,7 +127,7 @@ export const Car = () => {
     }, [])
 
     useEffect(() => {
-        const models = car.find((item) => item.id === selectedMark)
+        const models = car.find((item) => item.id === selectedMarkId)
         const allmodels = models?.models.map((item) => {
            return  {
                     id: item.id,
@@ -97,13 +138,13 @@ export const Car = () => {
         })
         setModel(allmodels)
 
-    }, [selectedMark])
+    }, [selectedMarkId])
 
     useEffect(() => {
         if(model?.length > 1){
-            const currentModel = car.find(item => item.models.some(model => model.id === selectedModel))
-            const year_from = currentModel.models.find(model => model.id === selectedModel)['year-from']
-            let year_to = currentModel.models.find(model => model.id === selectedModel)['year-to']
+            const currentModel = car.find(item => item.models.some(model => model.id === selectedModelId))
+            const year_from = currentModel.models.find(model => model.id === selectedModelId)['year-from']
+            let year_to = currentModel.models.find(model => model.id === selectedModelId)['year-to']
             year_to = year_to === null ? new Date().getFullYear() : year_to
             console.log(year_from)
             console.log(year_to)
@@ -115,8 +156,14 @@ export const Car = () => {
         }
 
 
-    }, [selectedModel])
+    }, [selectedModelId])
 
+    useEffect(() => {
+        if(redirect){
+            const userId = localStorage.getItem('user_id')
+            navigate(`/profile/${userId}`, { state: { from: location.pathname } })
+        }
+    }, [redirect])
 
     function handleUpload(event) {
         const file = event.target.files[0];
@@ -138,8 +185,8 @@ export const Car = () => {
     }
 
     const sendInfo = () => {
-        setiSFilled(true)
-        if(!selectedMark && !selectedModel && !selectedYear && !registrationnubmer && !vin && !color && !mileage && !selectedOwner && !selectedValue){
+        //setiSFilled(true)
+        if(!selectedMarkId || !selectedModelId || !selectedYear || !registrationnubmer || !vin || !color || !mileage || !selectedOwner || !selectedValue){
             setiSFilled(false)
             return
         }
@@ -164,19 +211,24 @@ export const Car = () => {
             owners: selectedOwner,
             isCrash: selectedValue,
             photos,
-            description: description,
+            description: correctedDescription,
             price: price,
+            city: city,
             user_id: localStorage.getItem('user_id')
         }
 
         dispatch(createNewAdd(newCar))
-
     }
+
+    const closeModal = () => {
+        dispatch(fetchAdDataError())
+    }
+
 
     return(
         <>
-        <Modal isOpen={isLoading} turnOff>
-            <Icon name='preloader' />
+        <Modal isOpen={isLoading} turnOff={!isError ? true : false} onClose={closeModal}>
+            {!isError ? <Icon name='preloader' /> : <div> Произошла ошибка. Попробуйте еще раз или загрузите объявление чуть позже</div>}
         </Modal>
             <div className={styles.wrapper}>
                 <div className={styles.info}>
@@ -184,17 +236,17 @@ export const Car = () => {
                         <h3>Технические характеристики</h3>
                         <div className={styles.infoAreaItem}>
                             <span>Марка</span>
-                            <select id='marka' className={styles.select} value={selectedMark} onChange={handleSelectedMark}>
+                            <select id='marka' className={styles.select} value={selectedMarkId} onChange={handleSelectedMark}>
                                 <option value="">Выберите значение</option>
                                 {marks.map((item) => {
                                     return <option value={item.id}>{item.marka}</option>
                                 })}
                             </select>
                         </div>
-                        { selectedMark &&
+                        { selectedMarkId &&
                                 <div className={styles.infoAreaItem}>
                                     <span>Модель</span>
-                                    <select id='model' className={styles.select} value={selectedModel} onChange={handleSelectedModel}>
+                                    <select id='model' className={styles.select} value={selectedModelId} onChange={handleSelectedModel}>
                                         <option value="">Выберите значение</option>
                                         {model?.map((item) => {
                                             return <option value={item.id}>{item.model}</option>
@@ -202,7 +254,7 @@ export const Car = () => {
                                     </select>
                                 </div>
                         }
-                        { selectedModel &&
+                        { selectedModelId &&
                             <div className={styles.infoAreaItem}>
                                 <span>Год выпуска</span>
                                 <select id='year' className={styles.select} value={selectedYear} onChange={handleSelectedYear}>
@@ -223,14 +275,24 @@ export const Car = () => {
                         </div>
                         <div className={styles.infoAreaItem}>
                             <span>VIN</span>
-                            <input type='text' value={vin} onChange={(e) => setVin(e.target.value)} />
+                            <input type='text'
+                                   value={vin}
+                                   maxLength={17}
+                                   onChange={(event) => {
+                                       setVin(event.target.value.toUpperCase());
+                                   }}
+                                   style={{ border: `1px solid ${(vin.length === 17 && !validateVIN(vin)) ? 'red' : 'black'}`}}
+                            />
+
                         </div>
                     </div>
                     <div className={styles.infoCarItem}>
                         <h3>Внешний вид</h3>
                         <div className={styles.infoAreaItem}>
                             <span>Цвет</span>
-                            <input type='text' value={color} onChange={(e) => setColor(e.target.value)} />
+                            {/*<input type='text' value={color} onChange={(e) => setColor(e.target.value)} />*/}
+                            <Color handleColor={handleColor}  />
+
                         </div>
                         <div className={styles.infoAreaItem}>
                             <span>Фото</span>
@@ -241,9 +303,9 @@ export const Car = () => {
                                 </label>
                                 <input className={styles.uploaderInput} id='photo' type="file" onChange={handleUpload} />
                                 <div className={styles.gallery}>
-                                    {photos.map(photo => (
-                                        <div key={photo.id} className={styles.galleryContainer} >
-                                            <img src={photo.url} alt="uploaded" width="70" height="70" />
+                                    {photos.map((photo, index) => (
+                                        <div key={index} className={styles.galleryContainer} >
+                                            <img src={photo} alt="uploaded" width="70" height="70" />
                                             <Icon name='close' className={styles.closePhoto} onClick={() => handleDelete(photo.id)} />
                                             {/*<button className={styles.closePhoto} onClick={() => handleDelete(photo.id)}>Delete</button>*/}
                                         </div>
@@ -280,11 +342,20 @@ export const Car = () => {
                     <div className={styles.infoCarItem}>
                         <div className={styles.infoAreaItem}>
                             <h3>Цена</h3>
-                            <input className={styles.input} type='number' value={price} onChange={(e) => setPrice(e.target.value)} />
+                            <input type='text' value={formatMoney(price)} onChange={(e) => setPrice(e.target.value)}  />
                         </div>
                         <div className={styles.infoAreaItem}>
                             <h3>Описание</h3>
-                            <textarea value={description} onChange={(e) => setDescription(e.target.value)} className={styles.textarea} placeholder="Опишите ваше авто"></textarea>
+                            <textarea ref={refTextarea} value={description} onChange={handleTextArea} className={styles.textarea} placeholder="Опишите ваше авто"></textarea>
+                        </div>
+                        <div className={styles.infoAreaItem}>
+                            <h3>Выберите город</h3>
+                            <input value={city} name="city" list="cities" onChange={(e) => setCity(e.target.value)}/>
+                            <datalist id="cities">
+                                {cityPlusCountry.map((item) => {
+                                    return(<option>{item}</option>)
+                                })}
+                            </datalist>
                         </div>
                     </div>
                     <Button size='medium' onClick={sendInfo}>Отправить</Button>

@@ -1,6 +1,6 @@
 import React from "react";
-import { Header } from "../Header/Header";
-import { SearchBlock } from "../SearchBlock/SearchBlock";
+import { Header } from "../Header/Header.jsx";
+import { SearchBlock } from "../SearchBlock/SearchBlock.jsx";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
