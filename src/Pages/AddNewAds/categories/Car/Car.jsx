@@ -8,14 +8,19 @@ import {car} from "./tempJsonCar";
 import * as events from "events";
 import {Button} from "../../../../component/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {createNewAdd} from "../../../../store/ad/adSlice";
-import {isLoadingAd} from "../../../../store/ad/adSelector";
+import {createNewAdd, fetchAdDataError} from "../../../../store/ad/adSlice";
+import {getError, getLoadingAd, getRedirect} from "../../../../store/ad/adSelector";
 import {Modal} from "../../../../component/Modal/Modal";
 import {formatMoney} from "./utils/formMoney";
 import {Color} from "./components/Color";
 import {validateVIN} from "../../../../utils/validateVIN";
+import {Navigate, redirect, useLocation, useNavigate} from "react-router-dom";
+import Autocomplete from 'react-autocomplete'
+import {cities} from "../../cities/cities";
 
-
+const cityPlusCountry = cities.map((item) => {
+    return item.name + ' ' + item.country
+})
 
 export const Car = () => {
     // Характеристики
@@ -29,7 +34,6 @@ export const Car = () => {
 
     const [year, setYear] = useState([])
     const [selectedYear, setSelectedYear] = useState('')
-
 
     // Регистрационные даные
     const [registrationnubmer, setRegistrationNumber] = useState('')
@@ -46,14 +50,25 @@ export const Car = () => {
     // Цена и описание
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
+    const [correctedDescription, setCorrectedDescription] = useState('')
+    // Для города
+    const [city, setCity] = useState('');
+    const [options, setOptions] = useState([]);
 
     // Для модалки
-    const isLoading = useSelector(isLoadingAd)
+    const isLoading = useSelector(getLoadingAd)
+    // Для редиректа
+    const redirect = useSelector(getRedirect)
+    const location = useLocation()
+    const navigate = useNavigate()
     //const [isOpen, setIsOpen] = useState(isLoading)
+    // Error
+    const isError = useSelector(getError)
 
     const refTextarea = useRef(null)
 
     const dispatch = useDispatch()
+
 
     const handleSelectedMark = (event) => {
         const selectedIndex = event.target.selectedIndex;
@@ -91,10 +106,12 @@ export const Car = () => {
     };
 
     const handleTextArea = (event) => {
-        console.log(event)
-        const value = refTextarea?.current?.innerHTML
+        setDescription(event.target.value)
+        setCorrectedDescription(event.target.value.replace(/\n/g, '<br/>'))
+    }
 
-        setDescription(value.replace(/\n/g, '<br/>'))
+    const handleColor = (color) => {
+        setColor(color)
     }
 
     useEffect(() => {
@@ -141,6 +158,12 @@ export const Car = () => {
 
     }, [selectedModelId])
 
+    useEffect(() => {
+        if(redirect){
+            const userId = localStorage.getItem('user_id')
+            navigate(`/profile/${userId}`, { state: { from: location.pathname } })
+        }
+    }, [redirect])
 
     function handleUpload(event) {
         const file = event.target.files[0];
@@ -162,8 +185,8 @@ export const Car = () => {
     }
 
     const sendInfo = () => {
-        setiSFilled(true)
-        if(!selectedMarkId && !selectedModelId && !selectedYear && !registrationnubmer && !vin && !color && !mileage && !selectedOwner && !selectedValue){
+        //setiSFilled(true)
+        if(!selectedMarkId || !selectedModelId || !selectedYear || !registrationnubmer || !vin || !color || !mileage || !selectedOwner || !selectedValue){
             setiSFilled(false)
             return
         }
@@ -188,25 +211,24 @@ export const Car = () => {
             owners: selectedOwner,
             isCrash: selectedValue,
             photos,
-            description: description,
+            description: correctedDescription,
             price: price,
+            city: city,
             user_id: localStorage.getItem('user_id')
         }
 
         dispatch(createNewAdd(newCar))
-
     }
 
-    const handleColor = (color) => {
-        console.log(color)
-        setColor(color)
+    const closeModal = () => {
+        dispatch(fetchAdDataError())
     }
 
 
     return(
         <>
-        <Modal isOpen={isLoading} turnOff>
-            <Icon name='preloader' />
+        <Modal isOpen={isLoading} turnOff={!isError ? true : false} onClose={closeModal}>
+            {!isError ? <Icon name='preloader' /> : <div> Произошла ошибка. Попробуйте еще раз или загрузите объявление чуть позже</div>}
         </Modal>
             <div className={styles.wrapper}>
                 <div className={styles.info}>
@@ -325,6 +347,15 @@ export const Car = () => {
                         <div className={styles.infoAreaItem}>
                             <h3>Описание</h3>
                             <textarea ref={refTextarea} value={description} onChange={handleTextArea} className={styles.textarea} placeholder="Опишите ваше авто"></textarea>
+                        </div>
+                        <div className={styles.infoAreaItem}>
+                            <h3>Выберите город</h3>
+                            <input value={city} name="city" list="cities" onChange={(e) => setCity(e.target.value)}/>
+                            <datalist id="cities">
+                                {cityPlusCountry.map((item) => {
+                                    return(<option>{item}</option>)
+                                })}
+                            </datalist>
                         </div>
                     </div>
                     <Button size='medium' onClick={sendInfo}>Отправить</Button>

@@ -5,16 +5,39 @@ import {CardAd, ICardAd} from "./entites/CardAd/CardAd";
 import {ProfileInfo} from "./entites/ProfileInfo/ProfileInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {ThunkDispatch} from 'redux-thunk';
-import {useEffect} from "react";
-import {getProfileInfo} from "./store/userProfileSlice";
+import {useEffect, useState} from "react";
+import {deleteAd, getProfileInfo} from "./store/userProfileSlice";
 import {getAds, getEmptyData, getIsLoading, getName} from "./store/userProfileSelector";
 import MyLoader from "./entites/CardAd/SkeletonCard/Skeleton";
 import {getUserName} from "../../store/auth/userSelector";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 type DispatchType = ThunkDispatch<any, any, any>;
 
+const notify = () =>{
+    toast.success('Успешно удалено', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+}
+
 export const UserAds:React.FC = () => {
+
+    const [showToast, setShowToast] = useState(false);
+
+    const handleDelete = (categoryId:string, id: string) => {
+        dispatch(deleteAd(categoryId, id));
+        setShowToast(true);
+        notify()
+    };
 
     const dispatch: DispatchType = useDispatch()
     const ads = useSelector(getAds)
@@ -38,15 +61,43 @@ export const UserAds:React.FC = () => {
                     <div>
                         <h3>Мои объявления</h3>
                         <div className={styles.adsAres}>
-                            {!isLoading ?
-                                !isEmpty ? ads.map((item: ICardAd) => {
-                                return <CardAd key={item['_id']} id={item['_id']} description={item.description} photos={item.photos} price={item.price} title={item.title} />
-                            }) : <div>У вас нет размещенных объявлений</div> : <MyLoader />}
+                            {!isLoading ? (
+                                ads.length !== 0 ? (
+                                    ads.map((item: ICardAd) => (
+                                        <CardAd
+                                            deleteAd={handleDelete}
+                                            key={item['_id']}
+                                            id={item['_id']}
+                                            description={item.description}
+                                            photos={item.photos}
+                                            price={item.price}
+                                            title={item.title}
+                                            categoryId={item.categoryId}
+                                            city={item.city}
+                                        />
+                                    ))
+                                ) : (
+                                    <div>У вас нет размещенных объявлений</div>
+                                )
+                            ) : (
+                                <MyLoader />
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
-
+            {showToast && <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />}
         </Layout>
 
     )

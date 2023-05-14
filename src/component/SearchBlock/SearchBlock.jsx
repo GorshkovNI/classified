@@ -4,6 +4,7 @@ import cn from "classnames";
 import {Icon} from "../Icons/Icon";
 import {Input} from "../Input/Input";
 import logo from './lg.png'
+import {Link} from "react-router-dom";
 
 export const SearchBlock = ({className}) => {
 
@@ -24,7 +25,9 @@ export const SearchBlock = ({className}) => {
             )}>
             <div className={styles.container}>
                 {/* <Icon className={styles.logo} name='logo' /> */}
-                <img src={logo} className={styles.logo}  />
+                <Link to={'/'}>
+                    <img src={logo} className={styles.logo}  />
+                </Link>
                 <div className={styles.searchBlock}>
                     <Input className={styles.input} button buttonText='Найти' />
                 </div>

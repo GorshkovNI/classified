@@ -7,7 +7,8 @@ const initialState = {
     isAdLoading: false,
     isError: false,
     categories: [],
-    fields: []
+    fields: [],
+    isRedirect: false
 
 }
 
@@ -20,6 +21,10 @@ const ad = createSlice({
         },
 
         fetchAdDataSuccess(state){
+            state.isAdLoading = false
+        },
+
+        fetchAdDataError(state){
             state.isAdLoading = false
         },
 
@@ -42,6 +47,14 @@ const ad = createSlice({
 
         removeError(state){
             state.isError = false
+        },
+
+        setRedirect(state){
+            state.isRedirect = true
+        },
+
+        removeRedirect(state){
+            state.isRedirect = false
         }
     }
 })
@@ -58,6 +71,7 @@ export const getCategories = () => async (dispatch) => {
         })
         dispatch(setCategories(category))
         dispatch(fetchAdDataSuccess())
+
     } catch (e){
         console.log(e)
     }
@@ -68,7 +82,6 @@ export const getCategoryFields = (category) => async (dispatch) => {
         dispatch(fetchAdDataStart())
         const response = await AdService.getFieldsCategory(category)
         if(response.data.fields?.length === 0){
-            dispatch(setError())
             dispatch(fetchDataSuccess())
             return
         }
@@ -83,12 +96,19 @@ export const createNewAdd = (data) => async (dispatch) => {
     try {
         dispatch(fetchAdDataStart())
         const response = await AdService.createNewAdd(data)
+        console.log(response)
         dispatch(fetchAdDataSuccess())
+        dispatch(setRedirect())
+        setTimeout(() => {
+            dispatch(removeRedirect())
+        }, 1000)
+
     } catch (e){
+        dispatch(setError())
         console.log(e)
     }
 
 }
 
-export const { fetchAdDataStart, fetchAdDataSuccess, setType, setCategories, setFields, setError, removeError } = ad.actions
+export const { fetchAdDataStart, fetchAdDataSuccess, setType, setCategories, setFields, setError, removeError, setRedirect, removeRedirect, fetchAdDataError } = ad.actions
 export default ad.reducer

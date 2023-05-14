@@ -20,6 +20,7 @@ export interface IState {
     mileage: string,
     owners: string,
     isCrash: string,
+    city: string,
     description: string,
     characteristic: string,
     isLoading: boolean,
@@ -47,6 +48,7 @@ const initialState: IState = {
     isCrash: '',
     description: '',
     characteristic: '',
+    city: '',
     isLoading: false,
     photos: [],
     category: '',
@@ -71,6 +73,7 @@ const product = createSlice({
             state.owners = action.payload.owners
             state.isCrash = action.payload.isCrash
             state.description = action.payload.description
+            state.city = action.payload.city
         },
 
         setUser: (state: IState, action) => {

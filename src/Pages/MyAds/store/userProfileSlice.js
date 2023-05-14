@@ -9,6 +9,7 @@ const initialState = {
     isUserDataLoading: false,
     errorUserData: false,
     emptyData: false,
+    isDelete: false,
     ads: []
 }
 
@@ -41,7 +42,13 @@ const userAd = createSlice({
         },
         setEmptyData(state){
             state.emptyData = true
-        }
+        },
+        deleteAds(state, action){
+            const ads_id = action.payload
+            state.ads = state.ads.filter((ad) => ad['_id'] !== ads_id)
+        },
+
+
     }
 })
 
@@ -62,5 +69,16 @@ export const getProfileInfo = () => async (dispatch: Dispatch) => {
     }
 }
 
-export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setName, setAds, setError, removeError} = userAd.actions
+export const deleteAd = (categoryId, ads_id) => async (dispatch: Dispatch) => {
+    try {
+
+        const res = await UserAdService.deleteAd(categoryId, ads_id)
+        console.log(res)
+        dispatch(deleteAds(ads_id))
+    }catch (e){
+        console.log('Ошибка при удалении ', e)
+    }
+}
+
+export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setName, setAds, setError, removeError, deleteAds} = userAd.actions
 export default userAd.reducer

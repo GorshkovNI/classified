@@ -56,7 +56,7 @@ export const ProductInfo:React.FC = () => {
   })
 
 
-  const description = product.description.split('/n').map((paragraph, index) => {
+  const description = product.description.split('<br/>').map((paragraph, index) => {
     return (
         <p key={index}>{paragraph}</p>
     )
@@ -94,6 +94,12 @@ export const ProductInfo:React.FC = () => {
                 />
               </div>
               <div className={styles.descriptionBlock}>
+                <div className={styles.parametrs}>
+                  <h2 className={styles.parametrsSpan}>
+                    Город
+                  </h2>
+                  <span className={styles.city}>{product.city}</span>
+                </div>
                 <div className={styles.parametrs}>
                   <h2 className={styles.parametrsSpan}>
                     Характеристики
