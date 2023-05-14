@@ -30,7 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm start",
+    "start": "react-scripts start",
     "build": "tsc",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
