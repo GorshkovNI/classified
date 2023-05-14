@@ -52,7 +52,7 @@ const userAd = createSlice({
     }
 })
 
-export const getProfileInfo = () => async (dispatch: Dispatch) => {
+export const getProfileInfo = () => async (dispatch) => {
     try {
         console.log('Запрашиваю данные о профиле')
         dispatch(fetchDataUserLoading())
@@ -69,7 +69,7 @@ export const getProfileInfo = () => async (dispatch: Dispatch) => {
     }
 }
 
-export const deleteAd = (categoryId, ads_id) => async (dispatch: Dispatch) => {
+export const deleteAd = (categoryId, ads_id) => async (dispatch) => {
     try {
 
         const res = await UserAdService.deleteAd(categoryId, ads_id)

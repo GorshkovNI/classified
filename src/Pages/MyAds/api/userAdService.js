@@ -4,7 +4,7 @@ export default class UserAdService {
     // static async userProfileInfo(id: string){
     //     return $api.post(`profile/${id}`, {id})
     // }
-    static async userProfileInfo(id: string){
+    static async userProfileInfo(id){
         return $api.get(`profile/${id}`, )
     }
 
