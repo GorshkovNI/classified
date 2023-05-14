@@ -27,7 +27,7 @@ export const MainPages = ({ className }) => {
         <div className={styles.productArea}>
           <div className={styles.products}>
             <CardProduct />
-            {<CardProduct id = '1'  price = '2000' title ="Шмонька"/>}
+            {<CardProduct id = '1'  price = '2000' title ="Авто2"/>}
             {<CardProduct/>}
             {<CardProduct/>}
             {<CardProduct />}
