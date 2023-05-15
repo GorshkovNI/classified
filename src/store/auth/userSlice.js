@@ -11,6 +11,7 @@ const initialState = {
         phone: '',
     },
 
+    errorActivate: '',
     isAuth: false,
     isLoading: false,
     invalidLogging: false,
@@ -35,6 +36,7 @@ const user = createSlice({
 
             removeInvalidLogging(state) {
             state.invalidLogging = false
+            state.errorActivate = false
         },
 
         setDataUser(state, action) {
@@ -57,6 +59,11 @@ const user = createSlice({
             state.isLoading = false
             state.invalidLogging = true
         },
+
+        setErrorActivate(state, action){
+            console.log(action.payload)
+            state.errorActivate = action.payload
+        },
     }
 })
 
@@ -66,6 +73,13 @@ export const login = (email, password) => async (dispatch) => {
         dispatch(fetchDataStart())
         console.log('начал логинитсья')
         const response = await AuthService.login(email, password)
+        if(response.data.user.isActivate === false){
+            console.log('Активируй аккаунт')
+            dispatch(setErrorActivate(true))
+            dispatch(fetchDataSuccess())
+            //dispatch(setErrorActivate(false))
+            return
+        }
         console.log(response.data)
         localStorage.setItem('token', response.data.accessToken)
         localStorage.setItem('refreshToken', response.data.refreshToken)
@@ -89,7 +103,6 @@ export const registration = (name, email, phone, password) => async (dispatch) =
        // dispatch(setAuth())
        // dispatch(setDataUser(response.data.user.name))
         dispatch(fetchDataSuccess())
-
     } catch (error) {
         console.log(error);
     }
@@ -105,25 +118,32 @@ export const logout = () => async (dispatch) => {
 };
 
 export const checkAuth = () => async (dispatch) => {
-    try{
+    try {
         dispatch(fetchDataStart())
         console.log('ЗАПУЩЕН CHECKAUTH')
         const refreshToken = localStorage.getItem('refreshToken')
         console.log(refreshToken)
         const res = await AuthService.refresh(refreshToken)
-        console.log('RES CERF: ', res)
+        console.log('RES : ', res)
         localStorage.setItem('token', res.data.accessToken)
         localStorage.setItem('refreshToken', res.data.refreshToken)
         dispatch(setAuth())
         dispatch(setDataUser(res.data.user))
         dispatch(fetchDataSuccess())
-    }
-    catch(e){
+    } catch (e) {
         dispatch(fetchDataSuccess())
         console.log('Ошибка при проверке авторизации')
     }
-    
 }
 
-export const { setAuth, removeAuth, fetchDataStart, fetchDataSuccess, setDataUser, setInvalidLogging, removeInvalidLogging, fetchDataError } = user.actions;
+// export const activate = () => async (dispatch) => {
+//         try {
+//
+//         }catch (e){
+//
+//         }
+//     }
+// }
+
+export const { setAuth, removeAuth, fetchDataStart, fetchDataSuccess, setDataUser, setInvalidLogging, removeInvalidLogging, fetchDataError, setErrorActivate } = user.actions;
 export default user.reducer

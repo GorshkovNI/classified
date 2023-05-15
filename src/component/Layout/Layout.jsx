@@ -16,7 +16,7 @@ export const Layout:ILayout = ({removeToFavoritesList ,orders,showFavoriteModal,
     }
 
     const toggleModal = () => {
-        setIsOpenSignUp(!isOpenSignUp)
+        setIsOpenSignUp(true)
         document.body.classList.add("modal-open");
     }
 

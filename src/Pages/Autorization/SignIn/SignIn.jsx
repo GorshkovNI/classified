@@ -11,6 +11,7 @@ import {
 } from "../../../store/auth/userSlice";
 import { Input } from "../../../component/Input/Input";
 import {
+  errorActivate,
   getInvalidLogging,
   getIsLoading,
 } from "../../../store/auth/userSelector";
@@ -25,6 +26,7 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
 
   const isLoading = useSelector(getIsLoading);
   const isLoggedIn = useSelector(getInvalidLogging);
+  const isActivate = useSelector(errorActivate)
 
   const handleLogin = (event) => {
     setEmail(event.target.value);
@@ -42,7 +44,7 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
   };
 
   useEffect(()=>{
-    if(!isLoggedIn && !isLoading){
+    if(!isLoggedIn && !isLoading && !isActivate){
       closeModal()
     }
 
@@ -91,6 +93,11 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
               {isLoggedIn && (
                 <span className={styles.invalidText}>
                   Неверный логин или пароль!
+                </span>
+              )}
+              {isActivate && (
+                <span className={styles.invalidText}>
+                  Нужно активировать аккаунт
                 </span>
               )}
               <Button

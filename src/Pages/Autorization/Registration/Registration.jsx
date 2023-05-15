@@ -10,6 +10,7 @@ import { getIsLoading } from "../../../store/auth/userSelector";
 import { Icon } from "../../../component/Icons/Icon";
 import { useNavigate } from 'react-router-dom'
 import { registration } from "../../../store/auth/userSlice";
+import {toast, ToastContainer} from "react-toastify";
 
 const WRONG_NAME_LENGTH = "Имя должно быть больше 2 символов";
 const WRONG_FORMAT_EMAIL = "Неверный формат email";
@@ -65,8 +66,23 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
     }
     dispatch(registration(name, email, phone, password));
     closeModal()
+    notify(email)
+
     //navigate.push('/')
   };
+
+  const notify = (email) =>{
+    toast.success(`Активируйте аккаунт в почте ${email} `, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
 
   return (
     <>
@@ -164,6 +180,18 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
         </div>
         </>}
       </Modal>
+      <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+      />
     </>
   );
 };

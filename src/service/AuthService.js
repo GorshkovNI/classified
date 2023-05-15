@@ -16,4 +16,8 @@ export default class AuthService{
     static async refresh(token){
         return $api.post('api/refresh', {token})
     }
+
+    static async activate(){
+        return $api.get('api/activate/:link')
+    }
 }
