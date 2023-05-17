@@ -5,13 +5,15 @@ import {CardAd, ICardAd} from "./entites/CardAd/CardAd";
 import {ProfileInfo} from "./entites/ProfileInfo/ProfileInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {ThunkDispatch} from 'redux-thunk';
-import {useEffect, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import {deleteAd, getProfileInfo} from "./store/userProfileSlice";
-import {getAds, getEmptyData, getIsLoading, getName} from "./store/userProfileSelector";
+import {getAds, getEmptyData, getIsLoading, getName, getUserInfo} from "./store/userProfileSelector";
 import MyLoader from "./entites/CardAd/SkeletonCard/Skeleton";
-import {getUserName} from "../../store/auth/userSelector";
+import {getIsAuth, getUserName} from "../../store/auth/userSelector";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import {useParams} from "react-router-dom";
+
 
 
 type DispatchType = ThunkDispatch<any, any, any>;
@@ -29,9 +31,12 @@ const notify = () =>{
     });
 }
 
-export const UserAds:React.FC = () => {
+
+export const UserAds:FC = () => {
 
     const [showToast, setShowToast] = useState(false);
+
+    const {id} = useParams()
 
     const handleDelete = (categoryId:string, id: string) => {
         dispatch(deleteAd(categoryId, id));
@@ -42,13 +47,13 @@ export const UserAds:React.FC = () => {
     const dispatch: DispatchType = useDispatch()
     const ads = useSelector(getAds)
     const isLoading = useSelector(getIsLoading)
-    const isEmpty = useSelector(getEmptyData)
-    const userName = useSelector(getUserName)
-    console.log(userName)
+
+    const userInfo = useSelector(getUserInfo)
+    const isAuth = useSelector(getIsAuth)
 
     useEffect(()=>{
-        dispatch(getProfileInfo())
-    }, [])
+        dispatch(getProfileInfo(id))
+    }, [id])
 
     return(
         <Layout isSearchBlock={false}>
@@ -56,7 +61,7 @@ export const UserAds:React.FC = () => {
                 <div className={styles.container}>
                     <div className={styles.userArea}>
                         {/*<div className={styles.test}></div>*/}
-                        <ProfileInfo id={'1'} name={userName} />
+                        <ProfileInfo id={id} name={userInfo.name} avatar={userInfo.avatar} />
                     </div>
                     <div>
                         <h3>Мои объявления</h3>
@@ -64,7 +69,9 @@ export const UserAds:React.FC = () => {
                             {!isLoading ? (
                                 ads.length !== 0 ? (
                                     ads.map((item: ICardAd) => (
+
                                         <CardAd
+                                            user_id={userInfo.user_id}
                                             deleteAd={handleDelete}
                                             key={item['_id']}
                                             id={item['_id']}
@@ -74,6 +81,7 @@ export const UserAds:React.FC = () => {
                                             title={item.title}
                                             categoryId={item.categoryId}
                                             city={item.city}
+                                            isAuth={isAuth}
                                         />
                                     ))
                                 ) : (

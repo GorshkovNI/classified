@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import AuthService from "../../service/AuthService";
 import axios from "axios";
 import { API_URL } from "../../http";
+import UserService from "../../service/UserService";
 
 const initialState = {
     userData: {
@@ -9,13 +10,16 @@ const initialState = {
         userId: '',
         email: '',
         phone: '',
+        photo: ''
     },
 
     errorActivate: '',
     isAuth: false,
     isLoading: false,
     invalidLogging: false,
-    serverError: false
+    serverError: false,
+
+    loadAvatar: false
 }
 
 const user = createSlice({
@@ -45,6 +49,7 @@ const user = createSlice({
             localStorage.setItem('name', action.payload.name)
             state.userData.name = action.payload.name
             state.userData.userId = action.payload['_id']
+            state.userData.photo = action.payload.photo
         },
 
         fetchDataStart(state) {
@@ -64,6 +69,15 @@ const user = createSlice({
             console.log(action.payload)
             state.errorActivate = action.payload
         },
+
+        setPhoto(state, action){
+            state.userData.photo = action.payload
+        },
+
+        isLoadAvatar(state, action){
+            state.loadAvatar = action.payload
+        },
+
     }
 })
 
@@ -136,6 +150,18 @@ export const checkAuth = () => async (dispatch) => {
     }
 }
 
+export const changeAvatar = (avatar, user_id) => async (dispatch) => {
+    try {
+        dispatch(isLoadAvatar(true))
+        dispatch(setPhoto(avatar))
+        const response = await UserService.changeAvatar(avatar, user_id)
+        dispatch(isLoadAvatar(false))
+        console.log(response)
+    }catch (e) {
+        console.log(e)
+    }
+}
+
 // export const activate = () => async (dispatch) => {
 //         try {
 //
@@ -145,5 +171,5 @@ export const checkAuth = () => async (dispatch) => {
 //     }
 // }
 
-export const { setAuth, removeAuth, fetchDataStart, fetchDataSuccess, setDataUser, setInvalidLogging, removeInvalidLogging, fetchDataError, setErrorActivate } = user.actions;
+export const { setAuth, removeAuth, fetchDataStart, fetchDataSuccess, setDataUser, setInvalidLogging, removeInvalidLogging, fetchDataError, setErrorActivate, setPhoto, isLoadAvatar } = user.actions;
 export default user.reducer

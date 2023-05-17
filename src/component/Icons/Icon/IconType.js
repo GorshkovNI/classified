@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from './logo.svg';
 import { ReactComponent as Close } from './close.svg';
 import { ReactComponent as Preloader } from './preloader.svg';
 import { ReactComponent as Photo } from './photo.svg';
+import { ReactComponent as Avatar } from './avatar.svg';
 
 
 export const iconsTypes = {
@@ -16,5 +17,6 @@ export const iconsTypes = {
     logo: Logo,
     close: Close,
     preloader: Preloader,
-    photo: Photo
+    photo: Photo,
+    avatar: Avatar,
 };

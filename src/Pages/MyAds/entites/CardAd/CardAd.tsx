@@ -10,20 +10,22 @@ import {ThunkDispatch} from "redux-thunk";
 export interface ICardAd {
     id: string,
     description: string,
-    photos: string[],
+    photos: any,
     price: string,
     title: string,
     categoryId: string,
     city: string,
     deleteAd: (categoryId: string, id: string) => void
+    user_id: string,
+    isAuth: any
 }
 
-export const CardAd:FC<ICardAd> = ({deleteAd, id, description,photos,price,title, categoryId, city}) => {
+export const CardAd:FC<ICardAd> = ({user_id, deleteAd, id, description,photos,price,title, categoryId, city, isAuth}) => {
 
     return(
         <div className={styles.container} id={id}>
             <div className={styles.containerPhoto}>
-                <img className={styles.images} src={photos[0]} />
+                <img className={styles.images} src={photos[0].url} />
             </div>
             <div className={styles.containerInfo}>
                 <div className={styles.infoItems}>
@@ -34,8 +36,7 @@ export const CardAd:FC<ICardAd> = ({deleteAd, id, description,photos,price,title
                     <div className={styles.locatedArea}><span className={styles.located}>{city}</span></div>
                 </div>
             </div>
-            <div className={styles.delete} onClick={() => deleteAd(categoryId, id)}>X</div>
-
+            {user_id === localStorage.getItem("user_id") && isAuth && <div className={styles.delete} onClick={() => deleteAd(categoryId, id)}>X</div>}
         </div>
     )
 }

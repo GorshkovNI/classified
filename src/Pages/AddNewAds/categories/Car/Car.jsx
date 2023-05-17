@@ -11,7 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {createNewAdd, fetchAdDataError} from "../../../../store/ad/adSlice";
 import {getError, getLoadingAd, getRedirect} from "../../../../store/ad/adSelector";
 import {Modal} from "../../../../component/Modal/Modal";
-import {formatMoney} from "./utils/formMoney";
+import {formatMoney} from "../utils/formMoney";
 import {Color} from "./components/Color";
 import {validateVIN} from "../../../../utils/validateVIN";
 import {Navigate, redirect, useLocation, useNavigate} from "react-router-dom";
@@ -172,8 +172,8 @@ export const Car = () => {
 
             reader.readAsDataURL(file);
             reader.onload = () => {
-                //const photo = { id: Date.now(), url: reader.result };
-                const photo = reader.result;
+                const photo = { id: Date.now(), url: reader.result };
+                //const photo = reader.result;
                 console.log(photo)
                 setPhotos([...photos, photo]);
             };
@@ -305,7 +305,7 @@ export const Car = () => {
                                 <div className={styles.gallery}>
                                     {photos.map((photo, index) => (
                                         <div key={index} className={styles.galleryContainer} >
-                                            <img src={photo} alt="uploaded" width="70" height="70" />
+                                            <img src={photo.url} alt="uploaded" width="70" height="70" />
                                             <Icon name='close' className={styles.closePhoto} onClick={() => handleDelete(photo.id)} />
                                             {/*<button className={styles.closePhoto} onClick={() => handleDelete(photo.id)}>Delete</button>*/}
                                         </div>

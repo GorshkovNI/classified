@@ -5,54 +5,54 @@ import {log} from "util";
 
 export interface IState {
     id: string
-    nameSeller: string,
-    idSeller: string,
-    dateRegistration: string,
 
-    price: number,
-    productName: string,
-    marka: string,
-    model: string,
-    year: string,
-    registrationnumber: string,
-    vin: string,
-    color: string,
-    mileage: string,
-    owners: string,
-    isCrash: string,
-    city: string,
-    description: string,
-    characteristic: string,
-    isLoading: boolean,
-    photos: string[],
+    info:{
+        [key: string]: any,
+    }
+
+    // title: string,
+    // price: any,
+    // description: string,
+    // city: string,
+    // photos: any,
+
     category: string,
-    isLoadingPicture: boolean
+    fields: any,
+
+    user: {
+        nameSeller: string,
+        idSeller: string,
+        dateRegistration:string
+    }
+
+    isLoadingPicture: boolean,
+    isLoading: boolean,
 }
 
 const initialState: IState = {
     id: '',
-    nameSeller: '',
-    idSeller: '',
-    dateRegistration: '',
 
-    price: 0,
-    productName: '',
-    marka: '',
-    model: '',
-    year: '',
-    registrationnumber: '',
-    vin: '',
-    color: '',
-    mileage: '',
-    owners:'',
-    isCrash: '',
-    description: '',
-    characteristic: '',
-    city: '',
-    isLoading: false,
-    photos: [],
+    info:{
+
+    },
+
+    // title: '',
+    // price: '',
+    // description: '',
+    // city: '',
+    // photos: [],
+
     category: '',
-    isLoadingPicture: false
+    fields: [],
+
+    user: {
+        nameSeller: '',
+        idSeller: '',
+        dateRegistration:''
+    },
+
+isLoadingPicture: false,
+isLoading: false,
 }
 
 const product = createSlice({
@@ -61,34 +61,26 @@ const product = createSlice({
     reducers: {
         setProduct: (state: IState, action) => {
             console.log(action.payload)
-            state.productName = action.payload.title
-            state.price = action.payload.price
-            state.year = action.payload.year
-            state.marka = action.payload.marka
-            state.model = action.payload.model
-            state.color = action.payload.color
-            state.registrationnumber = action.payload.registrationnumber
-            state.vin = action.payload.vin
-            state.mileage = action.payload.mileage
-            state.owners = action.payload.owners
-            state.isCrash = action.payload.isCrash
-            state.description = action.payload.description
-            state.city = action.payload.city
+            // state.title = action.payload.title
+            // state.price = action.payload.price
+            // state.description = action.payload.description
+            // state.city = action.payload.city
+            state.info = {...action.payload}
         },
 
         setUser: (state: IState, action) => {
-            state.nameSeller = action.payload.name
-            state.idSeller = action.payload._id
-            state.dateRegistration = action.payload.dateRegistration
+            state.user.nameSeller = action.payload.name
+            state.user.idSeller = action.payload._id
+            state.user.dateRegistration = action.payload.dateRegistration
         },
 
         setCategory: (state: IState, action) => {
             state.category = action.payload.category
+            state.fields = action.payload.fields
         },
 
         setPhoto: (state: IState, action) => {
-            console.log(action)
-            state.photos = action.payload
+            state.info.photos = action.payload
         },
 
         fetchingDataStart: (state: IState) => {

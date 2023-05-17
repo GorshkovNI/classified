@@ -4,8 +4,14 @@ import {Dispatch} from "@reduxjs/toolkit";
 
 
 const initialState = {
-    avatar: '',
-    name: '',
+    userInfo:{
+        avatar: '',
+        name: '',
+        user_id: '',
+        phone: '',
+        email: '',
+        dateRegistration: ''
+    },
     isUserDataLoading: false,
     errorUserData: false,
     emptyData: false,
@@ -24,12 +30,7 @@ const userAd = createSlice({
             state.isUserDataLoading = false
         },
         setAvatar(state, action){
-            const avatar = action.payload
-            state.avatar = avatar
-        },
-        setName(state, action){
-            const name = action.payload
-            state.name = name
+            state.userInfo.avatar = action.payload
         },
         setAds(state, action){
             state.ads = [...action.payload]
@@ -48,19 +49,32 @@ const userAd = createSlice({
             state.ads = state.ads.filter((ad) => ad['_id'] !== ads_id)
         },
 
+        isLoadAvatar(state, action){
+            state.loadAvatar = action.payload
+        },
 
+        setInfoUser(state, action){
+            const user = action.payload[0]
+            console.log(user)
+            state.userInfo.avatar = user.photo ? user.photo : ''
+            state.userInfo.name = user.name
+            state.userInfo.email = user.email
+            state.userInfo.phone = user.phone
+            state.userInfo.user_id = user['_id']
+        }
     }
 })
 
-export const getProfileInfo = () => async (dispatch) => {
+export const getProfileInfo = (id) => async (dispatch) => {
     try {
         console.log('Запрашиваю данные о профиле')
         dispatch(fetchDataUserLoading())
-        const response = await UserAdService.userProfileInfo(localStorage.getItem('user_id'))
+        const response = await UserAdService.userProfileInfo(id)
         if(response.data.length === 0){
             dispatch(setError)
             return
         }
+        dispatch(setInfoUser(response.data?.user))
         dispatch(setAds(response.data?.ads))
         console.log(response)
         dispatch(fetchDataUserSuccess())
@@ -71,7 +85,6 @@ export const getProfileInfo = () => async (dispatch) => {
 
 export const deleteAd = (categoryId, ads_id) => async (dispatch) => {
     try {
-
         const res = await UserAdService.deleteAd(categoryId, ads_id)
         console.log(res)
         dispatch(deleteAds(ads_id))
@@ -80,5 +93,5 @@ export const deleteAd = (categoryId, ads_id) => async (dispatch) => {
     }
 }
 
-export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setName, setAds, setError, removeError, deleteAds} = userAd.actions
+export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setInfoUser, setAds, setError, removeError, deleteAds,  isLoadAvatar} = userAd.actions
 export default userAd.reducer

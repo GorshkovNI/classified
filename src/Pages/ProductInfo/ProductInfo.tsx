@@ -13,7 +13,7 @@ import {fetchProductById} from "./store/ProductInfoSlice";
 import {ThunkDispatch} from "redux-thunk";
 import SkeletonUserArea from "./asset/SkeletonUserArea";
 import SkeletonLine from "./asset/SkeletonTitle";
-import {Auto} from "./categories/Auto/Auto";
+import {Fields} from "./categories/Fields/Fields";
 const four = require('./4.jpg');
 
 type DispatchType = ThunkDispatch<any, any, any>;
@@ -33,30 +33,20 @@ export const ProductInfo:React.FC = () => {
   const product = useSelector(getState)
   const isLoading = useSelector(getIsLoading)
 
-  const typeAD = {
-    car: <Auto data={product} />
-  }
 
-  const images = [
-    {
-      original: four,
-      thumbnail: four,
-      originalClass: styles.images,
-      thumbnailClass: styles.thumbImage,
-    },
-  ];
+  console.log(product)
 
-  const photos = product.photos.map((item) => {
+  const photos = product?.info?.photos?.map((item:string) => {
     return{
-      original: item,
-      thumbnail: item,
+      original: item['url'],
+      thumbnail: item['url'],
       originalClass: styles.images,
       thumbnailClass: styles.thumbImage,
     }
   })
 
-
-  const description = product.description.split('<br/>').map((paragraph, index) => {
+  console.log(product.info.description)
+  const description = product.info.description?.split('<br/>').map((paragraph, index) => {
     return (
         <p key={index}>{paragraph}</p>
     )
@@ -78,7 +68,7 @@ export const ProductInfo:React.FC = () => {
                             <SkeletonLine />
                           </div>
 
-                          : product.productName}
+                          : product.info.title}
                   </h1>
                 </div>
                 <div className={styles.titleActions}>
@@ -86,27 +76,27 @@ export const ProductInfo:React.FC = () => {
                 </div>
               </div>
               <div className={styles.viewMainContent}>
-                <ImageGallery
+                {photos && <ImageGallery
                   items={photos}
                   showPlayButton={false}
                   showFullscreenButton={false}
                   additionalClass={styles.gallery}
-                />
+                />}
               </div>
               <div className={styles.descriptionBlock}>
                 <div className={styles.parametrs}>
                   <h2 className={styles.parametrsSpan}>
                     Город
                   </h2>
-                  <span className={styles.city}>{product.city}</span>
+                  <span className={styles.city}>{product.info.city}</span>
                 </div>
                 <div className={styles.parametrs}>
                   <h2 className={styles.parametrsSpan}>
                     Характеристики
                   </h2>
 
-                  {/*<Auto />*/}
-                  {typeAD[product.category]}
+                  {/*<Fields />*/}
+                  <Fields data={product} />
 
                 </div>
                 <div className={styles.parametrs}> 
@@ -123,7 +113,7 @@ export const ProductInfo:React.FC = () => {
             </div>
             <div className={styles.itemContent_right}>
               <div className={styles.priceBlock}>
-                <h1 className={styles.price}>{!isLoading ? formatMoney(product.price) : <SkeletonLine width='200' /> }</h1>
+                <h1 className={styles.price}>{!isLoading ? formatMoney(product.info.price) : <SkeletonLine width='200' /> }</h1>
               </div>
               <div className={styles.remouteArea}>
                 <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} size='medium' mode="contained" type='text' onClick={() => {}}>Показать телефон</Button>
@@ -134,12 +124,12 @@ export const ProductInfo:React.FC = () => {
                   isLoading ? <SkeletonUserArea /> :
                       <>
                         <div className={styles.descriptionSeller}>
-                          <span className={styles.userName}>{product.nameSeller}</span>
+                          <span className={styles.userName}>{product.user.nameSeller}</span>
                           <span className={styles.rating}>5,0</span>
-                          <span className={styles.time}>{'На гетит с ' + product.dateRegistration + ' года'}</span>
+                          <span className={styles.time}>{'На гетит с ' + product.user.dateRegistration + ' года'}</span>
                         </div>
                         <div className={styles.iconArea}>
-                          <span className={styles.icon}>{product?.nameSeller[0]?.toUpperCase()}</span>
+                          <span className={styles.icon}>{product?.user.nameSeller[0]?.toUpperCase()}</span>
                         </div>
                       </>
                 }

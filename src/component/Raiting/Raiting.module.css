@@ -1,0 +1,12 @@
+.ratingArea{
+    display: flex;
+    gap: 10px;
+}
+
+.numberRating{
+    font-size: 18px;
+}
+
+.starIcon{
+    color: #ffcc00;
+}

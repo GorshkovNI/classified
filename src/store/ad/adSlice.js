@@ -83,10 +83,12 @@ export const getCategoryFields = (category) => async (dispatch) => {
         const response = await AdService.getFieldsCategory(category)
         if(response.data.fields?.length === 0){
             dispatch(fetchDataSuccess())
+            dispatch(fetchAdDataSuccess())
             return
         }
-        dispatch(setFields(response.data.fields))
         dispatch(fetchAdDataSuccess())
+        dispatch(setFields(response.data.fields))
+
     } catch (e){
         console.log(e)
     }

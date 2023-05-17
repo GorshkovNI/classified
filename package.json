@@ -20,6 +20,8 @@
     "react-content-loader": "^6.2.1",
     "react-dom": "^18.2.0",
     "react-dropzone-uploader": "^2.11.0",
+    "react-hook-form": "^7.43.9",
+    "react-icons": "^4.8.0",
     "react-image-gallery": "^1.2.11",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",

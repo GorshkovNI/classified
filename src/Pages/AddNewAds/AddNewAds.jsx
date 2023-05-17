@@ -29,6 +29,7 @@ export const AddNewAds = () => {
 
     const dispatch = useDispatch()
     const allCategoies = useSelector(getAllCategories)
+    console.log(allCategoies)
     //const fields = useSelector(getAllFieldsCategory)
     const isLoading = useSelector(getLoadingAd)
     const isAuth = useSelector(getIsAuth)
@@ -57,7 +58,7 @@ export const AddNewAds = () => {
 
   const handleTypeAd = (e) => {
     setTypeAd({
-        transtale: e.target.textContent,
+        translate: e.target.textContent,
         categoryName: e.target.id
     })
     setIsOpen(false)
@@ -69,8 +70,9 @@ export const AddNewAds = () => {
       <div className={styles.wrapper}>
           { isAuth ?
               <div className={styles.chooseArea}>
-                  {isLoading ? <span>Loading...</span> : <Button className={styles.buttonType} onClick={handleButtonClick}>
-                      {!typeAd.transtale ? 'Выберите категорию' : typeAd.transtale}
+                  {isLoading ? <span>Loading...</span> :
+                  <Button className={styles.buttonType} onClick={handleButtonClick}>
+                      {!typeAd.translate ? 'Выберите категорию' : typeAd.translate}
                   </Button>}
                   {isOpen && (
                       <Dropdown className={styles.dropdown}>

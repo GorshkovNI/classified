@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import { logout } from "../../store/auth/userSlice";
+import {getPhoto} from "../../store/auth/userSelector";
 
 
 const menuDropdown = [
@@ -23,6 +24,8 @@ const menuDropdown = [
 export const ProfileArea = ({userName, icon}) => {
 
     const [isOpen, setIsOpen] = useState(false)
+
+    const avatar = useSelector(getPhoto)
 
     //const userName = useSelector(getUserName);
 
@@ -47,7 +50,7 @@ export const ProfileArea = ({userName, icon}) => {
 
     return(
         <div className={styles.wrapper} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            {icon ? <img className={styles.userIcon} /> : 
+            {avatar ? <img className={styles.userIcon} src={avatar} /> :
                 <div className={styles.iconArea}>
                     <span className={styles.icon}>{userName && userName[0]?.toUpperCase()}</span>
                 </div>
