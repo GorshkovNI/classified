@@ -7,8 +7,8 @@ import user, {checkAuth, logout} from "../src/store/auth/userSlice";
 import { AddNewAds } from '../src/Pages/AddNewAds/AddNewAds';
 import {UserAds} from "./Pages/MyAds/UserAds";
 import {ProductInfo} from "./Pages/ProductInfo/ProductInfo";
-
-
+import { About } from './Pages/About/About';
+import { Feedback } from './Pages/Feedback/Feedback';
 function App({store}) {
 
     const dispath = useDispatch()
@@ -28,6 +28,8 @@ function App({store}) {
             <Routes>
                 <Route path='/' element={<MainPages  />} />
                 <Route path='/ad/:id' element={<ProductInfo  />} />
+                <Route path='/about' element={<About/>}/>
+                <Route path='/feedback' element={<Feedback/>}/>
                 <Route path='/additem' element={<AddNewAds />} />
                 <Route path='/profile/:id' element={<UserAds />} />
             </Routes>
