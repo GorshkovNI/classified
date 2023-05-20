@@ -22,7 +22,7 @@ const cityPlusCountry = cities.map((item) => {
     return item.name + ' ' + item.country
 })
 
-export const Car = () => {
+export const Car = ({dataOfEdit}) => {
     // Характеристики
     const [marks, setMarka] = useState([{}])
     const [selectedMarkId, setSelectedMarkId] = useState('')

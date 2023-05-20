@@ -1,11 +1,17 @@
 .ratingArea{
     display: flex;
-    gap: 10px;
 }
 
 .numberRating{
+    margin-right: 5px;
     font-size: 18px;
 }
+
+.rating{
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+
 
 .starIcon{
     color: #ffcc00;

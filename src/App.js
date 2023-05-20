@@ -7,6 +7,8 @@ import user, {checkAuth, logout} from "../src/store/auth/userSlice";
 import { AddNewAds } from '../src/Pages/AddNewAds/AddNewAds';
 import {UserAds} from "./Pages/MyAds/UserAds";
 import {ProductInfo} from "./Pages/ProductInfo/ProductInfo";
+import {ReviewUser} from "./Pages/ReviewUser/ReviewUser";
+
 
 
 function App({store}) {
@@ -30,6 +32,7 @@ function App({store}) {
                 <Route path='/ad/:id' element={<ProductInfo  />} />
                 <Route path='/additem' element={<AddNewAds />} />
                 <Route path='/profile/:id' element={<UserAds />} />
+                <Route path='/review/:id' element={<ReviewUser />} />
             </Routes>
         </div>
     </BrowserRouter>

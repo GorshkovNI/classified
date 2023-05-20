@@ -41,7 +41,7 @@ export const Rent = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        data["title"] = 'Квартира'
+        data["title"] = `Квартира ${data.rooms} rooms ${data.square}`
         data['category'] =  'rent'
         data["user_id"] = localStorage.getItem("user_id")
         data["description"] = correctedDescription

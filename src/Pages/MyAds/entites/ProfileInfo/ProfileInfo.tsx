@@ -9,6 +9,7 @@ import {getIsAuth, getIsLoadAvatar, getPhoto} from "../../../../store/auth/userS
 import {changeAvatar, setPhoto} from "../../../../store/auth/userSlice";
 import {deleteAd} from "../../store/userProfileSlice";
 import {ThunkDispatch} from "redux-thunk";
+import {Link} from "react-router-dom";
 
 
 interface IProfileInfo {
@@ -56,7 +57,8 @@ export const ProfileInfo:FC<IProfileInfo> = ({id, name, avatar}) => {
                 }
             </div>
             <div className={styles.name}>{name}</div>
-            <Rating rating={5} />
+            <Link to={`/review/${id}`}>Оставить отзыв</Link>
+            <Rating rating={5}  onRatingSelected = {() => {}} />
         </div>
     )
 }

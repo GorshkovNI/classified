@@ -1,10 +1,10 @@
-import React from "react";
-import styles from './Raiting.module.css'
-import { useState } from 'react';
-import {FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import React, { useState } from 'react';
+import styles from './Raiting.module.css';
+import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
-export const Rating = ({ rating }) => {
+export const Rating = ({ rating, staticMode = true, onRatingSelected }) => {
     const [hoverRating, setHoverRating] = useState(0);
+    const [selectedRating, setSelectedRating] = useState(0);
 
     const handleMouseEnter = (index) => {
         setHoverRating(index);
@@ -15,15 +15,16 @@ export const Rating = ({ rating }) => {
     };
 
     const handleClick = (index) => {
-        // Handle rating selection
+        setSelectedRating(index);
+        onRatingSelected(index)
     };
 
     return (
         <div className={styles.ratingArea}>
-            <span className={styles.numberRating}>{rating}</span>
+            <span className={styles.numberRating}>{staticMode ? rating : selectedRating}</span>
             {[1, 2, 3, 4, 5].map((index) => {
-                const isFullStar = rating >= index;
-                const isHalfStar = rating >= index - 0.5 && rating < index;
+                const isFullStar = staticMode ? rating : hoverRating >= index;
+                const isHalfStar = staticMode ? rating : hoverRating >= index - 0.5 && rating < index;
 
                 return (
                     <span

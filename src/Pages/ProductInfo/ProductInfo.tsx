@@ -5,7 +5,7 @@ import { Layout } from "../../component/Layout/Layout";
 import { Button } from "../../component/Button/Button";
 import { formatMoney } from "../../utils/formatMoney";
 import cn from 'classnames'
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getIsLoading, getName, getState} from "./store/ProductInfoSelector";
 import {useEffect} from "react";
@@ -17,8 +17,6 @@ import {Fields} from "./categories/Fields/Fields";
 const four = require('./4.jpg');
 
 type DispatchType = ThunkDispatch<any, any, any>;
-
-
 
 
 export const ProductInfo:React.FC = () => {
@@ -73,6 +71,7 @@ export const ProductInfo:React.FC = () => {
                 </div>
                 <div className={styles.titleActions}>
                   <Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='love' classNameIcon={styles.buttonIconLove} onClick={() =>{}} >Добавить в избранное</Button>
+                  <Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='edit' classNameIcon={styles.buttonIconEdit} onClick={() =>{}} >Редактировать</Button>
                 </div>
               </div>
               <div className={styles.viewMainContent}>
@@ -124,12 +123,14 @@ export const ProductInfo:React.FC = () => {
                   isLoading ? <SkeletonUserArea /> :
                       <>
                         <div className={styles.descriptionSeller}>
-                          <span className={styles.userName}>{product.user.nameSeller}</span>
+                            <Link className={styles.userName} to={`/profile/${product.user.idSeller}`} >
+                              {product.user.nameSeller}
+                            </Link>
                           <span className={styles.rating}>5,0</span>
                           <span className={styles.time}>{'На гетит с ' + product.user.dateRegistration + ' года'}</span>
                         </div>
                         <div className={styles.iconArea}>
-                          <span className={styles.icon}>{product?.user.nameSeller[0]?.toUpperCase()}</span>
+                          {product.user.photo ? <img className={styles.avatar} src={product.user.photo} /> : <span className={styles.icon}>{product?.user.nameSeller[0]?.toUpperCase()}</span> }
                         </div>
                       </>
                 }

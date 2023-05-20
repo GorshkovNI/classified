@@ -109,6 +109,10 @@
     fill: var(--blue-light);
 }
 
+.buttonIconEdit{
+    fill: var(--blue-light);
+}
+
 .actionButton:hover{
     background-color: rgba(0, 0, 0, 0.075);
 }
@@ -224,12 +228,14 @@
 }
 
 .descriptionSeller{
+    outline: none;
     display: flex;
     flex-direction: column;
     gap: 3px;
 }
 
 .userName{
+    text-decoration: none;
     color: var(--blue-light);
     cursor: pointer;
     font-size: 16px;
@@ -259,6 +265,13 @@
     background-color: rgb(212, 227, 74);
     cursor: pointer;
 }
+
+.avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
 
 .icon{
     font-size: 20px;

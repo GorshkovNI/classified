@@ -43,14 +43,6 @@ export const AddNewAds = () => {
       console.log(typeAd)
   }, [typeAd])
 
-  // useEffect(() => {
-  //     if(fields.length === 0) return
-  //     const obj = fields.reduce((acc, item) => {
-  //         acc[item.title] = '';
-  //         return acc;
-  //     }, {});
-  //     setValues(obj)
-  // }, [fields])
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);

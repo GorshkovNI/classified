@@ -1,22 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import UserAdService from "../api/userAdService";
-import {Dispatch} from "@reduxjs/toolkit";
+
 
 
 const initialState = {
-    userInfo:{
-        avatar: '',
-        name: '',
-        user_id: '',
-        phone: '',
-        email: '',
-        dateRegistration: ''
-    },
-    isUserDataLoading: false,
-    errorUserData: false,
-    emptyData: false,
-    isDelete: false,
-    ads: []
+    id: '',
+    user_id: '',
+
 }
 
 const userAd = createSlice({
@@ -90,17 +79,6 @@ export const deleteAd = (categoryId, ads_id) => async (dispatch) => {
         dispatch(deleteAds(ads_id))
     }catch (e){
         console.log('Ошибка при удалении ', e)
-    }
-}
-
-export const setNewReview = (review) => async (dispatch) => {
-    try {
-        console.log(1232314554514)
-        const res = await UserAdService.reviewAd(review)
-        dispatch(fetchDataUserSuccess())
-        console.log(res)
-    }catch (e){
-        console.log('Ошибка отравки отзыва: ', e)
     }
 }
 

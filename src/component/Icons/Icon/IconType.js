@@ -7,6 +7,7 @@ import { ReactComponent as Close } from './close.svg';
 import { ReactComponent as Preloader } from './preloader.svg';
 import { ReactComponent as Photo } from './photo.svg';
 import { ReactComponent as Avatar } from './avatar.svg';
+import { ReactComponent as Edit } from './edit.svg';
 
 
 export const iconsTypes = {
@@ -19,4 +20,5 @@ export const iconsTypes = {
     preloader: Preloader,
     photo: Photo,
     avatar: Avatar,
+    edit: Edit,
 };

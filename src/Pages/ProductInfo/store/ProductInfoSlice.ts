@@ -22,7 +22,8 @@ export interface IState {
     user: {
         nameSeller: string,
         idSeller: string,
-        dateRegistration:string
+        dateRegistration:string,
+        photo: string
     }
 
     isLoadingPicture: boolean,
@@ -48,7 +49,8 @@ const initialState: IState = {
     user: {
         nameSeller: '',
         idSeller: '',
-        dateRegistration:''
+        dateRegistration:'',
+        photo: ''
     },
 
 isLoadingPicture: false,
@@ -72,6 +74,7 @@ const product = createSlice({
             state.user.nameSeller = action.payload.name
             state.user.idSeller = action.payload._id
             state.user.dateRegistration = action.payload.dateRegistration
+            state.user.photo = action.payload.photo
         },
 
         setCategory: (state: IState, action) => {
