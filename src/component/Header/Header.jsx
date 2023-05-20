@@ -10,7 +10,7 @@ import { getIsAuth, getIsLoading, getUserName } from "../../store/auth/userSelec
 import { Autorization } from "../../Pages/Autorization/Autorization";
 import { FavoritesModal } from "../../Pages/FavoritesModal/FavoritesModal";
 import { useEffect } from "react";
-import { geolocated } from 'react-geolocated';
+import { GeolocatedIcon } from "../Geolocated/GeolocatedIcon";
 
 export const Header = ({
     toggleModal,
@@ -45,6 +45,10 @@ export const Header = ({
 
 
                 <div className={styles.rightSide}>
+                
+                    <div>
+                        <GeolocatedIcon/>
+                    </div>
                     <div className={styles.assistButton}>
                         <Icon className={cn(styles.button, styles.love)} name='love' onClick={showFavoriteModal} />
                         {/* <Icon className={cn(styles.button, styles.cart)} name='cart' /> */}
