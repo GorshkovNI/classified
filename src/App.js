@@ -28,8 +28,6 @@ function App({store}) {
             <Routes>
                 <Route path='/' element={<MainPages  />} />
                 <Route path='/ad/:id' element={<ProductInfo  />} />
-                <Route path='/about' element={<About/>}/>
-                <Route path='/feedback' element={<Feedback/>}/>
                 <Route path='/additem' element={<AddNewAds />} />
                 <Route path='/profile/:id' element={<UserAds />} />
                 <Route path='/review/:id' element={<ReviewUser />} />
