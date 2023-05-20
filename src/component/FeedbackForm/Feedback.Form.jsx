@@ -24,11 +24,9 @@ export const FeedbackForm = ()=>{
             })
             .then(function(response) {
               console.log(response);
-              // Добавьте код обработки успешного ответа от сервера, если это необходимо
             })
             .catch(function(error) {
               console.log(error);
-              // Добавьте код обработки ошибки, если это необходимо
             });
           }
         
@@ -68,7 +66,7 @@ export const FeedbackForm = ()=>{
                         </div>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary btn-block mb-4">Send</button>
+                <button type="submit" className="btn btn-primary btn-block mb-4">Send <i className="bi bi-send"></i></button>
             </form>
     )
 }
