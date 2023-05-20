@@ -54,7 +54,7 @@ export const UserAds:FC = () => {
     useEffect(()=>{
         dispatch(getProfileInfo(id))
     }, [id])
-
+    console.log(ads)
     return(
         <Layout isSearchBlock={false}>
             <div className={styles.wrapper}>
@@ -69,7 +69,6 @@ export const UserAds:FC = () => {
                             {!isLoading ? (
                                 ads.length !== 0 ? (
                                     ads.map((item: ICardAd) => (
-
                                         <CardAd
                                             user_id={userInfo.user_id}
                                             deleteAd={handleDelete}

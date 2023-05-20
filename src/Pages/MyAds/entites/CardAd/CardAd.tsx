@@ -25,7 +25,7 @@ export const CardAd:FC<ICardAd> = ({user_id, deleteAd, id, description,photos,pr
     return(
         <div className={styles.container} id={id}>
             <div className={styles.containerPhoto}>
-                <img className={styles.images} src={photos[0].url} />
+                <img className={styles.images} src={photos ? photos[0]?.url : ''} />
             </div>
             <div className={styles.containerInfo}>
                 <div className={styles.infoItems}>
