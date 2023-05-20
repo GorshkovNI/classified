@@ -40,7 +40,7 @@ export const Header = ({
                 <div className={styles.leftSide}>
                     <Link to="/" style={{ textDecoration: "none" }}><Button size='medium' mode='primary'>{/* <i className="bi bi-building"></i> */}Main</Button></Link>
                     <Link to="/about" style={{ textDecoration: "none" }}><Button size='medium' mode='primary'>{/* <i className="bi bi-building"></i> */}About</Button></Link>
-                    <Link to="/feedback" style={{ textDecoration: "none" }}><Button size='medium' mode='primary'>{/* <i className="bi bi-building"></i> */}Feedback</Button></Link>
+                    {/* <Link to="/feedback" style={{ textDecoration: "none" }}><Button size='medium' mode='primary'><i className="bi bi-building"></i> Feedback</Button></Link>*/}
                 </div>
 
 

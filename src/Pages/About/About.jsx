@@ -4,6 +4,8 @@ import logo from './Approved.svg';
 import logo2 from './Copywriter.svg';
 import logo3 from './pokupk.svg';
 import logo4 from './people.svg';
+import { FeedbackForm } from "../../component/FeedbackForm/Feedback.Form";
+
 export const About = () => {
     return (
         <Layout isSearchBlock={false}>
@@ -22,13 +24,13 @@ export const About = () => {
 
 
                 </div>
-                <div style={{display:'flex'}}>
-                    <div style={{ textAlign: 'center', marginBottom: '5rem' }} class="px-3">
-                        <p style={{ fontSize: '1.25vw' }}>Мы молодая команда разработчиков энтузиастов, которые решили создать бесплатный сервис для жителей африканских стран. <p><b>Наша цель: Создать удобную площадку по взаимодействию продавцов и покупателей.</b></p> Наша команда молода и только набирает обороты.</p>
+                <div style={{ display: 'flex' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '5rem' }} className="px-3">
+                        <p style={{ fontSize: '1.25vw' }}>Мы молодая команда разработчиков энтузиастов, которые решили создать бесплатный сервис для жителей африканских стран. <b>Наша цель: Создать удобную площадку по взаимодействию продавцов и покупателей.</b> Наша команда молода и только набирает обороты.</p>
                         <h1>Коротко о нашем сервисе:</h1>
                     </div>
                     <div>
-                    <img className="bd-placeholder-img rounded-circle" style={{ width: '100%' }} src={logo4} alt="People" />
+                        <img className="bd-placeholder-img rounded-circle" style={{ width: '100%' }} src={logo4} alt="People" />
                     </div>
                 </div>
 
@@ -53,6 +55,10 @@ export const About = () => {
                 </div>
 
             </div>
+            <div style={{ width: '100%', backgroundColor: ' #1E90FF' }}>
+                <h1 style={{ color: 'white', fontSize: '5vw', display: 'flex', justifyContent: 'center' }}><i className="bi bi-envelope-fill"></i>Feedback</h1>
+            </div>
+            <FeedbackForm/>
         </Layout >
     )
 }
