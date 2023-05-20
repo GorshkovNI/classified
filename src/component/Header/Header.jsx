@@ -10,7 +10,7 @@ import { getIsAuth, getIsLoading, getUserName } from "../../store/auth/userSelec
 import { Autorization } from "../../Pages/Autorization/Autorization";
 import { FavoritesModal } from "../../Pages/FavoritesModal/FavoritesModal";
 import { useEffect } from "react";
-
+import { geolocated } from 'react-geolocated';
 
 export const Header = ({
     toggleModal,
@@ -22,8 +22,6 @@ export const Header = ({
     showFavorites,
     orders,
     removeToFavoritesList }) => {
-
-    //const [isLoading, setIsLoading] = useState(true)
 
     const isLoggedIn = useSelector(getIsAuth)
     const isLoading = useSelector(getIsLoading)
