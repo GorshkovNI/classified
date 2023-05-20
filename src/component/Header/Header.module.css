@@ -21,7 +21,11 @@
     align-items: center;
     gap: 20px;
 }
-
+.leftSide{
+    display: flex;
+    align-items: left;
+    gap: 20px;
+}
 .assistButton{
     display: flex;
     align-items: center;
