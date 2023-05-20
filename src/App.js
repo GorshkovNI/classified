@@ -7,15 +7,8 @@ import user, {checkAuth, logout} from "../src/store/auth/userSlice";
 import { AddNewAds } from '../src/Pages/AddNewAds/AddNewAds';
 import {UserAds} from "./Pages/MyAds/UserAds";
 import {ProductInfo} from "./Pages/ProductInfo/ProductInfo";
-<<<<<<< HEAD
 import {ReviewUser} from "./Pages/ReviewUser/ReviewUser";
 
-
-
-=======
-import { About } from './Pages/About/About';
-import { Feedback } from './Pages/Feedback/Feedback';
->>>>>>> c5e6bb8e9be9865953fd909af3d258321fa1fff4
 function App({store}) {
 
     const dispath = useDispatch()
