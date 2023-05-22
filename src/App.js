@@ -9,6 +9,8 @@ import {UserAds} from "./Pages/MyAds/UserAds";
 import {ProductInfo} from "./Pages/ProductInfo/ProductInfo";
 import {ReviewUser} from "./Pages/ReviewUser/ReviewUser";
 import {ShowAds} from "./Pages/ShowAds/ShowAds";
+import {About} from "./Pages/About/About";
+import {Feedback} from "./Pages/Feedback/Feedback";
 
 function App({store}) {
 
@@ -34,6 +36,8 @@ function App({store}) {
                 <Route path='/review/:id' element={<ReviewUser />} />
                 <Route path='/showReview/:id' element={<ReviewUser />} />
                 <Route path='/search' element={<ShowAds />} />
+                <Route path='/about' element={<About/>}/>
+                <Route path='/feedback' element={<Feedback/>}/>
 
             </Routes>
         </div>
