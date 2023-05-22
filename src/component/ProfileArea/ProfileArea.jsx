@@ -9,19 +9,21 @@ import { logout } from "../../store/auth/userSlice";
 import {getPhoto} from "../../store/auth/userSelector";
 
 
-const menuDropdown = [
-    {
-        title: 'Мои объявления',
-        path: `profile/${localStorage.getItem('user_id')}`
-    },
-    {
-        title: 'Избранное',
-        path: '/izbrannoe'
-    },
 
-]
 
 export const ProfileArea = ({userName, icon}) => {
+
+    const menuDropdown = [
+        {
+            title: 'Мои объявления',
+            path: `profile/${localStorage.getItem('user_id')}`
+        },
+        {
+            title: 'Избранное',
+            path: '/izbrannoe'
+        },
+
+    ]
 
     const [isOpen, setIsOpen] = useState(false)
 

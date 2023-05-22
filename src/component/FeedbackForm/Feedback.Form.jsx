@@ -17,7 +17,7 @@ export const FeedbackForm = ()=>{
     }
     const handleSubmit =(event)=>{
             event.preventDefault();
-            axios.post('https://getit.herokuapp.com/feedback/feedback', {
+            axios.post('http://localhost:8080/feedback/feedback', {
               email: email,
               text: message,
               topic: topic
