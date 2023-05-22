@@ -1,17 +1,35 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import styles from './SearchBlock.module.css'
 import cn from "classnames";
 import {Icon} from "../Icons/Icon";
 import {Input} from "../Input/Input";
 import logo from './lg.png'
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {getAdsOnRequest} from "./store/searchSlice";
 
 export const SearchBlock = ({className}) => {
 
+    const [value, setValue] = useState('')
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const handleValue = (event) => {
+        setValue(event.target.value)
+    }
+
+
     const [scroll, setScroll] = React.useState(0);
+
     const handleScroll = () => {
         setScroll(window.scrollY);
     };
+
+    const findAd = () => {
+        dispatch(getAdsOnRequest(value))
+        navigate(`/search`, { state: { from: location.pathname } })
+    }
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
@@ -29,7 +47,7 @@ export const SearchBlock = ({className}) => {
                     <img src={logo} className={styles.logo}  />
                 </Link>
                 <div className={styles.searchBlock}>
-                    <Input className={styles.input} button buttonText='Найти' />
+                    <Input value={value} onChange={handleValue} onClick={findAd} className={styles.input} button buttonText='Найти' />
                 </div>
             </div>
 

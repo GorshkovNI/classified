@@ -16,15 +16,7 @@ export const Categories = () => {
                         <a className={styles.link} href="/housing">Недвижимость</a>
                     </div>
                 </div>
-                <div className={styles.categoryColumn}>
-                    <div className={styles.categoryItem}>
-                        <a className={styles.link} href="/electronic">Электроника</a>
-                    </div>
-                    <div className={styles.categoryItem}>
-                        <a className={styles.link} href="/accessories">Аксессуары</a>
-                    </div>
-                    <div className={styles.categoryItem}></div>
-                </div>
+
                 <div className={styles.categoryColumn}>
                     <div className={styles.categoryItem}></div>
                     <div className={styles.categoryItem}></div>

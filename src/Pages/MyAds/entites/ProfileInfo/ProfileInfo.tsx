@@ -15,12 +15,13 @@ import {Link} from "react-router-dom";
 interface IProfileInfo {
     id: string,
     name: string,
-    avatar: string
+    avatar: string,
+    rating: number
 }
 
 type DispatchType = ThunkDispatch<any, any, any>;
 
-export const ProfileInfo:FC<IProfileInfo> = ({id, name, avatar}) => {
+export const ProfileInfo:FC<IProfileInfo> = ({id, name, avatar, rating}) => {
 
     console.log(id)
     const dispatch:DispatchType = useDispatch()
@@ -57,8 +58,11 @@ export const ProfileInfo:FC<IProfileInfo> = ({id, name, avatar}) => {
                 }
             </div>
             <div className={styles.name}>{name}</div>
-            <Link to={`/review/${id}`}>Оставить отзыв</Link>
-            <Rating rating={5}  onRatingSelected = {() => {}} />
+            {id !== localStorage.getItem('user_id') && <Link to={`/review/${id}`}>Оставить отзыв</Link>}
+            <button disabled>
+                Показать отзывы
+            </button>
+            <Rating rating={rating}  onRatingSelected = {() => {}} />
         </div>
     )
 }

@@ -10,7 +10,8 @@ const initialState = {
         user_id: '',
         phone: '',
         email: '',
-        dateRegistration: ''
+        dateRegistration: '',
+        totalRating: 0,
     },
     isUserDataLoading: false,
     errorUserData: false,
@@ -61,6 +62,16 @@ const userAd = createSlice({
             state.userInfo.email = user.email
             state.userInfo.phone = user.phone
             state.userInfo.user_id = user['_id']
+        },
+
+        setRating(state, action){
+            if(action.payload == null){
+                state.userInfo.totalRating = 0
+                return
+            }
+            const count = action.payload.count
+            const totalRating = action.payload.totalRating
+            state.userInfo.totalRating = Number((totalRating/count).toFixed(1))
         }
     }
 })
@@ -70,13 +81,14 @@ export const getProfileInfo = (id) => async (dispatch) => {
         console.log('Запрашиваю данные о профиле')
         dispatch(fetchDataUserLoading())
         const response = await UserAdService.userProfileInfo(id)
+        console.log(response)
         if(response.data.length === 0){
             dispatch(setError)
             return
         }
         dispatch(setInfoUser(response.data?.user))
         dispatch(setAds(response.data?.ads))
-        console.log(response)
+        dispatch(setRating(response.data?.review))
         dispatch(fetchDataUserSuccess())
     }catch (e){
         console.log('ОШИБКА ', e)
@@ -93,10 +105,9 @@ export const deleteAd = (categoryId, ads_id) => async (dispatch) => {
     }
 }
 
-export const setNewReview = (review) => async (dispatch) => {
+export const setNewReview = (id, review) => async (dispatch) => {
     try {
-        console.log(1232314554514)
-        const res = await UserAdService.reviewAd(review)
+        const res = await UserAdService.reviewAd(id, review)
         dispatch(fetchDataUserSuccess())
         console.log(res)
     }catch (e){
@@ -104,5 +115,5 @@ export const setNewReview = (review) => async (dispatch) => {
     }
 }
 
-export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setInfoUser, setAds, setError, removeError, deleteAds,  isLoadAvatar} = userAd.actions
+export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setInfoUser, setAds, setError, removeError, deleteAds,  isLoadAvatar, setRating} = userAd.actions
 export default userAd.reducer

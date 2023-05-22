@@ -26,23 +26,7 @@ export const MainPages = ({ className }) => {
         </div>
         <div className={styles.productArea}>
           <div className={styles.products}>
-            <CardProduct />
-            {<CardProduct id = '1'  price = '2000' title ="Авто2"/>}
-            {<CardProduct/>}
-            {<CardProduct/>}
-            {<CardProduct />}
-            {<CardProduct />}
-            {<CardProduct />}
-            {<CardProduct />}
-            {<CardProduct />}
-            {<CardProduct />}
-            {/* {<CardProduct />} */}
-            {/* {<CardProduct />} */}
-            {/*<CardProduct />*/}
-            {/*<CardProduct />*/}
-            {/*<CardProduct />*/}
-            {/*<CardProduct />*/}
-            {/*<CardProduct />*/}
+
           </div>
           <div className={styles.infoArea}>
             <span>Ваши последнии покупки</span>

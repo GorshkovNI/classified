@@ -3,7 +3,7 @@ import styles from './Input.module.module.css'
 import {Button} from "../Button/Button";
 import cn from 'classnames'
 
-export const Input = ({className, placeholder, name, type = 'text', id, value, onChange, button, buttonText, incorrect}) => {
+export const Input = ({className, placeholder, name, type = 'text', id, value, onChange, onClick, button, buttonText, incorrect}) => {
 
     const inputClassname = cn(styles.container, className,{
         [styles.incorrect]: incorrect
@@ -23,7 +23,7 @@ export const Input = ({className, placeholder, name, type = 'text', id, value, o
                 />
             </div>
             <div className={styles.buttonArea}>
-                {button && <Button mode='transparent' className={styles.button}>{buttonText}</Button>}
+                {button && <Button mode='transparent' className={styles.button} onClick={onClick} >{buttonText}</Button>}
             </div>
             
         </div>

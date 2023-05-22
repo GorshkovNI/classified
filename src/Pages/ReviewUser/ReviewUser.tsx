@@ -19,7 +19,7 @@ type DispatchType = ThunkDispatch<any, any, any>;
 
 export const ReviewUser:FC<IReviewUser> = ({}) => {
 
-    const [idAd, setIdAd] = useState<string>('')
+    const [chooseAd, setChooseAd] = useState<string[]>([''])
     const [rating, setRating] = useState<string>('')
     const [review, setReview] = useState<string>('')
 
@@ -33,7 +33,9 @@ export const ReviewUser:FC<IReviewUser> = ({}) => {
     }, [])
 
     const handleChooseAd = (event) => {
-        setIdAd(event.currentTarget.id)
+        const ad = ads.find(item => item['_id'] === event.currentTarget.id)
+        console.log(ad)
+        setChooseAd([ad['_id'], ad.title, ad.photos[0]?.url])
     }
 
     const handleRatingSelected = (index) => {
@@ -41,19 +43,28 @@ export const ReviewUser:FC<IReviewUser> = ({}) => {
     };
 
     const registrationReview = () => {
+
         const newReview = {
-            user_id: user.id,
+            user_id: localStorage.getItem('user_id'),
             text: review,
-            rating: rating
+            rating: Number(rating),
+            idAd: chooseAd[0],
+            title: chooseAd[1],
+            photo: chooseAd[2]
         }
-        dispatch(setNewReview(newReview))
+        dispatch(setNewReview(user.id, newReview))
     }
 
-    console.log(idAd)
+    const whatReview = {
+        id: chooseAd[0],
+        title: chooseAd[1],
+        photo: chooseAd[2]
+    }
+
     return(
         <Layout isSearchBlock={false} >
             <div className={styles.wrapper}>
-                {idAd.length == 0 && ads.map((ad) => {
+                {chooseAd.length === 1 && ads.map((ad) => {
                     const newAd = {
                         id: ad['_id'],
                         title: ad.title,
@@ -61,12 +72,15 @@ export const ReviewUser:FC<IReviewUser> = ({}) => {
                     }
                     return <Card adObj={newAd} getId={handleChooseAd} />
                 })}
-                <div className={styles.review}>
-                    <Rating rating={0} staticMode={false} onRatingSelected = {handleRatingSelected} />
-                    <textarea rows={4} cols={50} name="subject" placeholder="Введите ваше сообщение:"
-                              className="message" value={review} onChange={(e) => {setReview(e.target.value)}} required></textarea>
-                    <Button size='medium' type={''} className={''} onClick={registrationReview}>{"Отправить"}</Button>
-                </div>
+                { chooseAd.length > 1 &&
+                    <div className={styles.review}>
+                        <Card adObj={whatReview} getId={() => {}} />
+                        <Rating rating={0} staticMode={false} onRatingSelected = {handleRatingSelected} />
+                        <textarea rows={4} cols={50} name="subject" placeholder="Введите ваше сообщение:"
+                                  className="message" value={review} onChange={(e) => {setReview(e.target.value)}} required></textarea>
+                        <Button size='medium' type={''} className={''} onClick={registrationReview}>{"Отправить"}</Button>
+                    </div>
+                }
             </div>
 
 

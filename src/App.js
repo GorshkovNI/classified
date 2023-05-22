@@ -8,6 +8,7 @@ import { AddNewAds } from '../src/Pages/AddNewAds/AddNewAds';
 import {UserAds} from "./Pages/MyAds/UserAds";
 import {ProductInfo} from "./Pages/ProductInfo/ProductInfo";
 import {ReviewUser} from "./Pages/ReviewUser/ReviewUser";
+import {ShowAds} from "./Pages/ShowAds/ShowAds";
 
 function App({store}) {
 
@@ -31,6 +32,9 @@ function App({store}) {
                 <Route path='/additem' element={<AddNewAds />} />
                 <Route path='/profile/:id' element={<UserAds />} />
                 <Route path='/review/:id' element={<ReviewUser />} />
+                <Route path='/showReview/:id' element={<ReviewUser />} />
+                <Route path='/search' element={<ShowAds />} />
+
             </Routes>
         </div>
     </BrowserRouter>

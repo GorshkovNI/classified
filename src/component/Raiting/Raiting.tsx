@@ -23,8 +23,8 @@ export const Rating = ({ rating, staticMode = true, onRatingSelected }) => {
         <div className={styles.ratingArea}>
             <span className={styles.numberRating}>{staticMode ? rating : selectedRating}</span>
             {[1, 2, 3, 4, 5].map((index) => {
-                const isFullStar = staticMode ? rating : hoverRating >= index;
-                const isHalfStar = staticMode ? rating : hoverRating >= index - 0.5 && rating < index;
+                const isFullStar = staticMode ? rating >= index : hoverRating >= index;
+                const isHalfStar = staticMode ? rating >= index - 0.5 && rating < index : (hoverRating >= index - 0.5 && rating < index);
 
                 return (
                     <span

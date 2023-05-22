@@ -16,33 +16,33 @@ import { MainPages } from "../../Pages/MainPages/MainPages";
 import { setFavorites,toggleFavorites } from "../../store/favorites/favoritesSlice";
 import { useDispatch } from "react-redux";
 
-export const CardProduct = ({ id = '3645', title = 'Авто31', city = 'Екатеринбург', price = '', date }) => {
+export const CardProduct = ({ id , title = 'Авто31', city = 'Екатеринбург', price = '', date, photos }) => {
     const dispatch = useDispatch()
     const orders = useSelector((state) => state.favorites.orders);
     const removeFavorites = () =>dispatch(removeFavorites(id));
     const addToFavoritesList = () =>dispatch(setFavorites({id, title, price}));
     return (
         <div className={styles.wrapper}  >
-            <Link to={`/product-info/${id}`} className={styles.link}>
-                <Slider>
-                    <div key={1} className={cn(styles.item, styles.item1)}><img className={styles.image} src={one} /></div>
-                    <div key={2}  className={cn(styles.item, styles.item2)}><img className={styles.image} src={two} /></div>
-                    <div key={3} className={cn(styles.item, styles.item3)}><img className={styles.image} src={three} /></div>
-                </Slider>
-            </Link>
+            {/*<Link to={`/product-info/${id}`} className={styles.link}>*/}
+            {photos.length > 0 &&  <Slider>
+                    {photos.map((photo) => {
+                         return <div className={cn(styles.item, styles.item1)}><img className={styles.image} src={photo.url} /></div>
+                    })}
+                </Slider>}
+            {/*</Link>*/}
             <div className={styles.discription}>
                 <div className={styles.blockNamed}>
-                    <Link to={`/product-info/${id}`} className={styles.link}>
-                        <span className={styles.nameProduct}>{title || 'Клей пва, оптом'} </span>
+                    <Link to={`/ad/${id}`} className={styles.link}>
+                        <span className={styles.nameProduct}>{title} </span>
                     </Link>
                     {
                         !(orders.some(element => element.id === id)) ? <i  id = {id} className="bi bi-heart" style={{fontSize: '21px', color: '#009CF0'}} onClick={()=>{addToFavoritesList({id,title,price})}}></i>
                         : <i id = {id} className="bi bi-heart-fill" style={{fontSize: '21px', color: 'red'}} onClick={()=>{addToFavoritesList({id,title,price})}}></i>
                     }
                 </div>
-                <span className={styles.price}>{formatMoney(5000) || formatMoney(price)}</span>
-                <span className={styles.located}>{city || 'Екатеринбург'} </span>
-                <span className={styles.datePublication}>{date || '26 марта 11:57'} </span>
+                <span className={styles.price}>{formatMoney(price)}</span>
+                <span className={styles.located}>{city} </span>
+                <span className={styles.datePublication}>{date} </span>
             </div>
 
         </div>

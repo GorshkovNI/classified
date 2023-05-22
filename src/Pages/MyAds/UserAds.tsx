@@ -54,14 +54,14 @@ export const UserAds:FC = () => {
     useEffect(()=>{
         dispatch(getProfileInfo(id))
     }, [id])
-    console.log(ads)
+    console.log(userInfo)
     return(
         <Layout isSearchBlock={false}>
             <div className={styles.wrapper}>
                 <div className={styles.container}>
                     <div className={styles.userArea}>
                         {/*<div className={styles.test}></div>*/}
-                        <ProfileInfo id={id} name={userInfo.name} avatar={userInfo.avatar} />
+                        <ProfileInfo id={id} name={userInfo.name} avatar={userInfo.avatar} rating={userInfo.totalRating} />
                     </div>
                     <div>
                         <h3>Мои объявления</h3>

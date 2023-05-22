@@ -12,8 +12,8 @@ export default class UserAdService {
         return $api.post('add-item/deleteAd',{categoryId, ads_id})
     }
 
-    static async reviewAd(review){
+    static async reviewAd(id, review){
         console.log(review)
-        return $api.post(`profile/review`, {review})
+        return $api.post(`profile/review/${id}`, {review})
     }
 }
