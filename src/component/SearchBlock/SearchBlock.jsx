@@ -27,6 +27,9 @@ export const SearchBlock = ({className}) => {
     };
 
     const findAd = () => {
+        if(!value){
+            return
+        }
         dispatch(getAdsOnRequest(value))
         navigate(`/search`, { state: { from: location.pathname } })
     }

@@ -12,6 +12,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 30px 10px;
+    gap: 5px;
 }
 
 .select{

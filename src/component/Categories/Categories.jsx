@@ -7,13 +7,13 @@ export const Categories = () => {
             <div className={styles.categoriesContainer}>
                 <div className={styles.categoryColumn}>
                     <div className={styles.categoryItem}>
-                        <a className={styles.link} href="/transport">Транспорт</a>
+                        <a className={styles.link} href="/transport">Transport</a>
                     </div>
                     <div className={styles.categoryItem}>
-                        <a className={styles.link} href="/work">Работа</a>
+                        <a className={styles.link} href="/work">Emploi</a>
                     </div>
                     <div className={styles.categoryItem}>
-                        <a className={styles.link} href="/housing">Недвижимость</a>
+                        <a className={styles.link} href="/housing">Immobilier</a>
                     </div>
                 </div>
 

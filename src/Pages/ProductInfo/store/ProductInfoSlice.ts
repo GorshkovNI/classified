@@ -72,7 +72,7 @@ const product = createSlice({
 
         setUser: (state: IState, action) => {
             state.user.nameSeller = action.payload.name
-            state.user.idSeller = action.payload._id
+            state.user.idSeller = action.payload['_id']
             state.user.dateRegistration = action.payload.dateRegistration
             state.user.photo = action.payload.photo
         },
@@ -116,6 +116,7 @@ export const fetchProductById = createAsyncThunk(
         dispatch(setUser(user))
         dispatch(setCategory(category))
         dispatch(setPhoto(response.data.currentAd.photos))
+
         dispatch(fetchingDataFinished())
         return response.data
     }

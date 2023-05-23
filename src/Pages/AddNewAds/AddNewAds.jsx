@@ -64,7 +64,7 @@ export const AddNewAds = () => {
               <div className={styles.chooseArea}>
                   {isLoading ? <span>Loading...</span> :
                   <Button className={styles.buttonType} onClick={handleButtonClick}>
-                      {!typeAd.translate ? 'Выберите категорию' : typeAd.translate}
+                      {!typeAd.translate ? 'Choisir une catégorie' : typeAd.translate}
                   </Button>}
                   {isOpen && (
                       <Dropdown className={styles.dropdown}>

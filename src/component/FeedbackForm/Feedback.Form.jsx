@@ -35,7 +35,7 @@ export const FeedbackForm = ()=>{
         <form className="container" style={{ width: '26rem' }} onSubmit={handleSubmit}>
                 <div className="form-outline mb-4 ">
                     <input type="text" id="form4Example1" value={topic} name="topic" className="form-control" onChange={handlerChangeTopic}/>
-                    <label className="form-label" htmlFor="form4Example1" style={{ marginLeft: '0px' }}>Topic</label>
+                    <label className="form-label" htmlFor="form4Example1" style={{ marginLeft: '0px' }}>Sujette</label>
                     <div className="form-notch"><div className="form-notch-leading" style={{ width: '9px' }}></div>
                         <div className="form-notch-middle" style={{ width: '42.4px' }}>
                         </div>
@@ -45,7 +45,7 @@ export const FeedbackForm = ()=>{
                 </div>
                 <div className="form-outline mb-4">
                     <input type="email" value={email} id="form4Example2" name="email" className="form-control" onChange={handlerChangeEmail}/>
-                    <label className="form-label" htmlFor="form4Example2" style={{ marginLeft: '0px' }}>Email address</label>
+                    <label className="form-label" htmlFor="form4Example2" style={{ marginLeft: '0px' }}>Фdresse e-mail</label>
                     <div className="form-notch"><div className="form-notch-leading" style={{ width: '9px' }}>
                     </div>
                         <div className="form-notch-middle" style={{ width: '88.8px' }}>
@@ -66,7 +66,7 @@ export const FeedbackForm = ()=>{
                         </div>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary btn-block mb-4">Send <i className="bi bi-send"></i></button>
+                <button type="submit" className="btn btn-primary btn-block mb-4">Envoyer <i className="bi bi-send"></i></button>
             </form>
     )
 }

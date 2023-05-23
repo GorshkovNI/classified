@@ -70,8 +70,8 @@ export const ProductInfo:React.FC = () => {
                   </h1>
                 </div>
                 <div className={styles.titleActions}>
-                  <Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='love' classNameIcon={styles.buttonIconLove} onClick={() =>{}} >Добавить в избранное</Button>
-                  <Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='edit' classNameIcon={styles.buttonIconEdit} onClick={() =>{}} >Редактировать</Button>
+                  <Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='love' classNameIcon={styles.buttonIconLove} onClick={() =>{}} >Ajouter aux Favoris</Button>
+                  <Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='edit' classNameIcon={styles.buttonIconEdit} onClick={() =>{}} >Modifier</Button>
                 </div>
               </div>
               <div className={styles.viewMainContent}>
@@ -85,13 +85,13 @@ export const ProductInfo:React.FC = () => {
               <div className={styles.descriptionBlock}>
                 <div className={styles.parametrs}>
                   <h2 className={styles.parametrsSpan}>
-                    Город
+                    Ville
                   </h2>
                   <span className={styles.city}>{product.info.city}</span>
                 </div>
                 <div className={styles.parametrs}>
                   <h2 className={styles.parametrsSpan}>
-                    Характеристики
+                    Caractéristiques
                   </h2>
 
                   {/*<Fields />*/}
@@ -100,7 +100,7 @@ export const ProductInfo:React.FC = () => {
                 </div>
                 <div className={styles.parametrs}> 
                     <h2 className={styles.parametrsSpan}>
-                      Описание
+                      Description1
                     </h2>
                     <div className={styles.description}>
                       {/*Какое-то описание*/}
@@ -115,8 +115,8 @@ export const ProductInfo:React.FC = () => {
                 <h1 className={styles.price}>{!isLoading ? formatMoney(product.info.price) : <SkeletonLine width='200' /> }</h1>
               </div>
               <div className={styles.remouteArea}>
-                <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} size='medium' mode="contained" type='text' onClick={() => {}}>Показать телефон</Button>
-                <Button className={cn(styles.remouteButton, styles.remouteButtonMessage)} size='medium' mode="contained" type='text' onClick={() => {}}>Написать сообщение</Button>
+                <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} size='medium' mode="contained" type='text' onClick={() => {}}>Afficher le téléphone</Button>
+                <Button className={cn(styles.remouteButton, styles.remouteButtonMessage)} size='medium' mode="contained" type='text' onClick={() => {}}>Écrire une lettre</Button>
               </div>
               <div className={styles.infoSeller}>
                 {
@@ -127,7 +127,7 @@ export const ProductInfo:React.FC = () => {
                               {product.user.nameSeller}
                             </Link>
                           <span className={styles.rating}>5,0</span>
-                          <span className={styles.time}>{'На гетит с ' + product.user.dateRegistration + ' года'}</span>
+                          <span className={styles.time}>{'Sur GetIt avec ' + product.user.dateRegistration + ' année'}</span>
                         </div>
                         <div className={styles.iconArea}>
                           {product.user.photo ? <img className={styles.avatar} src={product.user.photo} /> : <span className={styles.icon}>{product?.user.nameSeller[0]?.toUpperCase()}</span> }

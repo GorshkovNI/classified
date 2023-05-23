@@ -33,7 +33,7 @@ export const GeolocatedIcon = () => {
     return (
         <>
         <div onClick={toggleDropdown} style={{cursor: 'pointer',}}>
-        <i style={{ color: 'white', fontSize: '1vw',  marginRight:'5px' }} className="bi bi-compass-fill" >  </i>
+        <i style={{ color: 'white', fontSize: '1vw',  marginRight:'0px' }} className="bi bi-geo-alt-fill" >  </i>
         {
             
             city && <span style={{color:'white'}}>{city}</span>

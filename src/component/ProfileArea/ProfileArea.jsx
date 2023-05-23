@@ -15,11 +15,11 @@ export const ProfileArea = ({userName, icon}) => {
 
     const menuDropdown = [
         {
-            title: 'Мои объявления',
+            title: 'Mes annonces',
             path: `profile/${localStorage.getItem('user_id')}`
         },
         {
-            title: 'Избранное',
+            title: 'Favoris',
             path: '/izbrannoe'
         },
 
@@ -72,7 +72,7 @@ export const ProfileArea = ({userName, icon}) => {
                         )
                     })}
                     <div className={styles.title}>
-                        <span className={styles.text} onClick={handleLogout}>Выйти</span>
+                        <span className={styles.text} onClick={handleLogout}>Sortir</span>
                     </div>
                     </div>
                 </Dropdown>

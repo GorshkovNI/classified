@@ -1,0 +1,22 @@
+.categoriesContainer{
+    display: flex;
+}
+
+.categoryColumn{
+    margin-right: 40px;
+}
+
+.categoryItem{
+    margin: 2px 0;
+}
+
+.link{
+    outline: none;
+    text-decoration: none;
+    color: rgb(0, 170, 255);
+    cursor: pointer;
+}
+
+.link:hover{
+    color: var(--hover-red);
+}

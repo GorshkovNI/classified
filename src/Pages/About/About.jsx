@@ -26,8 +26,8 @@ export const About = () => {
                 </div>
                 <div style={{ display: 'flex' }}>
                     <div style={{ textAlign: 'center', marginBottom: '5rem' }} className="px-3">
-                        <p style={{ fontSize: '1.25vw' }}>Мы молодая команда разработчиков энтузиастов, которые решили создать бесплатный сервис для жителей африканских стран. <b>Наша цель: Создать удобную площадку по взаимодействию продавцов и покупателей.</b> Наша команда молода и только набирает обороты.</p>
-                        <h1>Коротко о нашем сервисе:</h1>
+                        <p style={{ fontSize: '1.25vw' }}>Nous sommes une jeune équipe de développeurs enthousiastes qui ont décidé de créer un service gratuit pour les résidents des pays africains. <b>Notre objectif : créer une plate-forme pratique pour l'interaction des vendeurs et des acheteurs.</b> Notre équipe est jeune et ne fait que monter en puissance.</p>
+                        <h1>En bref sur notre service:</h1>
                     </div>
                     <div>
                         <img className="bd-placeholder-img rounded-circle" style={{ width: '100%' }} src={logo4} alt="People" />

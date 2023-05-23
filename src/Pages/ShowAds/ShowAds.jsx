@@ -20,6 +20,7 @@ import {
 import {formatMoney} from "../AddNewAds/categories/utils/formMoney";
 import {setPriceFrom, setPriceTo} from "../../component/SearchBlock/store/searchSlice";
 import Skeleton from "../../component/Skeleton/Skeleton";
+import {ChooseCategories} from "./Categories/ChooseCategories";
 
 export const ShowAds = ({ className }) => {
   const [showFavorites, setShowFavorites] = useState(false)
@@ -71,13 +72,18 @@ export const ShowAds = ({ className }) => {
           </div>
           <div className={styles.infoArea}>
             <h3>Фильтры</h3>
-            <div className={styles.title}>
-              <h4>Цена</h4>
-              <div className={styles.inputBlock}>
-                <input type={'number'} className={styles.input} value={priceTo} onChange={handleSetPriceTo} placeholder='От'></input>
-                <input type={'number'} className={styles.input} value={priceFrom} onChange={handleSetPriceFrom} placeholder='До'></input>
+            <div className={styles.titleFilter}>
+              {/*<h4 className={styles.title}>Цена</h4>*/}
+              {/*<div className={styles.inputBlock}>*/}
+              {/*  <input type={'number'} className={styles.input} value={priceTo} onChange={handleSetPriceTo} placeholder='От'></input>*/}
+              {/*  <input type={'number'} className={styles.input} value={priceFrom} onChange={handleSetPriceFrom} placeholder='До'></input>*/}
+              {/*</div>*/}
+              {/*<button className={styles.buttonSend} onClick={sendPrice}>Send</button>*/}
+              <div>
+                Для более точных фильтров выберите категорию
+                <ChooseCategories />
               </div>
-              <button onClick={sendPrice}>Send</button>
+
             </div>
           </div>
         </div>

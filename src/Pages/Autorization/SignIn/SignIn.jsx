@@ -58,7 +58,7 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
         ) : (
           <>
             <div className={styles.form}>
-              <h2 className={styles.title}>Вход</h2>
+              <h2 className={styles.title}>Entrée</h2>
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="login">
                   Email
@@ -70,13 +70,13 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
                   onChange={handleLogin}
                   type="email"
                   id="email"
-                  placeholder="Введите почту"
+                  placeholder="Entrer votre Email"
                   incorrect={isLoggedIn}
                 />
               </div>
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="password">
-                  Пароль
+                  Mot de passe
                 </label>
                 {/* <input className={styles.input} value={password} onChange={handlePassword} type="password" id="password" placeholder='Введите пароль' /> */}
                 <Input
@@ -85,19 +85,19 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
                   onChange={handlePassword}
                   type="password"
                   id="password"
-                  placeholder="Введите пароль"
+                  placeholder="Entrer le mot de passe"
                   incorrect={isLoggedIn}
                 />
               </div>
               {/*<button className={styles.submitButton} type="submit">Зарегистрироваться</button>*/}
               {isLoggedIn && (
                 <span className={styles.invalidText}>
-                  Неверный логин или пароль!
+                  Identifiant ou mot de passe incorrect!
                 </span>
               )}
               {isActivate && (
                 <span className={styles.invalidText}>
-                  Нужно активировать аккаунт
+                  Besoin d'activer le compte
                 </span>
               )}
               <Button
@@ -110,12 +110,12 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
               </Button>
             </div>
             <div className={styles.toggleArea}>
-              <h3>Еще нет аккаунта на ?</h3>
+              <h3>Vous n'avez pas encore de compte?</h3>
               <button
                 className={styles.toggleButton}
                 onClick={() => toggleActiveTab("registration")}
               >
-                Зарегистрироваться
+                Enregistrer
               </button>
             </div>
           </>

@@ -88,14 +88,14 @@ export const Rent = () => {
     return(
         <>
             <Modal isOpen={isLoading} turnOff={!isError ? true : false} onClose={closeModal}>
-                {!isError ? <Icon name='preloader' className={styles.preloader} onClick={() => {}} /> : <div> Произошла ошибка. Попробуйте еще раз или загрузите объявление чуть позже</div>}
+                {!isError ? <Icon name='preloader' className={styles.preloader} onClick={() => {}} /> : <div> Une erreur est survenue. Veuillez réessayer ou télécharger l'annonce plus tard</div>}
             </Modal>
             <div className={styles.wrapper}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.infoBlock}>
-                        <h3>Расположение</h3>
+                        <h3>Emplacement</h3>
                         <div className={styles.info}>
-                            <span>Адрес</span>
+                            <span>Adresse</span>
                             <input
                                 {...register("city", {
                                     required: true
@@ -110,9 +110,9 @@ export const Rent = () => {
                         </div>
                     </div>
                     <div className={styles.infoBlock}>
-                        <h3>О квартире</h3>
+                        <h3>A propos de l'appartement</h3>
                         <div className={styles.info}>
-                            <span>Количество комнат</span>
+                            <span>Nombre de chambres</span>
                             <input
                                 {...register("rooms", {
                                     required: true
@@ -121,27 +121,27 @@ export const Rent = () => {
                             />
                         </div>
                         <div className={styles.info}>
-                            <span>Общая площадь</span>
+                            <span>Superficie totale</span>
                             <input
                                 {...register("square", {
                                     required: true
                                 })}
                                 type='number'
                             />
-                            <span className={styles.until}>м²</span>
+                            <span className={styles.until}>m²</span>
                         </div>
                         <div className={styles.info}>
-                            <span>Площадь кухни</span>
+                            <span>Coin cuisine</span>
                             <input
                                 {...register("squareKitchen", {
                                     required: true
                                 })}
                                 type='number'
                             />
-                            <span className={styles.until}>м²</span>
+                            <span className={styles.until}>m²</span>
                         </div>
                         <div className={styles.info}>
-                            <span>Этаж</span>
+                            <span>Sol</span>
                             <input
                                 {...register("floor", {
                                     required: true
@@ -150,7 +150,7 @@ export const Rent = () => {
                             />
                         </div>
                         <div className={styles.info}>
-                            <span>Всего этажей</span>
+                            <span>Total des étages</span>
                             <input
                                 {...register("totalFloor", {
                                     required: true
@@ -159,7 +159,7 @@ export const Rent = () => {
                             />
                         </div>
                         <div className={styles.info}>
-                            <span>Санузел</span>
+                            <span>Salle de bains</span>
                             <input
                                 {...register("bathroom", {
                                     required: true
@@ -167,26 +167,26 @@ export const Rent = () => {
                                 list="bathroom"
                             />
                             <datalist id="bathroom">
-                                <option>Совмещенный</option>
-                                <option>Раздельный</option>
+                                <option>Combiné</option>
+                                <option>Séparé</option>
                             </datalist>
                         </div>
                         <div className={styles.info}>
-                            <span>Цена</span>
+                            <span>Prix</span>
                             <input
                                 {...register('price', {
                                 })}
                             />
 
                             <datalist id="bathroom">
-                                <option>Совмещенный</option>
-                                <option>Раздельный</option>
+                                <option>Combiné</option>
+                                <option>Séparé</option>
                             </datalist>
                         </div>
                     </div>
                     <div className={styles.infoBlock}>
                         <div className={styles.info}>
-                            <span>Фото</span>
+                            <span>Photo</span>
                             <div className={styles.uploader}>
                                 <label htmlFor='photos' className={styles.uploaderPhotoLabel}>
                                     {/*{photos.length >= 1 ? <img className={styles.mainPhoto} src={photos[0].url} /> : <Icon name='photo' className={styles.preloaderIcon} />}*/}
@@ -205,8 +205,8 @@ export const Rent = () => {
                             </div>
                         </div>
                         <div className={styles.info}>
-                            <span>Описание</span>
-                            <textarea value={description} onChange={handleTextArea} className={styles.textarea} placeholder="Опишите ваше авто"></textarea>
+                            <span>Description</span>
+                            <textarea value={description} onChange={handleTextArea} className={styles.textarea} placeholder="Décrivez votre voiture"></textarea>
                         </div>
                     </div>
                     <input type='submit' />

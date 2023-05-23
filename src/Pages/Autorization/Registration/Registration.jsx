@@ -72,7 +72,7 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
   };
 
   const notify = (email) =>{
-    toast.success(`Активируйте аккаунт в почте ${email} `, {
+    toast.success(`Activez votre compte de messagerie ${email} `, {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -91,10 +91,10 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
         
         <>
         <div className={styles.form}>
-          <h2 className={styles.title}>Регистрация</h2>
+          <h2 className={styles.title}>Inscription</h2>
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="email">
-              Имя
+              Nom
             </label>
             {/* <input className={styles.input} type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Введите имя" required /> */}
             <Input
@@ -103,7 +103,7 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
               onChange={handleLogin}
               type="text"
               id="name"
-              placeholder="Введите пароль"
+              placeholder="Entrer le mot de passe"
             />
           </div>
           <div className={styles.formGroup}>
@@ -117,12 +117,12 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
               id="email"
               value={email}
               onChange={handleEmail}
-              placeholder="Введите email"
+              placeholder="Entrer votre Email"
             />
           </div>
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="phone">
-              Phone
+              Téléphone
             </label>
             {/* <input className={styles.input} type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Введите email" required /> */}
             <Input
@@ -131,12 +131,12 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
               id="phone"
               value={phone}
               onChange={handlePhone}
-              placeholder="Введите номер телефона"
+              placeholder="Entrez le numéro de téléphone"
             />
           </div>
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="password">
-              Пароль
+              Mot de passe
             </label>
             {/* <input
               className={styles.input}

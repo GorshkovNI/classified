@@ -58,9 +58,9 @@ export const ProfileInfo:FC<IProfileInfo> = ({id, name, avatar, rating}) => {
                 }
             </div>
             <div className={styles.name}>{name}</div>
-            {id !== localStorage.getItem('user_id') && <Link to={`/review/${id}`}>Оставить отзыв</Link>}
+            {isAuth && id !== localStorage.getItem('user_id') && <Link to={`/review/${id}`}>Laisser les commentaires</Link>}
             <button disabled>
-                Показать отзывы
+                Afficher les avis
             </button>
             <Rating rating={rating}  onRatingSelected = {() => {}} />
         </div>

@@ -20,7 +20,7 @@ export const getAdWithFilter = createSelector(
 
 const intervalSum = (min, max) => {
     return (value) => {
-        const sum = Number(value.replace(' ', ''))
+        const sum = Number(value.replaceAll(' ', ''))
         const sumTo = min ? min : 0
         const sumFrom = max ? max : Infinity
         console.log(sum >= sumTo && sum <= sumFrom)

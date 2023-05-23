@@ -4,7 +4,7 @@
     margin-top: 10px; */
 }
 
-.title {
+.titleFilter {
     padding: 0;
     font-size: 24px;
     font-weight: 500;
@@ -37,6 +37,22 @@
 .input{
     font-size: 16px;
     padding: 5px;
-    width: 100px;
+    width: 150px;
     height: 20px;
+    margin-right: 10px;
+}
+
+.title{
+    font-size: 18px;
+    color: var(--grey-text);
+}
+
+.buttonSend{
+    border: 0;
+    background-color: var(--blue-light);
+    font-size: 16px;
+    border-radius: 6px;
+    width: 90px;
+    height: 25px;
+    margin-top: 25px;
 }

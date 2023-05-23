@@ -228,16 +228,16 @@ export const Car = ({dataOfEdit}) => {
     return(
         <>
         <Modal isOpen={isLoading} turnOff={!isError ? true : false} onClose={closeModal}>
-            {!isError ? <Icon name='preloader' /> : <div> Произошла ошибка. Попробуйте еще раз или загрузите объявление чуть позже</div>}
+            {!isError ? <Icon name='preloader' /> : <div>Une erreur est survenue. Veuillez réessayer ou télécharger l'annonce plus tard</div>}
         </Modal>
             <div className={styles.wrapper}>
                 <div className={styles.info}>
                     <div className={styles.infoArea}>
-                        <h3>Технические характеристики</h3>
+                        <h3>Caractéristiques</h3>
                         <div className={styles.infoAreaItem}>
                             <span>Марка</span>
                             <select id='marka' className={styles.select} value={selectedMarkId} onChange={handleSelectedMark}>
-                                <option value="">Выберите значение</option>
+                                <option value="">Choisissez une valeur</option>
                                 {marks.map((item) => {
                                     return <option value={item.id}>{item.marka}</option>
                                 })}
@@ -245,9 +245,9 @@ export const Car = ({dataOfEdit}) => {
                         </div>
                         { selectedMarkId &&
                                 <div className={styles.infoAreaItem}>
-                                    <span>Модель</span>
+                                    <span>Modèle</span>
                                     <select id='model' className={styles.select} value={selectedModelId} onChange={handleSelectedModel}>
-                                        <option value="">Выберите значение</option>
+                                        <option value="">Choisissez une valeur</option>
                                         {model?.map((item) => {
                                             return <option value={item.id}>{item.model}</option>
                                         })}
@@ -256,9 +256,9 @@ export const Car = ({dataOfEdit}) => {
                         }
                         { selectedModelId &&
                             <div className={styles.infoAreaItem}>
-                                <span>Год выпуска</span>
+                                <span>Année d'émission</span>
                                 <select id='year' className={styles.select} value={selectedYear} onChange={handleSelectedYear}>
-                                    <option value="">Выберите значение</option>
+                                    <option value="">Choisissez une valeur</option>
                                     {year?.map((item) => {
                                         return <option value={item}>{item}</option>
                                     })}
@@ -268,9 +268,9 @@ export const Car = ({dataOfEdit}) => {
 
                     </div>
                     <div className={styles.infoCarItem}>
-                        <h3>Регистрационные данные</h3>
+                        <h3>Données d'enregistrement</h3>
                         <div className={styles.infoAreaItem}>
-                            <span>Введите ГОС. Номер</span>
+                            <span>Entrez le numéro d'état</span>
                             <input type='text' value={registrationnubmer} onChange={(e) => setRegistrationNumber(e.target.value)} />
                         </div>
                         <div className={styles.infoAreaItem}>
@@ -287,15 +287,15 @@ export const Car = ({dataOfEdit}) => {
                         </div>
                     </div>
                     <div className={styles.infoCarItem}>
-                        <h3>Внешний вид</h3>
+                        <h3>Apparence</h3>
                         <div className={styles.infoAreaItem}>
-                            <span>Цвет</span>
+                            <span>Couleur</span>
                             {/*<input type='text' value={color} onChange={(e) => setColor(e.target.value)} />*/}
                             <Color handleColor={handleColor}  />
 
                         </div>
                         <div className={styles.infoAreaItem}>
-                            <span>Фото</span>
+                            <span>Photo</span>
                             <div className={styles.uploader}>
                                 <label htmlFor='photo' className={styles.uploaderPhotoLabel}>
                                     {/*{photos.length >= 1 ? <img className={styles.mainPhoto} src={photos[0].url} /> : <Icon name='photo' className={styles.preloaderIcon} />}*/}
@@ -316,21 +316,21 @@ export const Car = ({dataOfEdit}) => {
                         </div>
                     </div>
                     <div className={styles.infoCarItem}>
-                        <h3>История эксплуатации и состояние</h3>
+                        <h3>Historique et état de fonctionnement</h3>
                         <div className={styles.infoAreaItem}>
-                            <span>Пробег</span>
+                            <span>Kilométrage</span>
                             <input className={styles.input} type='number' value={mileage} onChange={(e) => setMileage(e.target.value)} />
-                            <span className={styles.postscript}>км</span>
+                            <span className={styles.postscript}>km</span>
                         </div>
                         <div className={styles.infoAreaItem}>
-                            <span>Состояние</span>
+                            <span>État</span>
                             <div>
-                                <RadioButton className={styles.labelRadio} classNameInput={styles.inputRadio} name="state" value="crash" label="Битая" checked={selectedValue === 'crash'} onChange={handleOptionChange} />
-                                <RadioButton className={styles.labelRadio} classNameInput={styles.inputRadio} name="state" value="uncrash" label="Не битая" checked={selectedValue === 'uncrash'} onChange={handleOptionChange} />
+                                <RadioButton className={styles.labelRadio} classNameInput={styles.inputRadio} name="state" value="crash" label="Battu" checked={selectedValue === 'crash'} onChange={handleOptionChange} />
+                                <RadioButton className={styles.labelRadio} classNameInput={styles.inputRadio} name="state" value="uncrash" label="Pas battu" checked={selectedValue === 'uncrash'} onChange={handleOptionChange} />
                             </div>
                         </div>
                         <div className={styles.infoAreaItem}>
-                            <span>Владельцев</span>
+                            <span>Les propriétaires</span>
                             <div>
                                 <RadioButton className={styles.ownersInput} classNameInput={styles.inputRadio} name="owner" value="1" checked={selectedOwner === "1"} label="1" onChange={handleChangeOwner} />
                                 <RadioButton className={styles.ownersInput} classNameInput={styles.inputRadio} name="owner" value="2" checked={selectedOwner === "2"} label="2" onChange={handleChangeOwner} />
@@ -341,15 +341,15 @@ export const Car = ({dataOfEdit}) => {
                     </div>
                     <div className={styles.infoCarItem}>
                         <div className={styles.infoAreaItem}>
-                            <h3>Цена</h3>
+                            <h3>Prix</h3>
                             <input type='text' value={formatMoney(price)} onChange={(e) => setPrice(e.target.value)}  />
                         </div>
                         <div className={styles.infoAreaItem}>
-                            <h3>Описание</h3>
-                            <textarea ref={refTextarea} value={description} onChange={handleTextArea} className={styles.textarea} placeholder="Опишите ваше авто"></textarea>
+                            <h3>Description</h3>
+                            <textarea ref={refTextarea} value={description} onChange={handleTextArea} className={styles.textarea} placeholder="Décrivez votre voiture"></textarea>
                         </div>
                         <div className={styles.infoAreaItem}>
-                            <h3>Выберите город</h3>
+                            <h3>Choisissez la ville</h3>
                             <input value={city} name="city" list="cities" onChange={(e) => setCity(e.target.value)}/>
                             <datalist id="cities">
                                 {cityPlusCountry.map((item) => {
@@ -358,8 +358,8 @@ export const Car = ({dataOfEdit}) => {
                             </datalist>
                         </div>
                     </div>
-                    <Button size='medium' onClick={sendInfo}>Отправить</Button>
-                    {!isFilled && <div style={{color: 'var(--hover-red)'}}>Проверьте все поля</div>}
+                    <Button size='medium' onClick={sendInfo}>Envoyer</Button>
+                    {!isFilled && <div style={{color: 'var(--hover-red)'}}>Vérifier tous les champs</div>}
                 </div>
             </div>
         </>

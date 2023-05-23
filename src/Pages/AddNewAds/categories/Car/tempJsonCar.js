@@ -2484,8 +2484,8 @@ export const car = [
             },
             {
                 "id": "1ER",
-                "name": "1 серии",
-                "cyrillic-name": "1 серии",
+                "name": "1 série",
+                "cyrillic-name": "1 série",
                 "class": "C",
                 "year-from": 2004,
                 "year-to": null
@@ -2500,24 +2500,24 @@ export const car = [
             },
             {
                 "id": "2ER",
-                "name": "2 серии",
-                "cyrillic-name": "2 серии",
+                "name": "2 série",
+                "cyrillic-name": "2 série",
                 "class": "C",
                 "year-from": 2014,
                 "year-to": null
             },
             {
                 "id": "2ACTIVETOURER",
-                "name": "2 серии Active Tourer",
-                "cyrillic-name": "2 серии Актив Турер",
+                "name": "2 série Active Tourer",
+                "cyrillic-name": "2 série Актив Турер",
                 "class": "M",
                 "year-from": 2014,
                 "year-to": null
             },
             {
                 "id": "2GRANDTOURER",
-                "name": "2 серии Gran Tourer",
-                "cyrillic-name": "2 серии гран турер",
+                "name": "2 série Gran Tourer",
+                "cyrillic-name": "2 série гран турер",
                 "class": "M",
                 "year-from": 2015,
                 "year-to": null
@@ -2532,8 +2532,8 @@ export const car = [
             },
             {
                 "id": "3ER",
-                "name": "3 серии",
-                "cyrillic-name": "3 серии",
+                "name": "3 série",
+                "cyrillic-name": "3 série",
                 "class": "D",
                 "year-from": 1975,
                 "year-to": null
@@ -2596,16 +2596,16 @@ export const car = [
             },
             {
                 "id": "4",
-                "name": "4 серии",
-                "cyrillic-name": "4 серии",
+                "name": "4 série",
+                "cyrillic-name": "4 série",
                 "class": "D",
                 "year-from": 2013,
                 "year-to": null
             },
             {
                 "id": "5ER",
-                "name": "5 серии",
-                "cyrillic-name": "5 серии",
+                "name": "5 série",
+                "cyrillic-name": "5 série",
                 "class": "E",
                 "year-from": 1972,
                 "year-to": null
@@ -2644,8 +2644,8 @@ export const car = [
             },
             {
                 "id": "6ER",
-                "name": "6 серии",
-                "cyrillic-name": "6 серии",
+                "name": "6 série",
+                "cyrillic-name": "6 série",
                 "class": "E",
                 "year-from": 1976,
                 "year-to": null
@@ -2660,8 +2660,8 @@ export const car = [
             },
             {
                 "id": "7ER",
-                "name": "7 серии",
-                "cyrillic-name": "7 серии",
+                "name": "7 série",
+                "cyrillic-name": "7 série",
                 "class": "F",
                 "year-from": 1977,
                 "year-to": null
@@ -2676,8 +2676,8 @@ export const car = [
             },
             {
                 "id": "8ER",
-                "name": "8 серии",
-                "cyrillic-name": "8 серии",
+                "name": "8 série",
+                "cyrillic-name": "8 série",
                 "class": "S",
                 "year-from": 1989,
                 "year-to": null

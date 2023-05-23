@@ -36,8 +36,8 @@ export const Header = ({
         <header className={styles.wrapper}>
             <div className={styles.container}>
                 <div className={styles.leftSide}>
-                    <Link to="/" style={{ textDecoration: "none" }}><Button size='medium' mode='primary'>{/* <i className="bi bi-building"></i> */}Main</Button></Link>
-                    <Link to="/about" style={{ textDecoration: "none" }}><Button size='medium' mode='primary'>{/* <i className="bi bi-building"></i> */}About</Button></Link>
+                    <Link to="/" style={{ textDecoration: "none" }}><Button size='medium' mode='transparent'>{/* <i className="bi bi-building"></i> */}Principal</Button></Link>
+                    <Link to="/about" style={{ textDecoration: "none" }}><Button size='medium' mode='transparent'>{/* <i className="bi bi-building"></i> */}À propos de nous</Button></Link>
                     {/* <Link to="/feedback" style={{ textDecoration: "none" }}><Button size='medium' mode='primary'><i className="bi bi-building"></i> Feedback</Button></Link>*/}
                 </div>
 
@@ -53,9 +53,9 @@ export const Header = ({
                         <Icon className={cn(styles.button, styles.love)} name='love' onClick={showFavoriteModal} />
                         {/* <Icon className={cn(styles.button, styles.cart)} name='cart' /> */}
                     </div>
-                    {!isLoggedIn ? <Button size='medium' mode='transparent' onClick={toggleModal} >{isLoading ? 'Loading...' : 'Вход и регистрация'}</Button> : <ProfileArea userName={isName} />}
+                    {!isLoggedIn ? <Button size='medium' mode='transparent' onClick={toggleModal} >{isLoading ? 'Loading...' : 'Connexion et inscription'}</Button> : <ProfileArea userName={isName} />}
                     <Link className={styles.link} to={'/addItem'}>
-                        <Button size='medium' mode='primary' icon='search' >Разместить объявление</Button>
+                        <Button size='medium' mode='primary' icon='search' >Déposer une annonce</Button>
                     </Link>
                 </div>
             </div>

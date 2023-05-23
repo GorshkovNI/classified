@@ -22,14 +22,14 @@ export const MainPages = ({ className }) => {
       <div className={styles.wrapper}>
         <Categories />
         <div className={styles.title}>
-          <h3 className={styles.textRecomendation}>Рекомендации для вас</h3>
+          <h3 className={styles.textRecomendation}>Des recommandations pour vous</h3>
         </div>
         <div className={styles.productArea}>
           <div className={styles.products}>
 
           </div>
           <div className={styles.infoArea}>
-            <span>Ваши последнии покупки</span>
+            <span>Vos derniers achats</span>
           </div>
         </div>
       </div>

@@ -64,7 +64,7 @@ export const UserAds:FC = () => {
                         <ProfileInfo id={id} name={userInfo.name} avatar={userInfo.avatar} rating={userInfo.totalRating} />
                     </div>
                     <div>
-                        <h3>Мои объявления</h3>
+                        <h3>Mes annonces</h3>
                         <div className={styles.adsAres}>
                             {!isLoading ? (
                                 ads.length !== 0 ? (
