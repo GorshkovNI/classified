@@ -16,7 +16,7 @@ import { MainPages } from "../../Pages/MainPages/MainPages";
 import { setFavorites,toggleFavorites } from "../../store/favorites/favoritesSlice";
 import { useDispatch } from "react-redux";
 
-export const CardProduct = ({ id , title = 'Авто31', city = 'Екатеринбург', price = '', date, photos }) => {
+export const CardProduct = ({ id , title , city, price, date, photos }) => {
     const dispatch = useDispatch()
     const orders = useSelector((state) => state.favorites.orders);
     const removeFavorites = () =>dispatch(removeFavorites(id));

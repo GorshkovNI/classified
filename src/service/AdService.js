@@ -17,4 +17,8 @@ export default class AdService{
         return $api.post(`ad/${id}`, {id} )
     }
 
+    static async getAdByCity(city){
+        return $api.post('search/adsByCity', {city})
+    }
+
 }

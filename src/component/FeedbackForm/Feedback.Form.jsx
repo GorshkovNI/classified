@@ -45,7 +45,7 @@ export const FeedbackForm = ()=>{
                 </div>
                 <div className="form-outline mb-4">
                     <input type="email" value={email} id="form4Example2" name="email" className="form-control" onChange={handlerChangeEmail}/>
-                    <label className="form-label" htmlFor="form4Example2" style={{ marginLeft: '0px' }}>Фdresse e-mail</label>
+                    <label className="form-label" htmlFor="form4Example2" style={{ marginLeft: '0px' }}>Adresse e-mail</label>
                     <div className="form-notch"><div className="form-notch-leading" style={{ width: '9px' }}>
                     </div>
                         <div className="form-notch-middle" style={{ width: '88.8px' }}>

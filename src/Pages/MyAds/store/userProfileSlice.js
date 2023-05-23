@@ -13,6 +13,7 @@ const initialState = {
         dateRegistration: '',
         totalRating: 0,
     },
+    city: '',
     isUserDataLoading: false,
     errorUserData: false,
     emptyData: false,
@@ -72,6 +73,11 @@ const userAd = createSlice({
             const count = action.payload.count
             const totalRating = action.payload.totalRating
             state.userInfo.totalRating = Number((totalRating/count).toFixed(1))
+        },
+
+        setNewCity(state, action){
+            console.log(action.payload)
+            state.city = action.payload
         }
     }
 })
@@ -115,5 +121,5 @@ export const setNewReview = (id, review) => async (dispatch) => {
     }
 }
 
-export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setInfoUser, setAds, setError, removeError, deleteAds,  isLoadAvatar, setRating} = userAd.actions
+export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setInfoUser, setAds, setError, removeError, deleteAds,  isLoadAvatar, setRating, setNewCity} = userAd.actions
 export default userAd.reducer
