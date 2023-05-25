@@ -10,18 +10,31 @@ import {changeAvatar, setPhoto} from "../../../../store/auth/userSlice";
 import {deleteAd} from "../../store/userProfileSlice";
 import {ThunkDispatch} from "redux-thunk";
 import {Link} from "react-router-dom";
+import {Overlay} from "../../../../component/Overlay/Overlay";
+import {Card} from "../../../ReviewUser/Card/Card";
+import {CardReview} from "../../component/CardReview/CardReview";
 
 
 interface IProfileInfo {
     id: string,
     name: string,
     avatar: string,
-    rating: number
+    rating: number,
+    review: []
 }
 
 type DispatchType = ThunkDispatch<any, any, any>;
 
-export const ProfileInfo:FC<IProfileInfo> = ({id, name, avatar, rating}) => {
+export const ProfileInfo:FC<IProfileInfo> = ({id, name, avatar, rating, review}) => {
+
+    const [showOverlay, setShowOverlay] = useState(false);
+    const toggleOverlay = () => {
+        setShowOverlay(!showOverlay);
+    };
+
+    const closeOverlay = () => {
+        setShowOverlay(false)
+    }
 
     console.log(id)
     const dispatch:DispatchType = useDispatch()
@@ -59,10 +72,19 @@ export const ProfileInfo:FC<IProfileInfo> = ({id, name, avatar, rating}) => {
             </div>
             <div className={styles.name}>{name}</div>
             {isAuth && id !== localStorage.getItem('user_id') && <Link to={`/review/${id}`}>Laisser les commentaires</Link>}
-            <button disabled>
+            <button className={styles.buttonReview} onClick={toggleOverlay}>
                 Afficher les avis
             </button>
             <Rating rating={rating}  onRatingSelected = {() => {}} />
+
+                {showOverlay && <Overlay closeOverlay={closeOverlay}>
+                    <div className={styles.reviews}>
+                    {review.length > 0 && review.map((item) => {
+                        return <CardReview adObj={item} getId={() => {}}  />
+                    })}
+                    </div>
+                </Overlay>}
+
         </div>
     )
 }

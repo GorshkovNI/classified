@@ -23,7 +23,8 @@ export const MainPages = () => {
 
 
   useEffect(() => {
-    dispatch(getAdsByCity(city))
+    const c = city ? city : localStorage.getItem('city')
+    dispatch(getAdsByCity(c))
   }, [city])
 
   const adsCurrentCity = useSelector(getAdsCurrentCity)

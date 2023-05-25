@@ -73,15 +73,15 @@ export const ShowAds = ({ className }) => {
           <div className={styles.infoArea}>
             <h3>Фильтры</h3>
             <div className={styles.titleFilter}>
-              {/*<h4 className={styles.title}>Цена</h4>*/}
-              {/*<div className={styles.inputBlock}>*/}
-              {/*  <input type={'number'} className={styles.input} value={priceTo} onChange={handleSetPriceTo} placeholder='От'></input>*/}
-              {/*  <input type={'number'} className={styles.input} value={priceFrom} onChange={handleSetPriceFrom} placeholder='До'></input>*/}
-              {/*</div>*/}
-              {/*<button className={styles.buttonSend} onClick={sendPrice}>Send</button>*/}
+              <h4 className={styles.title}>Цена</h4>
+              <div className={styles.inputBlock}>
+                <input type={'number'} className={styles.input} value={priceTo} onChange={handleSetPriceTo} placeholder='От'></input>
+                <input type={'number'} className={styles.input} value={priceFrom} onChange={handleSetPriceFrom} placeholder='До'></input>
+              </div>
+              <button className={styles.buttonSend} onClick={sendPrice}>Send</button>
               <div>
-                Для более точных фильтров выберите категорию
-                <ChooseCategories />
+                {/*Для более точных фильтров выберите категорию*/}
+                {/*<ChooseCategories />*/}
               </div>
 
             </div>

@@ -61,7 +61,7 @@ export const UserAds:FC = () => {
                 <div className={styles.container}>
                     <div className={styles.userArea}>
                         {/*<div className={styles.test}></div>*/}
-                        <ProfileInfo id={id} name={userInfo.name} avatar={userInfo.avatar} rating={userInfo.totalRating} />
+                        <ProfileInfo id={id} name={userInfo.name} avatar={userInfo.avatar} rating={userInfo.totalRating} review={userInfo.reviews} />
                     </div>
                     <div>
                         <h3>Mes annonces</h3>

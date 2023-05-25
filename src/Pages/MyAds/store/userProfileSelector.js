@@ -5,3 +5,4 @@ export const getAds = (state) => state.userAd.ads
 export const getEmptyData = (state) => state.userAd.emptyData
 export const getUserInfo = (state) => state.userAd.userInfo
 export const getNewCity = (state) => state.userAd.city
+export const getErrorReview = (state) => state.userAd.errorSetReview

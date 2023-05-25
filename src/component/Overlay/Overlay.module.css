@@ -1,0 +1,34 @@
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.30);
+}
+
+.container{
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 500px;
+}
+
+.content{
+    flex: 1;
+    height: 100vh; /* Занимает всю высоту окна */
+    background-color: white; /* Цвет области контента */
+    padding: 20px;
+    overflow-y: auto; /* Позволяет прокручивать содержимое, если оно не помещается на экране */
+}
+
+.close{
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+}

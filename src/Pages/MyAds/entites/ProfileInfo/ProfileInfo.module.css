@@ -60,3 +60,20 @@
     position: absolute;
     height: 150px;
 }
+
+.buttonReview{
+    border: 0;
+    padding: 5px;
+    background-color: transparent;
+    color: var(--blue-light);
+}
+
+.buttonReview:hover{
+    color: var(--hover-red);
+}
+
+.reviews{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

@@ -1,6 +1,7 @@
 import * as React from "react";
 import {FC, useEffect, useState} from "react";
 import styles from './Card.module.css'
+import {Rating} from "../../../component/Raiting/Raiting";
 
 
 interface ICard{

@@ -8,7 +8,7 @@ import cn from 'classnames'
 import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getIsLoading, getName, getState} from "./store/ProductInfoSelector";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {fetchProductById} from "./store/ProductInfoSlice";
 import {ThunkDispatch} from "redux-thunk";
 import SkeletonUserArea from "./asset/SkeletonUserArea";
@@ -20,6 +20,12 @@ type DispatchType = ThunkDispatch<any, any, any>;
 
 
 export const ProductInfo:React.FC = () => {
+
+  const [showNumber, setShowNumber] = useState<boolean>(false)
+
+  const handleShowPhone = () => {
+    setShowNumber(true)
+  }
 
   const { id } = useParams()
   const dispatch: DispatchType = useDispatch()
@@ -43,7 +49,7 @@ export const ProductInfo:React.FC = () => {
     }
   })
 
-  console.log(product.info.description)
+  console.log(product)
   const description = product.info.description?.split('<br/>').map((paragraph, index) => {
     return (
         <p key={index}>{paragraph}</p>
@@ -115,7 +121,7 @@ export const ProductInfo:React.FC = () => {
                 <h1 className={styles.price}>{!isLoading ? formatMoney(product.info.price) : <SkeletonLine width='200' /> }</h1>
               </div>
               <div className={styles.remouteArea}>
-                <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} size='medium' mode="contained" type='text' onClick={() => {}}>Afficher le téléphone</Button>
+                <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} size='medium' mode="contained" type='text' onClick={handleShowPhone}>{showNumber ? product.user.phone : 'Afficher le téléphone'}</Button>
                 <Button className={cn(styles.remouteButton, styles.remouteButtonMessage)} size='medium' mode="contained" type='text' onClick={() => {}}>Écrire une lettre</Button>
               </div>
               <div className={styles.infoSeller}>

@@ -3,25 +3,55 @@ import styles from './Review.module.css'
 import {FC, useEffect, useState} from "react";
 import {Layout} from "../../component/Layout/Layout";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
-import {getAds} from "../MyAds/store/userProfileSelector";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {getAds, getErrorReview, getIsLoading} from "../MyAds/store/userProfileSelector";
 import {ThunkDispatch} from "redux-thunk";
 import {getProfileInfo, setNewReview } from "../MyAds/store/userProfileSlice";
 import {Card} from "./Card/Card";
 import {Rating} from "../../component/Raiting/Raiting";
 import {Button} from "../../component/Button/Button";
+import {getRedirect} from "../../store/ad/adSelector";
+import {toast, ToastContainer} from "react-toastify";
 
 interface IReviewUser{
 
 }
 
+
+
 type DispatchType = ThunkDispatch<any, any, any>;
 
 export const ReviewUser:FC<IReviewUser> = ({}) => {
 
+
     const [chooseAd, setChooseAd] = useState<string[]>([''])
     const [rating, setRating] = useState<string>('')
     const [review, setReview] = useState<string>('')
+
+    const [showToast, setShowToast] = useState<boolean>(false)
+
+    const errorReview = useSelector(getErrorReview)
+    const isLoading = useSelector(getIsLoading)
+
+    const message = errorReview ? 'Ajouté avec succès': 'Vous avez déjà laissé un avis d\'utilisateur'
+
+    const notify = () =>{
+        toast.success(message, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
+    const [redirect, setRedirect] = useState<boolean>(false)
+
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const user = useParams()
     const ads = useSelector(getAds)
@@ -42,7 +72,7 @@ export const ReviewUser:FC<IReviewUser> = ({}) => {
         setRating(index);
     };
 
-    const registrationReview = () => {
+    const registrationReview = async () => {
 
         const newReview = {
             user_id: localStorage.getItem('user_id'),
@@ -52,8 +82,22 @@ export const ReviewUser:FC<IReviewUser> = ({}) => {
             title: chooseAd[1],
             photo: chooseAd[2]
         }
-        dispatch(setNewReview(user.id, newReview))
+        await dispatch(setNewReview(user.id, newReview))
+        setShowToast(true)
+        notify()
+        setRedirect(true)
+
     }
+
+    useEffect(() => {
+        if(redirect){
+            setTimeout(() => {
+                navigate(`/profile/${user.id}`, { state: { from: location.pathname } })
+            }, 2000)
+
+        }
+
+    }, [redirect])
 
     const whatReview = {
         id: chooseAd[0],
@@ -76,14 +120,24 @@ export const ReviewUser:FC<IReviewUser> = ({}) => {
                     <div className={styles.review}>
                         <Card adObj={whatReview} getId={() => {}} />
                         <Rating rating={0} staticMode={false} onRatingSelected = {handleRatingSelected} />
-                        <textarea rows={4} cols={50} name="subject" placeholder="Введите ваше сообщение:"
+                        <textarea rows={4} cols={50} name="subject" placeholder="Entrez votre message:"
                                   className="message" value={review} onChange={(e) => {setReview(e.target.value)}} required></textarea>
-                        <Button size='medium' type={''} className={''} onClick={registrationReview}>{"Отправить"}</Button>
+                        <Button size='medium' type={''} className={''} onClick={registrationReview}>{isLoading? 'Chargement...' : "Envoyer"}</Button>
                     </div>
                 }
             </div>
-
-
+            {showToast && <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />}
         </Layout>
     )
 }

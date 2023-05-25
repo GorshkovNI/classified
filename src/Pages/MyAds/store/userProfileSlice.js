@@ -12,13 +12,17 @@ const initialState = {
         email: '',
         dateRegistration: '',
         totalRating: 0,
+        reviews: []
     },
     city: '',
     isUserDataLoading: false,
     errorUserData: false,
     emptyData: false,
     isDelete: false,
-    ads: []
+    ads: [],
+    errorSetReview: false
+
+
 }
 
 const userAd = createSlice({
@@ -73,11 +77,17 @@ const userAd = createSlice({
             const count = action.payload.count
             const totalRating = action.payload.totalRating
             state.userInfo.totalRating = Number((totalRating/count).toFixed(1))
+            state.userInfo.reviews = action.payload.review
         },
 
         setNewCity(state, action){
             console.log(action.payload)
             state.city = action.payload
+        },
+
+
+        setErrorReview(state){
+            state.errorSetReview = true
         }
     }
 })
@@ -113,7 +123,14 @@ export const deleteAd = (categoryId, ads_id) => async (dispatch) => {
 
 export const setNewReview = (id, review) => async (dispatch) => {
     try {
+        dispatch(fetchDataUserLoading())
         const res = await UserAdService.reviewAd(id, review)
+        if(res.data === 'Уже есть отзыв'){
+            console.log(12312123412341234)
+            dispatch(setErrorReview())
+            return
+            dispatch(fetchDataUserSuccess())
+        }
         dispatch(fetchDataUserSuccess())
         console.log(res)
     }catch (e){
@@ -121,5 +138,5 @@ export const setNewReview = (id, review) => async (dispatch) => {
     }
 }
 
-export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setInfoUser, setAds, setError, removeError, deleteAds,  isLoadAvatar, setRating, setNewCity} = userAd.actions
+export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setInfoUser, setAds, setError, removeError, deleteAds,  isLoadAvatar, setRating, setNewCity, setErrorReview} = userAd.actions
 export default userAd.reducer
