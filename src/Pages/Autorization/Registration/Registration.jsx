@@ -166,11 +166,11 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
             type="submit"
             onClick={() => sendData(name, email, password)}
           >
-            Зарегистрироваться
+            Enregistrer
           </Button>
         </div>
         <div className={styles.toggleArea}>
-          <h3>Уже есть аккаунт на ?</h3>
+          <h3>Vous avez déjà un compte pour?</h3>
           <button
             className={styles.toggleButton}
             onClick={() => toggleActiveTab("login")}
