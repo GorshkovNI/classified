@@ -19,7 +19,7 @@ import {useParams} from "react-router-dom";
 type DispatchType = ThunkDispatch<any, any, any>;
 
 const notify = () =>{
-    toast.success('Успешно удалено', {
+    toast.success('Suppression réussie', {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,

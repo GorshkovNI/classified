@@ -172,7 +172,7 @@ export const Rent = () => {
                             </datalist>
                         </div>
                         <div className={styles.info}>
-                            <span>Prix</span>
+                            <span>Prix, MRU</span>
                             <input
                                 {...register('price', {
                                 })}

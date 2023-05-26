@@ -341,7 +341,7 @@ export const Car = ({dataOfEdit}) => {
                     </div>
                     <div className={styles.infoCarItem}>
                         <div className={styles.infoAreaItem}>
-                            <h3>Prix</h3>
+                            <h3>Prix, MRU</h3>
                             <input type='text' value={formatMoney(price)} onChange={(e) => setPrice(e.target.value)}  />
                         </div>
                         <div className={styles.infoAreaItem}>

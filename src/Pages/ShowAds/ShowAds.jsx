@@ -73,7 +73,7 @@ export const ShowAds = ({ className }) => {
       <div className={styles.wrapper}>
         <Categories />
         <div className={styles.title}>
-          <h3 className={styles.textRecomendation}>Найденные объявление</h3>
+          <h3 className={styles.textRecomendation}>Annonce trouvée</h3>
         </div>
         <div className={styles.productArea}>
           <div className={styles.products}>
