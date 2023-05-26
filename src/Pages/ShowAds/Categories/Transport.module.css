@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 5px;
+}
+
+.title{
+    font-size: 18px;
+    margin: 0;
+    color: var(--grey-text);
+}
+
+.yearContainer{
+    width: 350px;
+    display: flex;
+    gap: 10px;
+}
+
+.select{
+    width: 200px;
+}

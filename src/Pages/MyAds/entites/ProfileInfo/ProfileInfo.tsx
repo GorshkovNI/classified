@@ -79,9 +79,9 @@ export const ProfileInfo:FC<IProfileInfo> = ({id, name, avatar, rating, review})
 
                 {showOverlay && <Overlay closeOverlay={closeOverlay}>
                     <div className={styles.reviews}>
-                    {review.length > 0 && review.map((item) => {
+                    {review.length > 0 ? review.map((item:any) => {
                         return <CardReview adObj={item} getId={() => {}}  />
-                    })}
+                    }) : <div className={styles.notReview}>Cet utilisateur n'a pas d'avis</div>}
                     </div>
                 </Overlay>}
 

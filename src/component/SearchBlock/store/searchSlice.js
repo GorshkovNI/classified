@@ -29,7 +29,8 @@ const search = createSlice({
         },
         setPriceFrom(state, action){
             state.priceFrom = action.payload
-        }
+        },
+
     }
 })
 
@@ -42,6 +43,19 @@ export const getAdsOnRequest = (text) => async (dispatch) => {
         console.log(response)
     }catch (e){
         console.log('ОШИБКА ', e)
+    }
+}
+
+export const getAdsTransport = (city) => async (dispatch) => {
+    try{
+        dispatch(fetchSearchLoadingStart())
+        console.log(city)
+        const response = await SearchService.searchCar(city)
+        console.log(response)
+        dispatch(setAds(response?.data))
+        dispatch(fetchSearchLoadingSuccess())
+    } catch(e){
+        console.log(e)
     }
 }
 

@@ -5,6 +5,9 @@ export default class SearchService{
         return $api.post('search', {text})
     }
 
+    static async searchCar(city){
+        return $api.post('search/transport', {city})
+    }
 
 
 }

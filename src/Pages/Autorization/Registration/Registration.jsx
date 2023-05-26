@@ -175,7 +175,7 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
             className={styles.toggleButton}
             onClick={() => toggleActiveTab("login")}
           >
-            Войти
+            Entrer
           </button>
         </div>
         </>}

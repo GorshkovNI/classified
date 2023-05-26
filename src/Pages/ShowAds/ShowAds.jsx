@@ -20,12 +20,23 @@ import {
 import {formatMoney} from "../AddNewAds/categories/utils/formMoney";
 import {setPriceFrom, setPriceTo} from "../../component/SearchBlock/store/searchSlice";
 import Skeleton from "../../component/Skeleton/Skeleton";
-import {ChooseCategories} from "./Categories/ChooseCategories";
+import { Transport } from './Categories/Transport'
+
+const allCategories = {
+  transport: <Transport />
+}
+
 
 export const ShowAds = ({ className }) => {
   const [showFavorites, setShowFavorites] = useState(false)
   const [priceTo, setCurrentPriceTo] = useState(null)
   const [priceFrom, setCurrentPriceFrom] = useState(null)
+
+  const [categories, setCategories] = useState('')
+
+  const handleSetCategoris = (event) => {
+    setCategories(event.target.value)
+  }
 
 
   const orders = useSelector((state) => state.favorites.orders);
@@ -72,6 +83,13 @@ export const ShowAds = ({ className }) => {
           </div>
           <div className={styles.infoArea}>
             <h3>Фильтры</h3>
+            <select id='categories' value={categories} onChange={handleSetCategoris} className={cn(styles.select, styles.categories)}>
+              <option selected>Choisir une catégorie</option>
+              <option value='transport'>Transport</option>
+              <option value='rent'>Emploi</option>
+              <option value='job'>Immobilier</option>
+            </select>
+            {allCategories[categories]}
             <div className={styles.titleFilter}>
               <h4 className={styles.title}>Цена</h4>
               <div className={styles.inputBlock}>
@@ -79,11 +97,7 @@ export const ShowAds = ({ className }) => {
                 <input type={'number'} className={styles.input} value={priceFrom} onChange={handleSetPriceFrom} placeholder='До'></input>
               </div>
               <button className={styles.buttonSend} onClick={sendPrice}>Send</button>
-              <div>
-                {/*Для более точных фильтров выберите категорию*/}
-                {/*<ChooseCategories />*/}
-              </div>
-
+              
             </div>
           </div>
         </div>

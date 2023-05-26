@@ -106,7 +106,7 @@ export const SignIn = ({ openModal, closeModal, toggleActiveTab }) => {
                 type="submit"
                 onClick={handleSubmit}
               >
-                Войти
+                Entrer
               </Button>
             </div>
             <div className={styles.toggleArea}>

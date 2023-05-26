@@ -50,7 +50,7 @@ export const SearchBlock = ({className}) => {
                     <img src={logo} className={styles.logo}  />
                 </Link>
                 <div className={styles.searchBlock}>
-                    <Input value={value} onChange={handleValue} onClick={findAd} className={styles.input} button buttonText='Найти' />
+                    <Input value={value} onChange={handleValue} onClick={findAd} className={styles.input} button buttonText='Trouver' />
                 </div>
             </div>
 

@@ -84,7 +84,7 @@ export const UserAds:FC = () => {
                                         />
                                     ))
                                 ) : (
-                                    <div>У вас нет размещенных объявлений</div>
+                                    <div>Vous n'avez pas publié d'annonces</div>
                                 )
                             ) : (
                                 <MyLoader />

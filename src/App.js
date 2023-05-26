@@ -11,6 +11,7 @@ import {ReviewUser} from "./Pages/ReviewUser/ReviewUser";
 import {ShowAds} from "./Pages/ShowAds/ShowAds";
 import {About} from "./Pages/About/About";
 import {Feedback} from "./Pages/Feedback/Feedback";
+import { TransportPoint } from './Pages/ShowAds/Pages/Transport/TransportPoint';
 
 function App({store}) {
 
@@ -38,6 +39,7 @@ function App({store}) {
                 <Route path='/search' element={<ShowAds />} />
                 <Route path='/about' element={<About/>}/>
                 <Route path='/feedback' element={<Feedback/>}/>
+                <Route path='/transport' element={<TransportPoint />} />
 
             </Routes>
         </div>
