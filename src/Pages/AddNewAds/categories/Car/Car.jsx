@@ -235,7 +235,7 @@ export const Car = ({dataOfEdit}) => {
                     <div className={styles.infoArea}>
                         <h3>Caractéristiques</h3>
                         <div className={styles.infoAreaItem}>
-                            <span>Марка</span>
+                            <span>Marque</span>
                             <select id='marka' className={styles.select} value={selectedMarkId} onChange={handleSelectedMark}>
                                 <option value="">Choisissez une valeur</option>
                                 {marks.map((item) => {

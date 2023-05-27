@@ -90,14 +90,14 @@ export const Transport = () => {
 
     return(
         <div className={styles.container}>
-            <h4 className={styles.title}>Марка</h4>
+            <h4 className={styles.title}>Marque</h4>
             <select className={styles.select} id='marka'  value={selectedMarkId} onChange={handleSelectedMark}>
                <option value="">Choisissez une valeur</option>
                 {marks.map((item) => {
                      return <option value={item.id}>{item.marka}</option>
                 })}
             </select>
-            <h4 className={styles.title}>Модель</h4>
+            <h4 className={styles.title}>Modèle</h4>
             <select id='model'  value={selectedModelId} onChange={handleSelectedModel}>
                 <option value="">Choisissez une valeur</option>
                 {model?.map((item) => {
@@ -105,16 +105,16 @@ export const Transport = () => {
                 })}
             </select>
 
-            <h4 className={styles.title}>Год</h4>
+            <h4 className={styles.title}>Année</h4>
             <div className={styles.yearContainer}>
                 <select id='year' className={styles.select} value={selectedYearTo} onChange={handleSelectedYearTo}>
-                    <option value="">От</option>
+                    <option value="">Depuis</option>
                     {year?.map((item) => {
                         return <option value={item}>{item}</option>
                     })}
                 </select>
                 <select id='year' className={styles.select} value={selectedYearFrom} onChange={handleSelectedYearFrom}>
-                    <option value="">До</option>
+                    <option value="">Avant</option>
                     {year?.map((item) => {
                         return <option value={item}>{item}</option>
                     })}
