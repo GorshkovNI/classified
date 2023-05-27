@@ -43,7 +43,7 @@ export const TransportPoint = () => {
                     </div>
                     <div className={styles.infoArea}>
                         <Transport />
-                        <Button className={styles.buttonSend}>Отправить</Button>
+                        <Button className={styles.buttonSend}>Envoyer</Button>
                     </div>
                 </div>
                 
