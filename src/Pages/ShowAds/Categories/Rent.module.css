@@ -1,0 +1,13 @@
+.squareBlock{
+    display: flex;
+    gap: 10px;
+}
+
+.title{
+    font-size: 18px;
+    color: var(--grey-text);
+}
+
+.select{
+    width: 200px;
+}

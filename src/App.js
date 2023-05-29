@@ -12,6 +12,7 @@ import {ShowAds} from "./Pages/ShowAds/ShowAds";
 import {About} from "./Pages/About/About";
 import {Feedback} from "./Pages/Feedback/Feedback";
 import { TransportPoint } from './Pages/ShowAds/Pages/Transport/TransportPoint';
+import {RentPoint} from "./Pages/ShowAds/Pages/Rent/RentPoint";
 
 function App({store}) {
 
@@ -40,6 +41,7 @@ function App({store}) {
                 <Route path='/about' element={<About/>}/>
                 <Route path='/feedback' element={<Feedback/>}/>
                 <Route path='/transport' element={<TransportPoint />} />
+                <Route path='/housing' element={<RentPoint />} />
 
             </Routes>
         </div>
