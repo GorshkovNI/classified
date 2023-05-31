@@ -77,7 +77,7 @@ export const ProductInfo:React.FC = () => {
                   </h1>
                 </div>
                 <div className={styles.titleActions}>
-                  <Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='love' classNameIcon={styles.buttonIconLove} onClick={() =>{}} >Ajouter aux Favoris</Button>
+                  {/*<Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='love' classNameIcon={styles.buttonIconLove} onClick={() =>{}} >Ajouter aux Favoris</Button>*/}
                   {/*<Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='edit' classNameIcon={styles.buttonIconEdit} onClick={() =>{}} >Modifier</Button>*/}
                 </div>
               </div>

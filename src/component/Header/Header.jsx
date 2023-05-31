@@ -5,12 +5,17 @@ import { ProfileArea } from "../ProfileArea/ProfileArea";
 import { Icon } from "../Icons/Icon";
 import cn from 'classnames'
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { getIsAuth, getIsLoading, getUserName } from "../../store/auth/userSelector";
 import { Autorization } from "../../Pages/Autorization/Autorization";
 import { FavoritesModal } from "../../Pages/FavoritesModal/FavoritesModal";
 import { useEffect } from "react";
 import { GeolocatedIcon } from "../Geolocated/GeolocatedIcon";
+import {Modal} from "../Modal/Modal";
+import {getFavorites} from "../../store/favorites/favoriteSelector";
+import {CardAd} from "../../Pages/MyAds/entites/CardAd/CardAd";
+import {Overlay} from "../Overlay/Overlay";
+import {CardReview} from "../../Pages/MyAds/component/CardReview/CardReview";
 
 export const Header = ({
     toggleModal,
@@ -25,11 +30,27 @@ export const Header = ({
 
     const isLoggedIn = useSelector(getIsAuth)
     const isLoading = useSelector(getIsLoading)
+    const favorites = useSelector(getFavorites)
+    const navigate = useNavigate()
+    console.log(favorites)
 
     // useEffect(() => {
     //     setIsLoading(false)
     // }, [isLoggedIn])
 
+    const [isOpen, setIsOpen] = useState(false)
+
+    const handleOpenModel = () => {
+        setIsOpen(true)
+    }
+
+    const handleCloseModal = () => {
+        setIsOpen(false)
+    }
+
+    const handleRedireсt = (event) => {
+        navigate(`/item/${event.currentTarget.id}`)
+    }
 
     const isName = localStorage.getItem('name')
     return (
@@ -50,16 +71,20 @@ export const Header = ({
                         <GeolocatedIcon/>
                     </div>
                     <div className={styles.assistButton}>
-                        <Icon className={cn(styles.button, styles.love)} name='love' onClick={showFavoriteModal} />
+                        <Icon className={cn(styles.button, styles.love)} name='love' onClick={handleOpenModel} />
                         {/* <Icon className={cn(styles.button, styles.cart)} name='cart' /> */}
                     </div>
                     {!isLoggedIn ? <Button size='medium' mode='transparent' onClick={toggleModal} >{isLoading ? 'Loading...' : 'Connexion et inscription'}</Button> : <ProfileArea userName={isName} />}
                     <Link className={styles.link} to={'/addItem'}>
-                        <Button size='medium' mode='primary' icon='search' >Déposer une annonce</Button>
+                        <Button size='medium' mode='primary'  >Déposer une annonce</Button>
                     </Link>
                 </div>
             </div>
-            {showFavorites ? <FavoritesModal orders={orders} removeToFavoritesList={removeToFavoritesList} /> : null}
+            {isOpen && <Overlay closeOverlay={handleCloseModal}>
+                {favorites.length > 0 ? favorites.map((item) => {
+                    return <CardReview adObj={item} getId={handleRedireсt} />
+                }) : <span>Vous n'avez rien ajouté à vos favoris</span>}
+            </Overlay>}
             <Autorization activeTab={activeTab} toggleActiveTab={toggleActiveTab} openModal={openModal} closeModal={closeModal} />
         </header>
     )

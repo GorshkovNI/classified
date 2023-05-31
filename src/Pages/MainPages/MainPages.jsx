@@ -18,7 +18,8 @@ export const MainPages = () => {
 
   const dispatch = useDispatch()
 
-  const city = useSelector(getCC)
+  let city = useSelector(getCC)
+  city = city ? city : localStorage.getItem('city')
   console.log(city)
 
 

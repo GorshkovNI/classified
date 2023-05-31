@@ -20,8 +20,6 @@ export function FavoritesModal({orders}) {
                     </div>
                 ))
             }
-
-
         </div>
     )
 }

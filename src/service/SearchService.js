@@ -13,5 +13,9 @@ export default class SearchService{
         return $api.post('search/rent', {city})
     }
 
+    static async searchWork(city){
+        return $api.post('search/work', {city})
+    }
+
 
 }

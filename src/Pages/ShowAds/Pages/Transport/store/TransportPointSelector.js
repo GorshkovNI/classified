@@ -39,11 +39,11 @@ const findModel = (model) => {
 const intervalDate = (min, max) => {
     return (date) => {
         if (!date) return null;
-        const parseDate = Date.parse(date);
+        const parseDate = Number(date);
         if (!min && !max) return true;
-        if (!min) return parseDate <= max;
-        if (!max) return parseDate >= min;
-        return parseDate >= min && parseDate <= max;
+        if (!min) return parseDate <= Number(max);
+        if (!max) return parseDate >= Number(min);
+        return parseDate >= Number(min) && parseDate <= Number(max);
     };
 };
 

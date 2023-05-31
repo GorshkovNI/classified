@@ -85,7 +85,7 @@ export const TransportPoint = () => {
                     <div className={styles.products}>
                         { isLoading ? <MyLoader/> : fA.length > 0 ? fA?.map((item)=> {
                         return <CardProduct id={item.ads_id} title={item.title} city={item.city} price={item.price} photos={item.photos} />
-                        }) : <div>По заданным параметрам объявлений не найдено</div>}
+                        }) : <div>Aucune annonce trouvée pour les paramètres donnés</div>}
                     </div>
                     <div className={styles.infoArea}>
                         <Transport

@@ -2813,7 +2813,7 @@ export const car = [
             {
                 "id": "NEW_CLASS",
                 "name": "New Class",
-                "cyrillic-name": "нью класс",
+                "cyrillic-name": "нью classe",
                 "class": "C",
                 "year-from": 1962,
                 "year-to": 1972
@@ -18388,16 +18388,16 @@ export const car = [
             },
             {
                 "id": "A_KLASSE",
-                "name": "A-Класс",
-                "cyrillic-name": "А-класс",
+                "name": "A-classe",
+                "cyrillic-name": "А-classe",
                 "class": "C",
                 "year-from": 1997,
                 "year-to": null
             },
             {
                 "id": "A_KLASSE_AMG",
-                "name": "A-Класс AMG",
-                "cyrillic-name": "А-класс АМГ",
+                "name": "A-classe AMG",
+                "cyrillic-name": "А-classe АМГ",
                 "class": "C",
                 "year-from": 2013,
                 "year-to": null
@@ -18420,24 +18420,24 @@ export const car = [
             },
             {
                 "id": "B_KLASSE",
-                "name": "B-Класс",
-                "cyrillic-name": "б-класс",
+                "name": "B-classe",
+                "cyrillic-name": "б-classe",
                 "class": "C",
                 "year-from": 2005,
                 "year-to": null
             },
             {
                 "id": "C_KLASSE",
-                "name": "C-Класс",
-                "cyrillic-name": "Ц-класс",
+                "name": "C-classe",
+                "cyrillic-name": "Ц-classe",
                 "class": "D",
                 "year-from": 1993,
                 "year-to": null
             },
             {
                 "id": "C_KLASSE_AMG",
-                "name": "C-Класс AMG",
-                "cyrillic-name": "Ц-класс АМГ",
+                "name": "C-classe AMG",
+                "cyrillic-name": "Ц-classe АМГ",
                 "class": "D",
                 "year-from": 1994,
                 "year-to": null
@@ -18452,16 +18452,16 @@ export const car = [
             },
             {
                 "id": "CL_KLASSE",
-                "name": "CL-Класс",
-                "cyrillic-name": "ЦЛ-класс",
+                "name": "CL-classe",
+                "cyrillic-name": "ЦЛ-classe",
                 "class": "F",
                 "year-from": 1992,
                 "year-to": 2014
             },
             {
                 "id": "CL_KLASSE_AMG",
-                "name": "CL-Класс AMG",
-                "cyrillic-name": "ЦЛ-класс АМГ",
+                "name": "CL-classe AMG",
+                "cyrillic-name": "ЦЛ-classe АМГ",
                 "class": "F",
                 "year-from": 2000,
                 "year-to": 2014
@@ -18469,7 +18469,7 @@ export const car = [
             {
                 "id": "CLA_KLASSE",
                 "name": "CLA",
-                "cyrillic-name": "ЦЛА-класс",
+                "cyrillic-name": "ЦЛА-classe",
                 "class": "C",
                 "year-from": 2013,
                 "year-to": null
@@ -18477,15 +18477,15 @@ export const car = [
             {
                 "id": "CLA_KLASSE_AMG",
                 "name": "CLA AMG",
-                "cyrillic-name": "ЦЛА-класс АМГ",
+                "cyrillic-name": "ЦЛА-classe АМГ",
                 "class": "C",
                 "year-from": 2013,
                 "year-to": null
             },
             {
                 "id": "CLC_KLASSE",
-                "name": "CLC-Класс",
-                "cyrillic-name": "ЦЛЦ-класс",
+                "name": "CLC-classe",
+                "cyrillic-name": "ЦЛЦ-classe",
                 "class": "C",
                 "year-from": 2008,
                 "year-to": 2011
@@ -18500,16 +18500,16 @@ export const car = [
             },
             {
                 "id": "CLK_KLASSE",
-                "name": "CLK-Класс",
-                "cyrillic-name": "ЦЛК-класс",
+                "name": "CLK-classe",
+                "cyrillic-name": "ЦЛК-classe",
                 "class": "D",
                 "year-from": 1997,
                 "year-to": 2010
             },
             {
                 "id": "CLK_KLASSE_AMG",
-                "name": "CLK-Класс AMG",
-                "cyrillic-name": "ЦЛК-класс АМГ",
+                "name": "CLK-classe AMG",
+                "cyrillic-name": "ЦЛК-classe АМГ",
                 "class": "D",
                 "year-from": 1999,
                 "year-to": 2010
@@ -18517,7 +18517,7 @@ export const car = [
             {
                 "id": "CLS_KLASSE",
                 "name": "CLS",
-                "cyrillic-name": "ЦЛС-класс",
+                "cyrillic-name": "ЦЛС-classe",
                 "class": "E",
                 "year-from": 2004,
                 "year-to": null
@@ -18525,23 +18525,23 @@ export const car = [
             {
                 "id": "CLS_KLASSE_AMG",
                 "name": "CLS AMG",
-                "cyrillic-name": "ЦЛС-класс АМГ",
+                "cyrillic-name": "ЦЛС-classe АМГ",
                 "class": "E",
                 "year-from": 2005,
                 "year-to": null
             },
             {
                 "id": "E_KLASSE",
-                "name": "E-Класс",
-                "cyrillic-name": "Е-класс",
+                "name": "E-classe",
+                "cyrillic-name": "Е-classe",
                 "class": "E",
                 "year-from": 1992,
                 "year-to": null
             },
             {
                 "id": "E_KLASSE_AMG",
-                "name": "E-Класс AMG",
-                "cyrillic-name": "Е-класс АМГ",
+                "name": "E-classe AMG",
+                "cyrillic-name": "Е-classe АМГ",
                 "class": "E",
                 "year-from": 1994,
                 "year-to": null
@@ -18636,40 +18636,40 @@ export const car = [
             },
             {
                 "id": "G_KLASSE",
-                "name": "G-Класс",
-                "cyrillic-name": "г-класс",
+                "name": "G-classe",
+                "cyrillic-name": "г-classe",
                 "class": "J",
                 "year-from": 1979,
                 "year-to": null
             },
             {
                 "id": "G_KLASSE_AMG",
-                "name": "G-Класс AMG",
-                "cyrillic-name": "г-класс амг",
+                "name": "G-classe AMG",
+                "cyrillic-name": "г-classe амг",
                 "class": "J",
                 "year-from": 1994,
                 "year-to": null
             },
             {
                 "id": "G_KLASSE_AMG_6X6",
-                "name": "G-Класс AMG 6x6",
-                "cyrillic-name": "г-класс амг 6кс6",
+                "name": "G-classe AMG 6x6",
+                "cyrillic-name": "г-classe амг 6кс6",
                 "class": "J",
                 "year-from": 2013,
                 "year-to": 2015
             },
             {
                 "id": "GL_KLASSE",
-                "name": "GL-Класс",
-                "cyrillic-name": "гл-класс",
+                "name": "GL-classe",
+                "cyrillic-name": "гл-classe",
                 "class": "F",
                 "year-from": 2006,
                 "year-to": 2016
             },
             {
                 "id": "GL_KLASSE_AMG",
-                "name": "GL-Класс AMG",
-                "cyrillic-name": "гл-класс амг",
+                "name": "GL-classe AMG",
+                "cyrillic-name": "гл-classe амг",
                 "class": "F",
                 "year-from": 2012,
                 "year-to": 2016
@@ -18677,7 +18677,7 @@ export const car = [
             {
                 "id": "GLA_CLASS",
                 "name": "GLA",
-                "cyrillic-name": "ГЛА-класс",
+                "cyrillic-name": "ГЛА-classe",
                 "class": "C",
                 "year-from": 2013,
                 "year-to": null
@@ -18685,7 +18685,7 @@ export const car = [
             {
                 "id": "GLA_CLASS_AMG",
                 "name": "GLA AMG",
-                "cyrillic-name": "ГЛА-класс АМГ",
+                "cyrillic-name": "ГЛА-classe АМГ",
                 "class": "C",
                 "year-from": 2014,
                 "year-to": null
@@ -18772,8 +18772,8 @@ export const car = [
             },
             {
                 "id": "GLK_KLASSE",
-                "name": "GLK-Класс",
-                "cyrillic-name": "глк-класс",
+                "name": "GLK-classe",
+                "cyrillic-name": "глк-classe",
                 "class": "D",
                 "year-from": 2008,
                 "year-to": 2015
@@ -18796,16 +18796,16 @@ export const car = [
             },
             {
                 "id": "M_KLASSE",
-                "name": "M-Класс",
-                "cyrillic-name": "м-класс",
+                "name": "M-classe",
+                "cyrillic-name": "м-classe",
                 "class": "E",
                 "year-from": 1997,
                 "year-to": 2015
             },
             {
                 "id": "M_KLASSE_AMG",
-                "name": "M-Класс AMG",
-                "cyrillic-name": "М-класс АМГ",
+                "name": "M-classe AMG",
+                "cyrillic-name": "М-classe АМГ",
                 "class": "E",
                 "year-from": 2000,
                 "year-to": 2015
@@ -18836,8 +18836,8 @@ export const car = [
             },
             {
                 "id": "S_CLASS_MAYBACH",
-                "name": "Maybach S-Класс",
-                "cyrillic-name": "Майбах Эс-Класс",
+                "name": "Maybach S-classe",
+                "cyrillic-name": "Майбах Эс-classe",
                 "class": "F",
                 "year-from": 2014,
                 "year-to": null
@@ -18852,32 +18852,32 @@ export const car = [
             },
             {
                 "id": "R_KLASSE",
-                "name": "R-Класс",
-                "cyrillic-name": "Р-класс",
+                "name": "R-classe",
+                "cyrillic-name": "Р-classe",
                 "class": "M",
                 "year-from": 2005,
                 "year-to": 2017
             },
             {
                 "id": "R_KLASSE_AMG",
-                "name": "R-Класс AMG",
-                "cyrillic-name": "Р-класс АМГ",
+                "name": "R-classe AMG",
+                "cyrillic-name": "Р-classe АМГ",
                 "class": "M",
                 "year-from": 2006,
                 "year-to": 2007
             },
             {
                 "id": "S_KLASSE",
-                "name": "S-Класс",
-                "cyrillic-name": "с-класс",
+                "name": "S-classe",
+                "cyrillic-name": "с-classe",
                 "class": "F",
                 "year-from": 1965,
                 "year-to": null
             },
             {
                 "id": "S_KLASSE_AMG",
-                "name": "S-Класс AMG",
-                "cyrillic-name": "с-класс амг",
+                "name": "S-classe AMG",
+                "cyrillic-name": "с-classe амг",
                 "class": "F",
                 "year-from": 1999,
                 "year-to": null
@@ -18892,16 +18892,16 @@ export const car = [
             },
             {
                 "id": "SL_KLASSE",
-                "name": "SL-Класс",
-                "cyrillic-name": "сл-класс",
+                "name": "SL-classe",
+                "cyrillic-name": "сл-classe",
                 "class": "S",
                 "year-from": 1954,
                 "year-to": 2020
             },
             {
                 "id": "SL_KLASSE_AMG",
-                "name": "SL-Класс AMG",
-                "cyrillic-name": "СЛ-класс АМГ",
+                "name": "SL-classe AMG",
+                "cyrillic-name": "СЛ-classe АМГ",
                 "class": "S",
                 "year-from": 1993,
                 "year-to": null
@@ -18924,16 +18924,16 @@ export const car = [
             },
             {
                 "id": "SLK_KLASSE",
-                "name": "SLK-Класс",
-                "cyrillic-name": "СЛК-класс",
+                "name": "SLK-classe",
+                "cyrillic-name": "СЛК-classe",
                 "class": "S",
                 "year-from": 1996,
                 "year-to": 2016
             },
             {
                 "id": "SLK_KLASSE_AMG",
-                "name": "SLK-Класс AMG",
-                "cyrillic-name": "СЛК-класс АМГ",
+                "name": "SLK-classe AMG",
+                "cyrillic-name": "СЛК-classe АМГ",
                 "class": "S",
                 "year-from": 2001,
                 "year-to": 2016
@@ -18956,16 +18956,16 @@ export const car = [
             },
             {
                 "id": "T_KLASSE",
-                "name": "T-Класс",
-                "cyrillic-name": "Т-класс",
+                "name": "T-classe",
+                "cyrillic-name": "Т-classe",
                 "class": "M",
                 "year-from": 2022,
                 "year-to": null
             },
             {
                 "id": "V_KLASSE",
-                "name": "V-Класс",
-                "cyrillic-name": "в-класс",
+                "name": "V-classe",
+                "cyrillic-name": "в-classe",
                 "class": "M",
                 "year-from": 1996,
                 "year-to": null
@@ -19172,8 +19172,8 @@ export const car = [
             },
             {
                 "id": "X_KLASSE",
-                "name": "X-Класс",
-                "cyrillic-name": "кс-класс",
+                "name": "X-classe",
+                "cyrillic-name": "кс-classe",
                 "class": "J",
                 "year-from": 2017,
                 "year-to": 2020

@@ -21,7 +21,8 @@ export const CardProduct = ({ id , title , city, price, date, photos }) => {
     const dispatch = useDispatch()
     const orders = useSelector((state) => state.favorites.orders);
     const removeFavorites = () =>dispatch(removeFavorites(id));
-    const addToFavoritesList = () =>dispatch(setFavorites({id, title, price}));
+    const photo = photos.length > 0 ? photos[0].url : ''
+    const addToFavoritesList = () =>dispatch(setFavorites({id, title, price, city, photo}));
     return (
         <div className={styles.wrapper}  >
             {/*<Link to={`/product-info/${id}`} className={styles.link}>*/}
@@ -33,11 +34,11 @@ export const CardProduct = ({ id , title , city, price, date, photos }) => {
             {/*</Link>*/}
             <div className={styles.discription}>
                 <div className={styles.blockNamed}>
-                    <Link to={`/ad/${id}`} className={styles.link}>
+                    <Link to={`/item/${id}`} className={styles.link}>
                         <span className={styles.nameProduct}>{title} </span>
                     </Link>
                     {
-                        !(orders.some(element => element.id === id)) ? <i  id = {id} className="bi bi-heart" style={{fontSize: '21px', color: '#009CF0'}} onClick={()=>{addToFavoritesList({id,title,price})}}></i>
+                        !(orders.some(element => element.id === id)) ? <i  id = {id} className="bi bi-heart" style={{fontSize: '21px', color: '#009CF0'}} onClick={()=>{addToFavoritesList({id,title,price, city, photo})}}></i>
                         : <i id = {id} className="bi bi-heart-fill" style={{fontSize: '21px', color: 'red'}} onClick={()=>{addToFavoritesList({id,title,price})}}></i>
                     }
                 </div>

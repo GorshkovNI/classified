@@ -5,15 +5,17 @@ const initialState = {
     orders: [],
     isFavorites: false
 }
+
 const favorites = createSlice({
     name: 'favoriteSlice',
     initialState,
     reducers:{
         setFavorites: (state,action)=> {
+            console.log(action.payload)
             const items = action.payload
             current(state.orders).some(element => element.id === items.id) 
             ? state.orders = state.orders.filter(el => el.id !== items.id) 
-            : state.orders = [...state.orders,items] 
+            : state.orders = [...state.orders, items]
             
         },
         removeFavorites(state,action){

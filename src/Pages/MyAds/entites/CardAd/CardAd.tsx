@@ -30,7 +30,7 @@ export const CardAd:FC<ICardAd> = ({user_id, deleteAd, id, description,photos,pr
             <div className={styles.containerInfo}>
                 <div className={styles.infoItems}>
                     <h3 className={styles.titleArea}>
-                        <Link className={styles.title} to={`/ad/${id}`}>{title}</Link>
+                        <Link className={styles.title} to={`/item/${id}`}>{title}</Link>
                     </h3>
                     <div className={styles.priceArea}><span className={styles.price}>{formatMoney(price)}</span></div>
                     <div className={styles.locatedArea}><span className={styles.located}>{city}</span></div>

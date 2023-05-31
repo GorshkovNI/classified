@@ -14,7 +14,7 @@ export default class AdService{
     }
 
     static async getCurrentAd(id){
-        return $api.post(`ad/${id}`, {id} )
+        return $api.post(`item/${id}`, {id} )
     }
 
     static async getAdByCity(city){
