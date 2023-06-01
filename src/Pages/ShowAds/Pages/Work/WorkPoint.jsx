@@ -23,9 +23,9 @@ export const WorkPoint = () => {
     }
 
 
-    useEffect(async () => {
-        await setAds(SearchService.searchWork(localStorage.getItem('city')))
-    }, [])
+    // useEffect(async () => {
+    //     // await setAds(SearchService.searchWork(localStorage.getItem('city')))
+    // }, [])
 
     console.log(ads)
 

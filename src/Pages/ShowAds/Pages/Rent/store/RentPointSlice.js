@@ -12,7 +12,7 @@ const initialState = {
         squareKitchenTo: 0,
         floorTo: 0,
         floorFrom: 0,
-        bathroom: ''
+        bathroom: 'Combiné'
     }
 
 }

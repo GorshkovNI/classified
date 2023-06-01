@@ -91,12 +91,12 @@ export const ShowAds = ({ className }) => {
             </select>
             {allCategories[categories]}
             <div className={styles.titleFilter}>
-              <h4 className={styles.title}>Цена</h4>
+              <h4 className={styles.title}>Prix</h4>
               <div className={styles.inputBlock}>
                 <input type={'number'} className={styles.input} value={priceTo} onChange={handleSetPriceTo} placeholder='Depuis'></input>
                 <input type={'number'} className={styles.input} value={priceFrom} onChange={handleSetPriceFrom} placeholder='Avant'></input>
               </div>
-              <button className={styles.buttonSend} onClick={sendPrice}>Send</button>
+              <button className={styles.buttonSend} onClick={sendPrice}>Envoyer</button>
               
             </div>
           </div>
