@@ -53,7 +53,8 @@ export const MainPages = () => {
             }
           </div>
           <div className={styles.infoArea}>
-            <span>Vos derniers achats</span>
+            {/*<span>Vos derniers achats</span>*/}
+            <span></span>
           </div>
         </div>
       </div>
