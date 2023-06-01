@@ -118,7 +118,7 @@ export const Work = () => {
                                 })}
                             />
                         </div>
-                        <h3>A propos de l'appartement</h3>
+                        <h3>Données sur le rendement au travail</h3>
                         <div className={styles.info}>
                             <span>Nom</span>
                             <input
