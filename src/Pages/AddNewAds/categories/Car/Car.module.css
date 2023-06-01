@@ -97,5 +97,5 @@ input::-webkit-inner-spin-button {
 
 .textarea{
     width: 300px;
-    resize: none;
+    height: 200px;
 }
