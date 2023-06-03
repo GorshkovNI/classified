@@ -18,7 +18,7 @@
 .rightSide{
     display: flex;
     align-items:center;
-    gap: 20px;
+    gap: 8%;
 }
 .leftSide{
     display: flex;
@@ -89,6 +89,14 @@
         padding: 10px 0 0;
     }
 
+}
+@media(max-width:400px){
+    .wrapper{
+        position: sticky;
+    }
+    .rightSide{
+        gap:4.5%;
+    }
 }
 .headerBurger span:nth-child(1){
     transform:translateY(-10px);

@@ -15,7 +15,12 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
 }
-
+@media (max-width: 800px){
+    .content{
+        width:80%;
+        height: 100%;
+    }
+}
 .content{
     position: absolute;
     top: 50%;

@@ -4,7 +4,14 @@
     width: 500px;
     padding: 16px;
 }
-
+@media (max-width: 800px){
+    .form{
+        width:100%;
+    }
+    .toggleArea h3{
+        font-size: small;
+    }
+}
 .title {
     font-size: 24px;
     margin-bottom: 16px;

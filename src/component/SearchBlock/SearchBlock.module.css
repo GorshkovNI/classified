@@ -1,12 +1,30 @@
 .wrapper{
     position: sticky;
-    top: 44px;
+    top: 5%;
     background: #ffffff;
     z-index: 10;
     width: 98.9vw;
-    transition: all 1s ease-out;
+    
 }
-
+@media (max-width:800px) {
+    .wrapper{
+        width: 100%;
+    }
+    .container{
+        flex-direction: column;
+    }
+    .container a{
+        padding:20px 0 0 0;
+    }
+    .searchBlock{
+        padding: 0!important;
+        width: 100%!important;
+        position: relative;
+    }
+    .logo{
+        margin-bottom:25px;
+    }
+}
 .container{
     display: flex;
     justify-content: center;
@@ -23,9 +41,12 @@
 
 .borderVisible{
     box-shadow: 0px 2px 8px 0px rgba(34, 60, 80, 0.2);
-    animation: shadow 300ms linear;
+    position: sticky;
+    top:10%;
 }
-
+.logo_link.hidden{
+    display: none;
+}
 @keyframes shadow {
     0%{
         box-shadow: none;

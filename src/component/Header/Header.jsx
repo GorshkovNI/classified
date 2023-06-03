@@ -42,7 +42,7 @@ export const Header = ({
 
     const handleClickBurger =()=>{
         let yt = document.getElementById("leftSide")
-        const third1 = document.querySelector('#burgerMenu');
+        const third1 = document.querySelector('#burgerMenu_1');
         const third2 = document.querySelector('#burgerMenu_2');
         const third3 = document.querySelector('#burgerMenu_3');
         if (isShowBurger){
@@ -107,7 +107,7 @@ export const Header = ({
                         <Button size='medium' mode='primary'  >Déposer une annonce</Button>
                     </Link>
                 </div>
-            </div>
+            </nav>
             {isOpen && <Overlay closeOverlay={handleCloseModal}>
                 {favorites.length > 0 ? favorites.map((item) => {
                     return <CardReview adObj={item} getId={handleRedireсt} />

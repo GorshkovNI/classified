@@ -5,6 +5,11 @@
   }
 .geolocatedIcon{
   cursor:pointer;
+  display:flex;
+}
+.nameCity{
+  font-size: 13px;
+  margin-top: 10%;
 }
 @media (max-width:1270px){
   .geolocatedIcon{
@@ -22,4 +27,13 @@
   .geolocatedIcon span{
     font-size: 12px;
   }
+  .select_container{
+    
+    width:100%;
+  }
+  .select_city{
+    width: 100%;
+  }
 }
+
+

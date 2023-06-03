@@ -1,0 +1,13 @@
+.mobileModalFavorite {
+    z-index: 100;
+    position: absolute;
+    width: 25%;
+    right: 0;
+    top: calc(100% + 200%);
+}
+@media (max-width: 800px){
+    .mobileModalFavorite{
+        width: 80%;
+
+    }
+}
