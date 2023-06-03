@@ -3,20 +3,59 @@
     display: grid;
     place-items: center;  
     text-align: center;
-    height: 50vh
+    height: auto;
   }
-  
+  @media (max-width:650px){
+    .peopleIMG{
+      display:none;
+    }
+    .aboutTeam{
+      font-size:32px;
+    }
+    .title_word{
+      font-size: 75px;
+    }
+    .title_word:nth-child(1){
+      font-size: 75px;
+    }
+    .title_word:nth-child(2){
+      font-size: 75px;
+    }
+    .title_word:nth-child(3){
+      font-size: 75px;
+    }
+    .title_word:nth-child(4){
+      font-size: 75px;
+    }
+    .title_word:nth-child(5){
+      font-size: 75px;
+    }
+  }
+  .about{
+    display: flex;
+    justify-content: center;
+  }
+
+  .aboutTeam{
+    font-size: 18px;
+    width: 100%;
+  }
   .title {
+    display: flex;
     font-family: "Montserrat", sans-serif;
     font-weight: 800;
     font-size: 12vw;
     text-transform: uppercase;
+    justify-content: center;
   }
 
 .title_word {
     animation: color_animation 4s linear infinite;
+    font-size: 100%;
   }
-  
+  .getitSmall{
+    font-size: 10px;
+  }
   .title_word_1 {
     --color-1: #DF8453;
     --color-2: #3D8DAE;
@@ -35,7 +74,7 @@
     --color-3: #ACCFCB;
   }
   
-  .title_wor_4 {
+  .title_word_4 {
     --color-1: #3D8DAE;
     --color-2: #DF8453;
     --color-3: #E4A9A8;

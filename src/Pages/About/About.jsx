@@ -10,27 +10,27 @@ export const About = () => {
     return (
         <Layout isSearchBlock={false}>
 
-            <div /* style={{maxWidth: '100%'}} */ className="container marketing">
+            <div /* style={{maxWidth: '100%'}} */ className="container_about">
                 <div className={styles.container}>
 
                     <h2 className={styles.title} style={{ display: 'flex' }}>
-                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_1} class1 class2`}>G<p style={{ fontSize: '1vw' }}>Generate</p></span>
-                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_2} class1 class2`}>E<p style={{ fontSize: '1vw' }}>Engage</p></span>
-                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_3} class1 class2`}>T<p style={{ fontSize: '1vw' }}>Target</p></span>
-                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_4} class1 class2`}>I<p style={{ fontSize: '1vw' }}>Identify </p></span>
-                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_1} class1 class2`}>T<p style={{ fontSize: '1vw' }}>Track </p></span>
+                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_1} class1 class2`}>G<p className={styles.getitSmall}>Generate</p></span>
+                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_2} class1 class2`}>E<p className={styles.getitSmall}>Engage</p></span>
+                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_3} class1 class2`}>T<p className={styles.getitSmall}>Target</p></span>
+                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_4} class1 class2`}>I<p className={styles.getitSmall}>Identify</p></span>
+                        <span style={{ margin: '10px' }} className={`${styles.title_word} ${styles.title_word_1} class1 class2`}>T<p className={styles.getitSmall}>Track</p></span>
                     </h2>
 
 
 
                 </div>
-                <div style={{ display: 'flex' }}>
+                <div className={styles.about}>
                     <div style={{ textAlign: 'center', marginBottom: '5rem' }} className="px-3">
-                        <p style={{ fontSize: '1.25vw' }}>Nous sommes une jeune équipe de développeurs enthousiastes qui ont décidé de créer un service gratuit pour les résidents des pays africains. <b>Notre objectif : créer une plate-forme pratique pour l'interaction des vendeurs et des acheteurs.</b> Notre équipe est jeune et ne fait que monter en puissance.</p>
+                        <p className={styles.aboutTeam} >Nous sommes une jeune équipe de développeurs enthousiastes qui ont décidé de créer un service gratuit pour les résidents des pays africains. <b>Notre objectif : créer une plate-forme pratique pour l'interaction des vendeurs et des acheteurs.</b> Notre équipe est jeune et ne fait que monter en puissance.</p>
                         <h1>En bref sur notre service:</h1>
                     </div>
                     <div>
-                        <img className="bd-placeholder-img rounded-circle" style={{ width: '100%' }} src={logo4} alt="People" />
+                        <img className={styles.peopleIMG} style={{ width: '100%' }} src={logo4} alt="People" />
                     </div>
                 </div>
 
