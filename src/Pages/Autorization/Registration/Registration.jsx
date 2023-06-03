@@ -144,7 +144,7 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Введите пароль"
+              placeholder="Entrer le mot de passe"
               required
             /> */}
             <Input
@@ -153,7 +153,7 @@ export const Registration = ({ openModal, closeModal, toggleActiveTab }) => {
               id="password"
               value={password}
               onChange={handlePassword}
-              placeholder="Введите пароль"
+              placeholder="Entrer le mot de passe"
             />
           </div>
           {/*<button className={styles.submitButton} type="submit">Зарегистрироваться</button>*/}

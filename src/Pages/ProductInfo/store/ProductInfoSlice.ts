@@ -24,7 +24,8 @@ export interface IState {
         idSeller: string,
         dateRegistration:string,
         photo: string,
-        phone: string
+        phone: string,
+        rating: number
     }
 
     isLoadingPicture: boolean,
@@ -53,6 +54,7 @@ const initialState: IState = {
         dateRegistration:'',
         photo: '',
         phone: '',
+        rating: 0
     },
 
 isLoadingPicture: false,
@@ -90,6 +92,14 @@ const product = createSlice({
             state.info.photos = action.payload
         },
 
+        setRating: (state: IState, action) => {
+            console.log(action.payload)
+            if(action.payload == null){
+                state.user.rating = 0
+            }
+            state.user.rating = action.payload.totalRating / action.payload.count
+        },
+
         fetchingDataStart: (state: IState) => {
             state.isLoading = true
         },
@@ -120,12 +130,14 @@ export const fetchProductById = createAsyncThunk(
         dispatch(setUser(user))
         dispatch(setCategory(category))
         dispatch(setPhoto(response.data.currentAd.photos))
-
+        if(response?.data?.review !== null){
+            dispatch(setRating(response?.data?.review))
+        }
         dispatch(fetchingDataFinished())
         return response.data
     }
 )
 
 
-export const { setProduct, setUser, setCategory, setPhoto, fetchingDataStart, fetchingDataFinished, fetchingPhotoStart, fetchingPhotoSucces } = product.actions
+export const { setProduct, setUser, setCategory, setPhoto, fetchingDataStart, fetchingDataFinished, fetchingPhotoStart, fetchingPhotoSucces, setRating } = product.actions
 export default product.reducer

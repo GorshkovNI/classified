@@ -12,6 +12,8 @@ import {ShowAds} from "./Pages/ShowAds/ShowAds";
 import {About} from "./Pages/About/About";
 import {Feedback} from "./Pages/Feedback/Feedback";
 import { TransportPoint } from './Pages/ShowAds/Pages/Transport/TransportPoint';
+import {RentPoint} from "./Pages/ShowAds/Pages/Rent/RentPoint";
+import {WorkPoint} from "./Pages/ShowAds/Pages/Work/WorkPoint";
 
 function App({store}) {
 
@@ -31,7 +33,7 @@ function App({store}) {
             {/* <MainPages /> */}
             <Routes>
                 <Route path='/' element={<MainPages  />} />
-                <Route path='/ad/:id' element={<ProductInfo  />} />
+                <Route path='/item/:id' element={<ProductInfo  />} />
                 <Route path='/additem' element={<AddNewAds />} />
                 <Route path='/profile/:id' element={<UserAds />} />
                 <Route path='/review/:id' element={<ReviewUser />} />
@@ -40,6 +42,8 @@ function App({store}) {
                 <Route path='/about' element={<About/>}/>
                 <Route path='/feedback' element={<Feedback/>}/>
                 <Route path='/transport' element={<TransportPoint />} />
+                <Route path='/housing' element={<RentPoint />} />
+                <Route path='/work' element={<WorkPoint />} />
 
             </Routes>
         </div>

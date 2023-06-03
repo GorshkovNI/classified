@@ -18,10 +18,10 @@ export const ProfileArea = ({userName, icon}) => {
             title: 'Mes annonces',
             path: `profile/${localStorage.getItem('user_id')}`
         },
-        {
-            title: 'Favoris',
-            path: '/izbrannoe'
-        },
+        // {
+        //     title: 'Favoris',
+        //     path: '/izbrannoe'
+        // },
 
     ]
 

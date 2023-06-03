@@ -9,12 +9,14 @@
 
 .dropdown{
     position: absolute;
+    z-index: 9999;
 }
 
 .type{
     width: 200px;
     display: flex;
     flex-direction: column;
+    z-index: 9999;
 }
 
 .typeItem{

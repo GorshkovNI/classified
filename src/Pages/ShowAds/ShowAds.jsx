@@ -79,10 +79,10 @@ export const ShowAds = ({ className }) => {
           <div className={styles.products}>
             { isLoading ? <Skeleton /> : filterAd.length > 0 ? filterAd?.map((item)=> {
               return <CardProduct id={item['_id']} title={item.title} city={item.city} price={item.price} photos={item.photos} />
-            }) : <div>По заданным параметрам объявлений не найдено</div>}
+            }) : <div>Aucune annonce trouvée pour les paramètres donnés</div>}
           </div>
           <div className={styles.infoArea}>
-            <h3>Фильтры</h3>
+            <h3>Filtres</h3>
             <select id='categories' value={categories} onChange={handleSetCategoris} className={cn(styles.select, styles.categories)}>
               <option selected>Choisir une catégorie</option>
               <option value='transport'>Transport</option>
@@ -91,12 +91,12 @@ export const ShowAds = ({ className }) => {
             </select>
             {allCategories[categories]}
             <div className={styles.titleFilter}>
-              <h4 className={styles.title}>Цена</h4>
+              <h4 className={styles.title}>Prix</h4>
               <div className={styles.inputBlock}>
-                <input type={'number'} className={styles.input} value={priceTo} onChange={handleSetPriceTo} placeholder='От'></input>
-                <input type={'number'} className={styles.input} value={priceFrom} onChange={handleSetPriceFrom} placeholder='До'></input>
+                <input type={'number'} className={styles.input} value={priceTo} onChange={handleSetPriceTo} placeholder='Depuis'></input>
+                <input type={'number'} className={styles.input} value={priceFrom} onChange={handleSetPriceFrom} placeholder='Avant'></input>
               </div>
-              <button className={styles.buttonSend} onClick={sendPrice}>Send</button>
+              <button className={styles.buttonSend} onClick={sendPrice}>Envoyer</button>
               
             </div>
           </div>

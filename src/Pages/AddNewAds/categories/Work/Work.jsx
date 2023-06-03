@@ -17,7 +17,7 @@ const cityPlusCountry = cities.map((item) => {
     return item.name + ' ' + item.country
 })
 
-export const Rent = () => {
+export const Work = () => {
 
     const [photos, setPhotos] = useState([]);
     const [description, setDescription] = useState('')
@@ -41,8 +41,7 @@ export const Rent = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        data["title"] = `Flat ${data.rooms} rooms ${data.square}`
-        data['category'] =  'rent'
+        data['category'] =  'work'
         data["user_id"] = localStorage.getItem("user_id")
         data["description"] = correctedDescription
         console.log(JSON.stringify(data));
@@ -110,66 +109,41 @@ export const Rent = () => {
                         </div>
                     </div>
                     <div className={styles.infoBlock}>
-                        <h3>A propos de l'appartement</h3>
+                        <h3>Annonce de titre</h3>
                         <div className={styles.info}>
-                            <span>Nombre de chambres</span>
+                            <span>Annonce de titre</span>
                             <input
-                                {...register("rooms", {
+                                {...register("title", {
+                                    required: true
+                                })}
+                            />
+                        </div>
+                        <h3>Données sur le rendement au travail</h3>
+                        <div className={styles.info}>
+                            <span>Nom</span>
+                            <input
+                                {...register("name", {
+                                    required: true
+                                })}
+
+                            />
+                        </div>
+                        <div className={styles.info}>
+                            <span>Type de travail effectué</span>
+                            <input
+                                {...register("typeWork", {
+                                    required: true
+                                })}
+                            />
+                        </div>
+                        <div className={styles.info}>
+                            <span>Expérience professionnelle en années</span>
+                            <input
+                                {...register("exrepiens", {
                                     required: true
                                 })}
                                 type='number'
                             />
-                        </div>
-                        <div className={styles.info}>
-                            <span>Superficie totale</span>
-                            <input
-                                {...register("square", {
-                                    required: true
-                                })}
-                                type='number'
-                            />
-                            <span className={styles.until}>m²</span>
-                        </div>
-                        <div className={styles.info}>
-                            <span>Coin cuisine</span>
-                            <input
-                                {...register("squareKitchen", {
-                                    required: true
-                                })}
-                                type='number'
-                            />
-                            <span className={styles.until}>m²</span>
-                        </div>
-                        <div className={styles.info}>
-                            <span>Sol</span>
-                            <input
-                                {...register("floor", {
-                                    required: true
-                                })}
-                                type='number'
-                            />
-                        </div>
-                        <div className={styles.info}>
-                            <span>Total des étages</span>
-                            <input
-                                {...register("totalFloor", {
-                                    required: true
-                                })}
-                                type='number'
-                            />
-                        </div>
-                        <div className={styles.info}>
-                            <span>Salle de bains</span>
-                            <input
-                                {...register("bathroom", {
-                                    required: true
-                                })}
-                                list="bathroom"
-                            />
-                            <datalist id="bathroom">
-                                <option>Combiné</option>
-                                <option>Séparé</option>
-                            </datalist>
                         </div>
                         <div className={styles.info}>
                             <span>Prix, MRU</span>

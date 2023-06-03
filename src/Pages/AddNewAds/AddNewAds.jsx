@@ -15,10 +15,12 @@ import 'react-dropzone-uploader/dist/styles.css'
 import {Rent} from "./categories/Rent/Rent";
 import {getIsAuth} from "../../store/auth/userSelector";
 import axios from "axios";
+import {Work} from "./categories/Work/Work";
 
 const categoryAd = {
     car: <Car />,
     rent: <Rent />,
+    work: <Work />
 };
 
 
@@ -81,7 +83,7 @@ export const AddNewAds = () => {
                           </div>
                       </Dropdown>
                   )}
-              </div>  : <div>Сначало нужно авторизоваться(</div>
+              </div>  : <div>Besoin de se connecter d'abord</div>
           }
           {typeAd.categoryName && categoryAd[typeAd.categoryName]}
       </div>

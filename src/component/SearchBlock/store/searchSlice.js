@@ -46,18 +46,7 @@ export const getAdsOnRequest = (text) => async (dispatch) => {
     }
 }
 
-export const getAdsTransport = (city) => async (dispatch) => {
-    try{
-        dispatch(fetchSearchLoadingStart())
-        console.log(city)
-        const response = await SearchService.searchCar(city)
-        console.log(response)
-        dispatch(setAds(response?.data))
-        dispatch(fetchSearchLoadingSuccess())
-    } catch(e){
-        console.log(e)
-    }
-}
+
 
 export const {fetchSearchLoadingStart, fetchSearchLoadingSuccess, setAds, setPriceTo, setPriceFrom} = search.actions
 export default search.reducer

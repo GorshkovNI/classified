@@ -82,3 +82,16 @@ input::-webkit-inner-spin-button {
 .closePhoto:focus{
     outline: none;
 }
+
+.button{
+    background: #009CF0;
+    color: white;
+    border: 0;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.textarea{
+    width: 300px;
+    height: 200px;
+}

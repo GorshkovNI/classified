@@ -6,6 +6,8 @@ import product from "../Pages/ProductInfo/store/ProductInfoSlice"
 import favorites from "./favorites/favoritesSlice";
 import search from "../component/SearchBlock/store/searchSlice"
 import mainPage from "../Pages/MainPages/store/MainPageSlice"
+import transport from '../Pages/ShowAds/Pages/Transport/store/TransportPointSlice'
+import rent from '../Pages/ShowAds/Pages/Rent/store/RentPointSlice'
 
 const reducer = combineReducers({
     user,
@@ -14,7 +16,9 @@ const reducer = combineReducers({
     product,
     favorites,
     search,
-    mainPage
+    mainPage,
+    transport,
+    rent
 })
 
 export default reducer;

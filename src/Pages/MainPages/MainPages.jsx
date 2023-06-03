@@ -18,7 +18,8 @@ export const MainPages = () => {
 
   const dispatch = useDispatch()
 
-  const city = useSelector(getCC)
+  let city = useSelector(getCC)
+  city = city ? city : localStorage.getItem('city')
   console.log(city)
 
 
@@ -52,7 +53,8 @@ export const MainPages = () => {
             }
           </div>
           <div className={styles.infoArea}>
-            <span>Vos derniers achats</span>
+            {/*<span>Vos derniers achats</span>*/}
+            <span></span>
           </div>
         </div>
       </div>

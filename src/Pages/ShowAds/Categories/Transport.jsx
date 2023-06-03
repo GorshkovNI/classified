@@ -3,45 +3,12 @@ import {car} from '../../../Pages/AddNewAds/categories/Car/tempJsonCar'
 import styles from './Transport.module.css'
 
 
-export const Transport = () => {
+export const Transport = ({selectedMarkId, selectedModelId, selectedYearTo, selectedYearFrom, handleSelectedYearTo, handleSelectedYearFrom, handleSelectedMark, handleSelectedModel}) => {
 
     const [marks, setMarka] = useState([{}])
-    const [selectedMarkId, setSelectedMarkId] = useState('')
-    const [selectedMark, setSelectedMark] = useState('')
-
     const [model, setModel] = useState([{}])
-    const [selectedModelId, setSelectedModelId] = useState('')
-    const [selectedModel, setSelectedModel] = useState('')
-
     const [year, setYear] = useState([])
-    const [selectedYearTo, setSelectedYearTo] = useState('')
-    const [selectedYearFrom, setSelectedYearFrom] = useState('')
 
-    const handleSelectedYearTo = (event) => {
-        setSelectedYearTo(event.target.value)
-    }
-
-    const handleSelectedYearFrom = (event) => {
-        setSelectedYearFrom(event.target.value)
-    }
-
-    const handleSelectedMark = (event) => {
-        const selectedIndex = event.target.selectedIndex;
-        const selectedOption = event.target.options[selectedIndex];
-        const selectedValue = selectedOption.text;
-
-        setSelectedMarkId(event.target.value)
-        setSelectedMark(selectedValue)
-    }
-
-    const handleSelectedModel = (event) => {
-        const selectedIndex = event.target.selectedIndex;
-        const selectedOption = event.target.options[selectedIndex];
-        const selectedValue = selectedOption.text;
-
-        setSelectedModel(selectedValue)
-        setSelectedModelId(event.target.value)
-    }
 
     useEffect(() => {
         const allMarks = car.map((item) => {
@@ -71,9 +38,9 @@ export const Transport = () => {
 
     useEffect(() => {
         if(model?.length > 1){
-            const currentModel = car.find(item => item.models.some(model => model.id === selectedModelId))
-            const year_from = currentModel.models.find(model => model.id === selectedModelId)['year-from']
-            let year_to = currentModel.models.find(model => model.id === selectedModelId)['year-to']
+            const currentModel = car.find(item => item.models?.some(model => model.id === selectedModelId))
+            const year_from = currentModel?.models?.find(model => model.id === selectedModelId)['year-from']
+            let year_to = currentModel?.models?.find(model => model.id === selectedModelId)['year-to']
             year_to = year_to === null ? new Date().getFullYear() : year_to
             console.log(year_from)
             console.log(year_to)

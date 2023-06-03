@@ -14,6 +14,7 @@ import {ThunkDispatch} from "redux-thunk";
 import SkeletonUserArea from "./asset/SkeletonUserArea";
 import SkeletonLine from "./asset/SkeletonTitle";
 import {Fields} from "./categories/Fields/Fields";
+import {Rating} from "../../component/Raiting/Raiting";
 const four = require('./4.jpg');
 
 type DispatchType = ThunkDispatch<any, any, any>;
@@ -76,7 +77,7 @@ export const ProductInfo:React.FC = () => {
                   </h1>
                 </div>
                 <div className={styles.titleActions}>
-                  <Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='love' classNameIcon={styles.buttonIconLove} onClick={() =>{}} >Ajouter aux Favoris</Button>
+                  {/*<Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='love' classNameIcon={styles.buttonIconLove} onClick={() =>{}} >Ajouter aux Favoris</Button>*/}
                   {/*<Button className={styles.actionButton} size='small' mode="outlined" type='text' icon='edit' classNameIcon={styles.buttonIconEdit} onClick={() =>{}} >Modifier</Button>*/}
                 </div>
               </div>
@@ -106,7 +107,7 @@ export const ProductInfo:React.FC = () => {
                 </div>
                 <div className={styles.parametrs}> 
                     <h2 className={styles.parametrsSpan}>
-                      Description1
+                      Description
                     </h2>
                     <div className={styles.description}>
                       {/*Какое-то описание*/}
@@ -122,7 +123,7 @@ export const ProductInfo:React.FC = () => {
               </div>
               <div className={styles.remouteArea}>
                 <Button className={cn(styles.remouteButton, styles.remouteButtonCall)} size='medium' mode="contained" type='text' onClick={handleShowPhone}>{showNumber ? product.user.phone : 'Afficher le téléphone'}</Button>
-                <Button className={cn(styles.remouteButton, styles.remouteButtonMessage)} size='medium' mode="contained" type='text' onClick={() => {}}>Écrire une lettre</Button>
+                {/*<Button className={cn(styles.remouteButton, styles.remouteButtonMessage)} size='medium' mode="contained" type='text' onClick={() => {}}>Écrire une lettre</Button>*/}
               </div>
               <div className={styles.infoSeller}>
                 {
@@ -132,7 +133,7 @@ export const ProductInfo:React.FC = () => {
                             <Link className={styles.userName} to={`/profile/${product.user.idSeller}`} >
                               {product.user.nameSeller}
                             </Link>
-                          <span className={styles.rating}>5,0</span>
+                          <span className={styles.rating}><Rating rating={product.user.rating} onRatingSelected={()=>{}} /></span>
                           <span className={styles.time}>{'Sur GetIt avec ' + product.user.dateRegistration + ' année'}</span>
                         </div>
                         <div className={styles.iconArea}>
