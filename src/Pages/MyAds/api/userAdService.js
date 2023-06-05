@@ -16,4 +16,8 @@ export default class UserAdService {
         console.log(review)
         return $api.post(`profile/review/${id}`, {review})
     }
+
+    static async upAds(categoryId, ads_id){
+        return $api.post(`item/up/${ads_id}`,{categoryId})
+    }
 }

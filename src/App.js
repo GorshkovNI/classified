@@ -14,6 +14,7 @@ import {Feedback} from "./Pages/Feedback/Feedback";
 import { TransportPoint } from './Pages/ShowAds/Pages/Transport/TransportPoint';
 import {RentPoint} from "./Pages/ShowAds/Pages/Rent/RentPoint";
 import {WorkPoint} from "./Pages/ShowAds/Pages/Work/WorkPoint";
+import {Other} from "./Pages/AddNewAds/categories/Other/Other";
 
 function App({store}) {
 
@@ -44,6 +45,7 @@ function App({store}) {
                 <Route path='/transport' element={<TransportPoint />} />
                 <Route path='/housing' element={<RentPoint />} />
                 <Route path='/work' element={<WorkPoint />} />
+                <Route path='/other' element={<Other />} />
 
             </Routes>
         </div>

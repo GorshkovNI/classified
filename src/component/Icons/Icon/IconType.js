@@ -9,6 +9,8 @@ import { ReactComponent as Photo } from './photo.svg';
 import { ReactComponent as Avatar } from './avatar.svg';
 import { ReactComponent as Edit } from './edit.svg';
 import { ReactComponent as Ads } from './ads.svg';
+import { ReactComponent as Up } from './up.svg';
+import { ReactComponent as Trash } from './trash.svg';
 
 
 export const iconsTypes = {
@@ -22,5 +24,7 @@ export const iconsTypes = {
     photo: Photo,
     avatar: Avatar,
     edit: Edit,
-    ads: Ads
+    ads: Ads,
+    up: Up,
+    trash: Trash
 };

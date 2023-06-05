@@ -4,33 +4,36 @@ import { Slider } from "../Slider/Slider";
 import cn from "classnames";
 import { formatMoney } from "../../utils/formatMoney";
 import { useSelector } from "react-redux";
-import one from './1.jpg'
-import two from './2.jpg'
-import three from './3.jpg'
-import four from './4.jpg'
-import { Icon } from "../Icons/Icon";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
-import { MainPages } from "../../Pages/MainPages/MainPages";
 import { setFavorites,toggleFavorites } from "../../store/favorites/favoritesSlice";
 import { useDispatch } from "react-redux";
 
-export const CardProduct = ({ id , title , city, price, date, photos }) => {
+export const CardProduct = ({ id , title , city, price, date, photos, up }) => {
+
+
+
     console.log(id)
     const dispatch = useDispatch()
     const orders = useSelector((state) => state.favorites.orders);
     const removeFavorites = () =>dispatch(removeFavorites(id));
     const photo = photos.length > 0 ? photos[0].url : ''
     const addToFavoritesList = () =>dispatch(setFavorites({id, title, price, city, photo}));
+
+    const wrapper = cn(styles.wrapper, {
+        [styles.wrapperUp]: up === true
+    })
+
     return (
-        <div className={styles.wrapper}  >
+
+        <div className={wrapper}  >
             {/*<Link to={`/product-info/${id}`} className={styles.link}>*/}
-            {photos.length > 0 &&  <Slider>
-                    {photos.map((photo) => {
-                         return <div className={cn(styles.item, styles.item1)}><img className={styles.image} src={photo.url} /></div>
-                    })}
-                </Slider>}
+            {/*{photos.length > 0 &&  <Slider>*/}
+            {/*        {photos.map((photo) => {*/}
+            {/*             return <div className={cn(styles.item, styles.item1)}><img className={styles.image} src={photo.url} /></div>*/}
+            {/*        })}*/}
+            {/*    </Slider>}*/}
+
+            {photos.length > 0 && <Slider photos={photos} />}
             {/*</Link>*/}
             <div className={styles.discription}>
                 <div className={styles.blockNamed}>
@@ -46,7 +49,6 @@ export const CardProduct = ({ id , title , city, price, date, photos }) => {
                 <span className={styles.located}>{city} </span>
                 <span className={styles.datePublication}>{date} </span>
             </div>
-
         </div>
 
 

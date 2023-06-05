@@ -107,7 +107,7 @@ export const Header = ({
                         <Button size='medium' mode='primary'  >Déposer une annonce</Button>
                     </Link>
                 </div>
-            </div>
+            </nav>
             {isOpen && <Overlay closeOverlay={handleCloseModal}>
                 {favorites.length > 0 ? favorites.map((item) => {
                     return <CardReview adObj={item} getId={handleRedireсt} />

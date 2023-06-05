@@ -1,81 +1,36 @@
-import React, {Children, cloneElement, useEffect, useState, useRef} from "react";
-import styles from './Slider.module.css'
-import cn from 'classnames'
-import {Icon} from "../Icons/Icon";
+import React, { useEffect, useState, useRef } from "react";
+import styles from './Slider.module.css';
+import cn from 'classnames';
+import { Icon } from "../Icons/Icon";
 
-const PAGE_WIDTH = 250
-const TRANSITION_DURATION = 0
+const PAGE_WIDTH = 250;
+const TRANSITION_DURATION = 300;
 
-export const Slider = ({children}) => {
-    
-    const [pages, setPages] = useState([])
-    const [offset, setOffset] = useState(0)
-    const [clonesCount, setClonesCount] = useState({head: 0, tail: 0})
-    const [transitionDuration, setTransitionDuration] = useState(300)
+export const Slider = ({ photos }) => {
+    const [offset, setOffset] = useState(0);
+    const [transitionDuration, setTransitionDuration] = useState(TRANSITION_DURATION);
 
-    const windowElRef = useRef()
-    
+    const windowElRef = useRef();
+
     useEffect(() => {
-        setPages([
-          cloneElement(children[Children.count(children)-1]), // head: 1
-          children,
-          
-          cloneElement(children[0]), // tail: 1
-        ])
-        setClonesCount({ head: 1, tail: 1 })
-        return
-    }, [children])
-  
-    useEffect(() => {
-      const resizeHandler = () => {
-        const windowElWidth = windowElRef.current.offsetWidth
-        //setWidth(windowElWidth)
-        setOffset(-(clonesCount.head * PAGE_WIDTH)) // to prevent wrong offset
-      }
-  
-      resizeHandler()
-      window.addEventListener('resize', resizeHandler)
-  
-      return () => {
-        window.removeEventListener('resize', resizeHandler)
-      }
-    }, [clonesCount, PAGE_WIDTH])
-  
-    useEffect(() => {
-      if (transitionDuration === 0) {
-        setTimeout(() => {
-          setTransitionDuration(TRANSITION_DURATION)
-        }, TRANSITION_DURATION)
-      }
-    }, [transitionDuration])
-  
-    useEffect(() => {
-  
-      // с элемента 0 (clone) -> к предпоследнему (реальный)
-      if (offset === 0) {
-        setTimeout(() => {
-          setOffset(0)
-          /* setOffset(-(PAGE_WIDTH * (pages.length - 1 - clonesCount.tail))) */
-          
-        }, TRANSITION_DURATION)
-        return
-      }
-      // с элемента n (clone) -> к элементу 1 (реальный)
-      /* if (offset === -(PAGE_WIDTH * (pages.length - 1))) {
-        setTimeout(() => {
-          setTransitionDuration(0)
-          setOffset(-(clonesCount.head * PAGE_WIDTH))
-        }, TRANSITION_DURATION)
-        return
-      } */
-      if (offset === offset[offset.length]) {
-        setTimeout(() => {
-          setTransitionDuration(0)
-          setOffset(offset.length)
-        }, TRANSITION_DURATION)
-        return
-      }
-    }, [offset, pages, clonesCount, PAGE_WIDTH])
+        const resizeHandler = () => {
+            const windowElWidth = windowElRef.current.offsetWidth;
+            const maxOffset = -(PAGE_WIDTH * (photos.length - 1));
+            setOffset((currentOffset) => {
+                if (currentOffset < maxOffset) {
+                    return maxOffset;
+                }
+                return currentOffset;
+            });
+        };
+
+        resizeHandler();
+        window.addEventListener("resize", resizeHandler);
+
+        return () => {
+            window.removeEventListener("resize", resizeHandler);
+        };
+    }, [photos]);
 
     const handleClickLeftArrow = (e) => {
         e.stopPropagation();
@@ -83,39 +38,43 @@ export const Slider = ({children}) => {
         setOffset((currentOffset) => {
             if (!transitionDuration) {
                 setTransitionDuration(TRANSITION_DURATION);
-              }
-            const newOffset = currentOffset + PAGE_WIDTH
-            return Math.min(newOffset, 0)
-        })
-        
-    }
+            }
+            const newOffset = currentOffset + PAGE_WIDTH;
+            return Math.min(newOffset, 0);
+        });
+    };
+
     const handleClickRightArrow = (e) => {
         e.stopPropagation();
         e.preventDefault();
         setOffset((currentOffset) => {
             if (!transitionDuration) {
                 setTransitionDuration(TRANSITION_DURATION);
-              }
-            const newOffset = currentOffset - PAGE_WIDTH
-            const maxOffset = -(PAGE_WIDTH * (pages.length - 1))
-            return Math.max(newOffset, maxOffset)
-        })
-    }
+            }
+            const newOffset = currentOffset - PAGE_WIDTH;
+            const maxOffset = -(PAGE_WIDTH * (photos.length - 1));
+            return Math.max(newOffset, maxOffset);
+        });
+    };
 
-    return(
+    return (
         <div className={styles.wrapper}>
             <div className={styles.window} ref={windowElRef}>
                 <div className={cn(styles.arrowArea, styles.arrowAreaLeft)} onClick={handleClickLeftArrow}>
-                    <Icon className={cn(styles.arrow, styles.arrowLeft)} name='arrow' />
+                    <Icon className={cn(styles.arrow, styles.arrowLeft)} name="arrow" />
                 </div>
-                <div className={styles.allPagesContainer} style={ {transitionDuration: `${transitionDuration}ms` , transform: `translateX(${offset}px)`} }>
-                    {pages}
+                <div className={styles.allPagesContainer} style={{ transitionDuration: `${transitionDuration}ms`, transform: `translateX(${offset}px)` }}>
+                    {photos.map((photo, index) => (
+                        <div key={photo.id} className={styles.slide} style={{ width: `${PAGE_WIDTH}px` }}>
+                            <img src={photo.url} alt={`Slide ${index + 1}`} className={styles.slideImage} />
+                            {index === Math.floor(photos.length / 2) && <div className={styles.activeIndicator} />}
+                        </div>
+                    ))}
                 </div>
                 <div className={cn(styles.arrowArea, styles.arrowAreaRight)} onClick={handleClickRightArrow}>
-                    <Icon className={cn(styles.arrow, styles.arrowRight)} name='arrow' />
+                    <Icon className={cn(styles.arrow, styles.arrowRight)} name="arrow" />
                 </div>
             </div>
         </div>
-
-    )
-}
+    );
+};
