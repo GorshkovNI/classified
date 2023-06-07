@@ -51,7 +51,7 @@ export const MainPages = () => {
               return <CardProduct id={ad['_id']} title={ad.title} city={ad.city} price={ad.price} photos={ad.photos} />
             }) : <MyLoader />
             }
-          </div> : 'Veuillez d\'abord sélectionner une ville'}
+          </div> : null}
           <div className={styles.infoArea}>
             {/*<span>Vos derniers achats</span>*/}
             <span></span>
