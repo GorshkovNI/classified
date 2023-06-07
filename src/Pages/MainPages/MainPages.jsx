@@ -20,7 +20,7 @@ export const MainPages = () => {
 
   let city = useSelector(getCC)
   city = city ? city : localStorage.getItem('city')
-  console.log(city)
+
 
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export const MainPages = () => {
   const showFavoriteModal = () =>{
     setShowFavorites(!showFavorites)
   }
-
+  console.log(city)
 
   return (
     <Layout orders = {orders} showFavoriteModal = {showFavoriteModal} showFavorites={showFavorites} /* removeToFavoritesList = {removeToFavoritesList} */>
@@ -46,12 +46,12 @@ export const MainPages = () => {
           {city?.length > 0 ? null : <h4>Pour obtenir des recommandations d'annonces, saisissez votre ville.</h4> }
         </div>
         <div className={styles.productArea}>
-          <div className={styles.products}>
+          {city ? <div className={styles.products}>
             {!isLoading ? adsCurrentCity?.length === 0? `Malheureusement, votre recherche n'a donné aucun résultat` : adsCurrentCity.map((ad) => {
               return <CardProduct id={ad['_id']} title={ad.title} city={ad.city} price={ad.price} photos={ad.photos} />
             }) : <MyLoader />
             }
-          </div>
+          </div> : 'Veuillez d\'abord sélectionner une ville'}
           <div className={styles.infoArea}>
             {/*<span>Vos derniers achats</span>*/}
             <span></span>
