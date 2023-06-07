@@ -43,11 +43,11 @@ export const MainPages = () => {
         <Categories />
         <div className={styles.title}>
           <h3 className={styles.textRecomendation}>Des recommandations pour vous</h3>
-          {city.length > 0 ? null : <h4>Pour obtenir des recommandations d'annonces, saisissez votre ville.</h4> }
+          {city?.length > 0 ? null : <h4>Pour obtenir des recommandations d'annonces, saisissez votre ville.</h4> }
         </div>
         <div className={styles.productArea}>
           <div className={styles.products}>
-            {!isLoading ? adsCurrentCity.length === 0? `Malheureusement, votre recherche n'a donné aucun résultat` : adsCurrentCity.map((ad) => {
+            {!isLoading ? adsCurrentCity?.length === 0? `Malheureusement, votre recherche n'a donné aucun résultat` : adsCurrentCity.map((ad) => {
               return <CardProduct id={ad['_id']} title={ad.title} city={ad.city} price={ad.price} photos={ad.photos} />
             }) : <MyLoader />
             }
