@@ -41,27 +41,7 @@ export const SearchBlock = ({ className }) => {
     }, [])
 
     /* if (window.innerWidth <= 801){ */
-    const [isHidden, setIsHidden] = useState(false);
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll2);
-        return () => {
-            window.removeEventListener('scroll', handleScroll2);
-        };
-    }, []);
-
-    const handleScroll2 = () => {
-        if (window.innerWidth <= 801) {
-            if (window.pageYOffset > 0) {
-                setIsHidden(true);
-                console.log(isHidden)
-            } else {
-                setIsHidden(false);
-                console.log(isHidden)
-            }
-        }
-
-    };
 
     return (
         <div className={cn(styles.wrapper, className,
@@ -69,10 +49,10 @@ export const SearchBlock = ({ className }) => {
         )} >
             <div className={styles.container}>
                 {/* <Icon className={styles.logo} name='logo' /> */}
-                
-                    <Link to={'/'} className="logoLink">
-                    {isHidden ? null :<img src={logo} className={styles.logo} />}
-                    </Link>
+
+                <Link to={'/'} className="logoLink">
+                    <img src={logo} className={styles.logo} />
+                </Link>
                 <div className={styles.searchBlock}>
                     <Input value={value} onChange={handleValue} onClick={findAd} className={styles.input} button buttonText='Trouver' />
                 </div>

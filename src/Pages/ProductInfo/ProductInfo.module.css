@@ -5,7 +5,45 @@
     font-size: 14px;
     background-color: #fff;
 }
+@media (max-width:871px){
+    .wrapper{
+        margin: 0;
+    }
+    .itemContent{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .itemContent_left{
+        height: auto;
+        width: 100%!important;
+    }
+    .itemContent_right{
+        height: auto;
+        width: 100%!important;
+        margin: 0 15% 0 15%;
+    }
+    .descriptionBlock{
+        margin: 0 15% 0 15%;
+    }
+    .titleInfoMain{
+        height: auto!important;
+        justify-content: center;
+        display: flex;
+        margin: 0 0 25px 0;
+    }
+    .viewMainContent{
+        display: flex;
+    }
+    .gallery div:nth-child(3) div div img{
+        width: 100%!important;
+    }
+    .parametrs ul{
+        column-count: 1;
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+    }
 
+}
 .itemNavigation{
     display: flex;
     justify-content: flex-start;

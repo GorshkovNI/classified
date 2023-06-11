@@ -5,18 +5,18 @@ import { ProfileArea } from "../ProfileArea/ProfileArea";
 import { Icon } from "../Icons/Icon";
 import cn from 'classnames'
 import { useDispatch, useSelector } from "react-redux";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getIsAuth, getIsLoading, getUserName } from "../../store/auth/userSelector";
 import { Autorization } from "../../Pages/Autorization/Autorization";
 import { FavoritesModal } from "../../Pages/FavoritesModal/FavoritesModal";
 import { useEffect } from "react";
 import { GeolocatedIcon } from "../Geolocated/GeolocatedIcon";
-import {Modal} from "../Modal/Modal";
-import {getFavorites} from "../../store/favorites/favoriteSelector";
-import {CardAd} from "../../Pages/MyAds/entites/CardAd/CardAd";
-import {Overlay} from "../Overlay/Overlay";
-import {CardReview} from "../../Pages/MyAds/component/CardReview/CardReview";
-
+import { Modal } from "../Modal/Modal";
+import { getFavorites } from "../../store/favorites/favoriteSelector";
+import { CardAd } from "../../Pages/MyAds/entites/CardAd/CardAd";
+import { Overlay } from "../Overlay/Overlay";
+import { CardReview } from "../../Pages/MyAds/component/CardReview/CardReview";
+import logo from './lg.png'
 export const Header = ({
     toggleModal,
     activeTab,
@@ -30,7 +30,7 @@ export const Header = ({
 
     const isLoggedIn = useSelector(getIsAuth)
     const isLoading = useSelector(getIsLoading)
-    const [isShowBurger,setShowBurger]= useState(false)
+    const [isShowBurger, setShowBurger] = useState(false)
     const favorites = useSelector(getFavorites)
     const navigate = useNavigate()
     console.log(favorites)
@@ -40,19 +40,19 @@ export const Header = ({
     // }, [isLoggedIn])
 
 
-    const handleClickBurger =()=>{
+    const handleClickBurger = () => {
         let yt = document.getElementById("leftSide")
         const third1 = document.querySelector('#burgerMenu_1');
         const third2 = document.querySelector('#burgerMenu_2');
         const third3 = document.querySelector('#burgerMenu_3');
-        if (isShowBurger){
+        if (isShowBurger) {
             yt.style.transform = "translateX(0%)"
             third2.style.opacity = "1"
             third1.style.transform = "translateY(-10px) rotate(0)"
             third3.style.transform = "translateY(10px) rotate(0)"
             setShowBurger(false)
         }
-        else{
+        else {
             yt.style.transform = "translateX(100%)"
             yt.style.transition = "transform .5s, opacity .5s, background-color .5s"
             third2.style.opacity = "0"
@@ -75,8 +75,6 @@ export const Header = ({
     const handleRedireсt = (event) => {
         navigate(`/item/${event.currentTarget.id}`)
     }
-
-
     const isName = localStorage.getItem('name')
     return (
         <header className={styles.wrapper}>
@@ -86,7 +84,15 @@ export const Header = ({
                     <span id="burgerMenu_2"></span>
                     <span id="burgerMenu_3"></span>
                 </button>
+
+                <div className={styles.itemNav}>
+                    <Link to="/"><img src={logo} className={styles.logo} /></Link>
+                </div>
+
                 <div id="leftSide" className={styles.leftSide}>
+
+
+
                     <div className={styles.itemNav}>
                         <Link to="/" style={{ textDecoration: "none" }}><Button size='medium' mode='transparent'>Principal</Button></Link>
                     </div>
@@ -102,7 +108,7 @@ export const Header = ({
                         <Icon className={cn(styles.button, styles.love)} name='love' onClick={handleOpenModel} />
                         {/* <Icon className={cn(styles.button, styles.cart)} name='cart' /> */}
                     </div>
-                    {!isLoggedIn ? <Button className = {styles.btnSet} size='medium' mode='transparent' onClick={toggleModal} >{isLoading ? 'Loading...' : 'Connexion et inscription'}</Button> : <ProfileArea userName={isName} />}
+                    {!isLoggedIn ? <Button className={styles.btnSet} size='medium' mode='transparent' onClick={toggleModal} >{isLoading ? 'Loading...' : 'Connexion et inscription'}</Button> : <ProfileArea userName={isName} />}
                     <Link className={styles.link} to={'/addItem'}>
                         <Button size='medium' mode='primary'  >Déposer une annonce</Button>
                     </Link>

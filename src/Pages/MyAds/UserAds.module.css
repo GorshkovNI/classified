@@ -1,7 +1,14 @@
 .wrapper{
-    margin: 50px 400px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
 }
-
+@media(max-width:601px){
+    .container{
+        display: flex!important;
+        flex-direction: column;
+    }
+}
 .container{
     display: grid;
     grid-template-columns: 1fr 2fr;
