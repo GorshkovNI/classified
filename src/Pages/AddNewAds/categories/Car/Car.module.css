@@ -1,20 +1,40 @@
 .wrapper{
     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
 }
-
+.wrapper div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .info{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
-
+.info div h3{
+    display: flex;
+    justify-content: center;
+}
 .infoAreaItem{
     position: relative;
-    width: 35%;
+    width: 90%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     margin: 30px 10px;
     gap: 5px;
 }
-
+@media(max-width:480px){
+    .infoAreaItem{
+        display: flex;
+        flex-direction: column;
+    }
+}
 .select{
 
 }

@@ -1,12 +1,37 @@
 .wrapper{
     position: sticky;
-    top: 37px;
+    top: 5%;
     background: #ffffff;
     z-index: 10;
     width: 98.9vw;
-    transition: shadow 1s ease-out;
+    
 }
-
+@media (max-width:630px) {
+    .wrapper{
+        top: 10% !important;;
+    }
+}
+@media (max-width:801px) {
+    .wrapper{
+        width: 100%;
+    }
+    .container{
+        flex-direction: column;
+    }
+    .container a{
+        padding:20px 0 0 0;
+    }
+    .searchBlock{
+        position: sticky;
+        padding: 0!important;
+        width: 90%!important;
+        position: relative;
+        margin-left:-5%;
+    }
+    .logo{
+        display: none;
+    }
+}
 .container{
     display: flex;
     justify-content: center;
@@ -23,9 +48,11 @@
 
 .borderVisible{
     box-shadow: 0px 2px 8px 0px rgba(34, 60, 80, 0.2);
-    animation: shadow 300ms linear;
+    position: sticky;
 }
-
+.logo_link.hidden{
+    display: none;
+}
 @keyframes shadow {
     0%{
         box-shadow: none;

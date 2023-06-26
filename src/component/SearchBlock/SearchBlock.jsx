@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styles from './SearchBlock.module.css'
 import cn from "classnames";
-import {Icon} from "../Icons/Icon";
-import {Input} from "../Input/Input";
+import { Icon } from "../Icons/Icon";
+import { Input } from "../Input/Input";
 import logo from './lg.png'
-import {Link, useLocation, useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {getAdsOnRequest} from "./store/searchSlice";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getAdsOnRequest } from "./store/searchSlice";
 
-export const SearchBlock = ({className}) => {
+export const SearchBlock = ({ className }) => {
 
     const [value, setValue] = useState('')
     const dispatch = useDispatch()
@@ -27,7 +27,7 @@ export const SearchBlock = ({className}) => {
     };
 
     const findAd = () => {
-        if(!value){
+        if (!value) {
             return
         }
         dispatch(getAdsOnRequest(value))
@@ -37,17 +37,21 @@ export const SearchBlock = ({className}) => {
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    },[])
+
+    }, [])
+
+    /* if (window.innerWidth <= 801){ */
 
 
-    return(
+    return (
         <div className={cn(styles.wrapper, className,
-                scroll > 50 ? styles.borderVisible : ''
-            )}>
+            scroll > 50 ? styles.borderVisible : ''
+        )} >
             <div className={styles.container}>
                 {/* <Icon className={styles.logo} name='logo' /> */}
-                <Link to={'/'}>
-                    <img src={logo} className={styles.logo}  />
+
+                <Link to={'/'} className="logoLink">
+                    <img src={logo} className={styles.logo} />
                 </Link>
                 <div className={styles.searchBlock}>
                     <Input value={value} onChange={handleValue} onClick={findAd} className={styles.input} button buttonText='Trouver' />

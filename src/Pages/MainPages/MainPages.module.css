@@ -17,15 +17,37 @@
 
 .productArea {
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 80% 20% ;
+    flex-direction: column;
 }
 
 .products {
     display: flex;
+    justify-content: center;
+    
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .infoArea {
     margin-right: 10px;
+}
+@media (max-width:1365px){
+    .wrapper {
+        margin: 10px;
+        /* margin-left: 50px;
+        margin-top: 10px; */
+    }
+    .productArea {
+        display: grid;
+        
+    }
+}
+@media (max-width:1050px){
+    .infoArea {
+        display: none;
+    }
+    .productArea{
+        grid-template-columns: 100%;
+    }
 }

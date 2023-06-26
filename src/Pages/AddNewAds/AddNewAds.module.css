@@ -1,7 +1,12 @@
 .wrapper{
-    margin: 100px;
+    display: grid;
+    justify-content: center;
+    margin-top: 50px;
 }
-
+.wrapper div:nth-child(1){
+    display: flex;
+    justify-content: center;
+}
 .buttonType{
     width: 200px;
     padding: 8px;

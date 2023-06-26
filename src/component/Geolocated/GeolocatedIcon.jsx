@@ -53,7 +53,7 @@ export const GeolocatedIcon = () => {
         <i style={{height:'100%', color: 'white',   marginRight:'0px' }} className="bi bi-geo-alt-fill" >  </i>
         {
             
-            city && <span style={{color:'white'}}>{city}</span>
+            city && <span className={styles.nameCity} style={{color:'white'}}>{city}</span>
         }
         </div>
             

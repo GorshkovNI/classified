@@ -1,19 +1,32 @@
 
 .infoBlock{
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 }
-
+@media(max-width:480px){
+    .infoBlock{
+        align-items: center;
+        flex-direction: column;
+    }
+    .info{
+        display: flex !important;
+        flex-direction: column;
+        margin: 10px 10px!important;
+    }
+}
 .info{
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 35%;
+    grid-template-columns: auto auto;
+    width: 90%;
     margin: 30px 10px;
 }
 
 .until{
     position: absolute;
-    right: 5px;
+    right: 7%;
     top: 3px;
 }
 
@@ -89,4 +102,11 @@ input::-webkit-inner-spin-button {
     border: 0;
     padding: 8px;
     border-radius: 5px;
+    right: -40%;
+position: relative;
+}
+
+.textarea{
+    width: 300px;
+    height: 200px;
 }
