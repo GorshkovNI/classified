@@ -13,9 +13,22 @@ export const getFilterAd = createSelector(
     ({ads, filters}) => {
         console.log(ads, filters)
         const filterAd = filterAds(ads, filters)
-        return filterAd
+        const filterTop = topAds(filterAd)
+        return filterTop
     }
 )
+
+export const topAds = (array) => {
+    const newArr = array.sort((a, b) => {
+        if (a.up && !b.up) {
+            return -1; // перемещаем объекты с полем "up: true" в начало
+        } else if (!a.up && b.up) {
+            return 1; // остальные объекты остаются в исходном порядке
+        }
+        return 0; // объекты без поля "up" или с одинаковыми значениями "up" остаются в исходном порядке
+    });
+    return newArr
+}
 
 const findMark = (marka) => {
     return (value) => {

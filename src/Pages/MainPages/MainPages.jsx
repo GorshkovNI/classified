@@ -20,7 +20,7 @@ export const MainPages = () => {
 
   let city = useSelector(getCC)
   city = city ? city : localStorage.getItem('city')
-  console.log(city)
+
 
 
   useEffect(() => {
@@ -35,23 +35,23 @@ export const MainPages = () => {
   const showFavoriteModal = () =>{
     setShowFavorites(!showFavorites)
   }
-
+  console.log(city)
 
   return (
     <Layout orders = {orders} showFavoriteModal = {showFavoriteModal} showFavorites={showFavorites} /* removeToFavoritesList = {removeToFavoritesList} */>
       <div className={styles.wrapper}>
         <Categories />
         <div className={styles.title}>
-          <h3 className={styles.textRecomendation}>Des recommandations pour vous</h3>
-          {city  ? null : <h4>Pour obtenir des recommandations d'annonces, saisissez votre ville.</h4> }
+          {city ? <h3 className={styles.textRecomendation}>Des recommandations pour vous</h3> : null}
+          {city?.length > 0 ? null : <h4>Pour obtenir des recommandations d'annonces, saisissez votre ville.</h4> }
         </div>
         <div className={styles.productArea}>
-          <div className={styles.products}>
-            {!isLoading ? adsCurrentCity.length === 0? `Malheureusement, votre recherche n'a donné aucun résultat` : adsCurrentCity.map((ad) => {
+          {city ? <div className={styles.products}>
+            {!isLoading ? adsCurrentCity?.length === 0? `Malheureusement, votre recherche n'a donné aucun résultat` : adsCurrentCity.map((ad) => {
               return <CardProduct id={ad['_id']} title={ad.title} city={ad.city} price={ad.price} photos={ad.photos} />
             }) : <MyLoader />
             }
-          </div>
+          </div> : null}
           <div className={styles.infoArea}>
             {/*<span>Vos derniers achats</span>*/}
             <span></span>

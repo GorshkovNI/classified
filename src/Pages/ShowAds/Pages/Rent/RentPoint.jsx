@@ -102,7 +102,7 @@ export const RentPoint = () => {
                 <div className={styles.productArea}>
                     <div className={styles.products}>
                         { isLoading ? <MyLoader/> : filtersRent.length > 0 ? filtersRent?.map((item)=> {
-                            return <CardProduct id={item.ads_id} title={item.title} city={item.city} price={item.price} photos={item.photos} />
+                            return <CardProduct id={item.ads_id} title={item.title} city={item.city} price={item.price} photos={item.photos} up={item.up} />
                         }) : <div>Aucune annonce trouvée pour les paramètres donnés</div>}
                     </div>
                     <div className={styles.infoArea}>

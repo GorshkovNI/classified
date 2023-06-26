@@ -1,0 +1,92 @@
+
+.infoBlock{
+
+}
+
+.info{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 35%;
+    margin: 30px 10px;
+}
+
+.until{
+    position: absolute;
+    right: 5px;
+    top: 3px;
+}
+
+.uploader{
+    display: flex;
+    flex-direction: column;
+}
+
+.uploaderPhotoLabel{
+
+}
+
+.uploaderInput{
+    display: none;
+}
+
+.mainPhoto{
+    border: 1px solid var(--grey-text);
+    width: 80px;
+    height: 80px;
+}
+
+.preloaderIcon{
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    gap: 25px;
+}
+
+.galleryContainer{
+    position: relative;
+}
+
+.closePhoto{
+    position: absolute;
+    right: -18px;
+    width: 20px;
+    height: 20px;
+}
+
+.closePhoto:focus{
+    outline: none;
+}
+
+.closePhoto{
+    position: absolute;
+    right: -18px;
+    width: 20px;
+    height: 20px;
+}
+
+.closePhoto:focus{
+    outline: none;
+}
+
+.button{
+    background: #009CF0;
+    color: white;
+    border: 0;
+    padding: 8px;
+    border-radius: 5px;
+}

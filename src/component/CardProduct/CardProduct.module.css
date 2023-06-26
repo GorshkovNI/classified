@@ -8,6 +8,11 @@
     cursor: pointer;
 }
 
+.wrapperUp{
+    border-radius: 8px;
+    background-color: rgba(148, 228, 129, 0.55);
+}
+
 .discription{
     display: flex;
     flex-direction: column;
@@ -87,3 +92,17 @@
  }.item3{
       background-color: #beb87a;
   }
+
+.images{
+    object-fit: cover;
+    width: 250px;
+    height: 150px;
+}
+
+.thumbImage{
+    display: none;
+}
+
+.image-gallery-image{
+    object-fit: cover;
+}

@@ -6,7 +6,7 @@ import {ProfileInfo} from "./entites/ProfileInfo/ProfileInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {ThunkDispatch} from 'redux-thunk';
 import {FC, useEffect, useState} from "react";
-import {deleteAd, getProfileInfo} from "./store/userProfileSlice";
+import {deleteAd, getProfileInfo, upAd} from "./store/userProfileSlice";
 import {getAds, getEmptyData, getIsLoading, getName, getUserInfo} from "./store/userProfileSelector";
 import MyLoader from "./entites/CardAd/SkeletonCard/Skeleton";
 import {getIsAuth, getUserName} from "../../store/auth/userSelector";
@@ -18,8 +18,8 @@ import {useParams} from "react-router-dom";
 
 type DispatchType = ThunkDispatch<any, any, any>;
 
-const notify = () =>{
-    toast.success('Suppression réussie', {
+const notify = (text:string) =>{
+    toast.success(text, {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -32,6 +32,8 @@ const notify = () =>{
 }
 
 
+
+
 export const UserAds:FC = () => {
 
     const [showToast, setShowToast] = useState(false);
@@ -41,8 +43,14 @@ export const UserAds:FC = () => {
     const handleDelete = (categoryId:string, id: string) => {
         dispatch(deleteAd(categoryId, id));
         setShowToast(true);
-        notify()
+        notify('Suppression réussie')
     };
+
+    const handleUpAd = (categoryId:string, id: string) => {
+        dispatch(upAd(categoryId, id));
+        setShowToast(true);
+        notify('Promotion activée')
+    }
 
     const dispatch: DispatchType = useDispatch()
     const ads = useSelector(getAds)
@@ -54,7 +62,7 @@ export const UserAds:FC = () => {
     useEffect(()=>{
         dispatch(getProfileInfo(id))
     }, [id])
-    console.log(userInfo)
+    console.log(ads)
     return(
         <Layout isSearchBlock={false}>
             <div className={styles.wrapper}>
@@ -81,6 +89,8 @@ export const UserAds:FC = () => {
                                             categoryId={item.categoryId}
                                             city={item.city}
                                             isAuth={isAuth}
+                                            up={item.up}
+                                            upAd={handleUpAd}
                                         />
                                     ))
                                 ) : (

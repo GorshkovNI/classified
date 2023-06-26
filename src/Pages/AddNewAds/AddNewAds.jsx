@@ -16,11 +16,13 @@ import {Rent} from "./categories/Rent/Rent";
 import {getIsAuth} from "../../store/auth/userSelector";
 import axios from "axios";
 import {Work} from "./categories/Work/Work";
+import {Other} from "./categories/Other/Other";
 
 const categoryAd = {
     car: <Car />,
     rent: <Rent />,
-    work: <Work />
+    work: <Work />,
+    other: <Other />
 };
 
 

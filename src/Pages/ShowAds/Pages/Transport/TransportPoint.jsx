@@ -83,9 +83,11 @@ export const TransportPoint = () => {
                 </div>
                 <div className={styles.productArea}>
                     <div className={styles.products}>
-                        { isLoading ? <MyLoader/> : fA.length > 0 ? fA?.map((item)=> {
-                        return <CardProduct id={item.ads_id} title={item.title} city={item.city} price={item.price} photos={item.photos} />
-                        }) : <div>Aucune annonce trouvée pour les paramètres donnés</div>}
+
+                        {isLoading ? <MyLoader /> : (fA.length > 0 ? fA?.map((item)=> {
+                            return <CardProduct id={item.ads_id} title={item.title} city={item.city} price={item.price} photos={item.photos} up={item.up} />
+                        }) : <div>Aucune annonce trouvée pour les paramètres donnés</div>)}
+
                     </div>
                     <div className={styles.infoArea}>
                         <Transport

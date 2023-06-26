@@ -88,6 +88,14 @@ const userAd = createSlice({
 
         setErrorReview(state){
             state.errorSetReview = true
+        },
+
+        setUpAd(state, action){
+            state.ads.forEach((ad) => {
+                if(ad['_id'] == action.payload){
+                    ad.up = true
+                }
+            })
         }
     }
 })
@@ -121,6 +129,15 @@ export const deleteAd = (categoryId, ads_id) => async (dispatch) => {
     }
 }
 
+export const upAd = (categoryId, ads_id) => async (dispatch) => {
+    try {
+        const res = await UserAdService.upAds(categoryId, ads_id)
+        dispatch(setUpAd(ads_id))
+    }catch (e){
+        console.log('Ошибка при поднятии в топ', e)
+    }
+}
+
 export const setNewReview = (id, review) => async (dispatch) => {
     try {
         dispatch(fetchDataUserLoading())
@@ -138,5 +155,5 @@ export const setNewReview = (id, review) => async (dispatch) => {
     }
 }
 
-export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setInfoUser, setAds, setError, removeError, deleteAds,  isLoadAvatar, setRating, setNewCity, setErrorReview} = userAd.actions
+export const {fetchDataUserLoading, fetchDataUserSuccess, setAvatar, setInfoUser, setAds, setError, removeError, deleteAds,  isLoadAvatar, setRating, setNewCity, setErrorReview, setUpAd} = userAd.actions
 export default userAd.reducer
