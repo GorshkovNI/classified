@@ -37,7 +37,7 @@ export const MainPages = () => {
 
 
 
-  const [itemsPerPage, setItensPerPage] = useState(2)
+  const [itemsPerPage, setItensPerPage] = useState(12)
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(adsCurrentCity.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
