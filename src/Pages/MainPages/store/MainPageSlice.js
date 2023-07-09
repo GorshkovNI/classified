@@ -7,7 +7,9 @@ const initialState = {
     adsCurrentCity: [],
     adsOtherCity: [],
     city: '',
-    isLoadingByCity: false
+    isLoadingByCity: false,
+    currentPage: 1,
+    countriesPerPage: 3
 }
 
 const mainPage = createSlice({
@@ -30,12 +32,17 @@ const mainPage = createSlice({
     }
 })
 
-export const getAdsByCity = (city) => async (dispatch) => {
+export const getAdsByCity = (city,initialState) => async (dispatch) => {
     try {
         dispatch(fetchAdsCity(true))
         const response = await AdService.getAdByCity(city)
         console.log(`Загружаю по городу ${city}`)
         console.log(response)
+        /* const lastCountryIndex = initialState.currentPage * initialState.countriesPerPage
+        console.log(lastCountryIndex) */
+
+
+
         dispatch(setAdsCurrentCity(response.data))
         dispatch(fetchAdsCity(false))
     }catch (e){

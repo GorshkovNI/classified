@@ -3,7 +3,13 @@
     /* margin-left: 50px;
     margin-top: 10px; */
 }
-
+.pagination{
+    display: grid;
+    justify-content: center;
+}
+.paginationButton{
+margin: 10px;
+}
 .title {
     padding: 0;
     font-size: 24px;
