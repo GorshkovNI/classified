@@ -90,7 +90,7 @@ export const MainPages = () => {
               En arrière
             </button>
             <button className="btn btn-primary" onClick={nextPage} disabled={currentPage === totalPages}>
-              En arrière
+              En avant
             </button>
           </div>
 
