@@ -90,6 +90,11 @@ export const Car = ({dataOfEdit}) => {
         setiSFilled(true)
     }
 
+    const handleRegistrationChange = (value) => {
+        setRegistrationNumber(value);
+        setiSFilled(true)
+    };
+
     const handleSelectedYear = (event) => {
         setSelectedYear(event.target.value)
         setiSFilled(true)
@@ -270,19 +275,27 @@ export const Car = ({dataOfEdit}) => {
                     <div className={styles.infoCarItem}>
                         <h3>Données d'enregistrement</h3>
                         <div className={styles.infoAreaItem}>
-                            <span>Entrez le numéro d'état</span>
-                            <input type='text' value={registrationnubmer} onChange={(e) => setRegistrationNumber(e.target.value)} />
+                            <span>Carburant</span>
+                            <div>
+                                <RadioButton className={styles.labelRadio} classNameInput={styles.inputRadio} name="vitesse" value="essence" label="Essence" checked={registrationnubmer === 'essence'} onChange={handleRegistrationChange} />
+                                <RadioButton className={styles.labelRadio} classNameInput={styles.inputRadio} name="vitesse" value="diesel" label="Diesel" checked={registrationnubmer === 'diesel'} onChange={handleRegistrationChange} />
+                            </div>
+                            {/*<input type='text' value={registrationnubmer} onChange={(e) => setRegistrationNumber(e.target.value)} />*/}
                         </div>
                         <div className={styles.infoAreaItem}>
-                            <span>VIN</span>
-                            <input type='text'
-                                   value={vin}
-                                   maxLength={17}
-                                   onChange={(event) => {
-                                       setVin(event.target.value.toUpperCase());
-                                   }}
-                                   style={{ border: `1px solid ${(vin.length === 17 && !validateVIN(vin)) ? 'red' : 'black'}`}}
-                            />
+                            <span>Boîte de vitesse</span>
+                            <div>
+                                <RadioButton className={styles.labelRadio} classNameInput={styles.inputRadio} name="vitesse" value="manuelle" label="Manuelle" checked={vin === 'manuelle'} onChange={(value) => setVin(value)} />
+                                <RadioButton className={styles.labelRadio} classNameInput={styles.inputRadio} name="vitesse" value="automatique" label="Automatique" checked={vin === 'automatique'} onChange={(value) => setVin(value)} />
+                            </div>
+                            {/*<input type='text'*/}
+                            {/*       value={vin}*/}
+                            {/*       maxLength={17}*/}
+                            {/*       onChange={(event) => {*/}
+                            {/*           setVin(event.target.value.toUpperCase());*/}
+                            {/*       }}*/}
+                            {/*       style={{ border: `1px solid ${(vin.length === 17 && !validateVIN(vin)) ? 'red' : 'black'}`}}*/}
+                            {/*/>*/}
 
                         </div>
                     </div>
