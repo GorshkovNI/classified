@@ -6,6 +6,8 @@
 .geolocatedIcon{
   cursor:pointer;
   display:flex;
+  align-items: center;
+  justify-content: center;
 }
 .nameCity{
   font-size: 13px;

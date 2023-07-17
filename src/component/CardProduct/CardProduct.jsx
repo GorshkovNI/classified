@@ -33,7 +33,11 @@ export const CardProduct = ({ id , title , city, price, date, photos, up }) => {
             {/*        })}*/}
             {/*    </Slider>}*/}
 
-            {photos.length > 0 && <Slider photos={photos} />}
+            {photos.length > 0 &&
+                <Link to={`/item/${id}`} className={styles.link}>
+                    <Slider photos={photos} />
+                </Link>
+            }
             {/*</Link>*/}
             <div className={styles.discription}>
                 <div className={styles.blockNamed}>

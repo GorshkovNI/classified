@@ -56,7 +56,6 @@ export const GeolocatedIcon = () => {
             city && <span className={styles.nameCity} style={{color:'white'}}>{city}</span>
         }
         </div>
-            
             {isOpen && (
                 <div className={styles.select_container}>
                     <Select
