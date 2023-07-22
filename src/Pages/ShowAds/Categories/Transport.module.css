@@ -20,3 +20,8 @@
 .select{
     width: 200px;
 }
+@media (max-width:1367px){
+    .model{
+        width:50%;
+    }
+}

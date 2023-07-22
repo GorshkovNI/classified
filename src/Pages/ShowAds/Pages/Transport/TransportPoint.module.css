@@ -18,10 +18,11 @@
 .productArea {
     display: grid;
     grid-template-columns: 80% 20%;
+    flex-direction: column;
 }
 
 .products {
-    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -67,4 +68,17 @@
     margin-left: 5px;
     margin-top: 20px;
     padding: 5px;
+}
+
+@media (max-width:1367px){
+    .wrapper {
+        margin: 10px;
+        /* margin-left: 50px;
+        margin-top: 10px; */
+    }
+    .productArea{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
 }

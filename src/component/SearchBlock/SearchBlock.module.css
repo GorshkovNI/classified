@@ -1,18 +1,19 @@
 .wrapper{
     position: sticky;
-    top: 4%;
+    top: 37px;
     background: #ffffff;
     z-index: 10;
     width: 98.9vw;
     
 }
-@media (max-width:630px) {
+@media (max-width:893px) {
     .wrapper{
-        top: 10% !important;;
+        top: 58px!important;
     }
 }
 @media (max-width:801px) {
     .wrapper{
+        top: 79px !important;
         width: 100%;
     }
     .container{

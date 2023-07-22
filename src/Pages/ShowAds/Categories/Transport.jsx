@@ -65,7 +65,7 @@ export const Transport = ({selectedMarkId, selectedModelId, selectedYearTo, sele
                 })}
             </select>
             <h4 className={styles.title}>Modèle</h4>
-            <select id='model'  value={selectedModelId} onChange={handleSelectedModel}>
+            <select id='model' className = {styles.model}  value={selectedModelId} onChange={handleSelectedModel}>
                 <option value="">Choisissez une valeur</option>
                 {model?.map((item) => {
                     return <option value={item.id}>{item.model}</option>

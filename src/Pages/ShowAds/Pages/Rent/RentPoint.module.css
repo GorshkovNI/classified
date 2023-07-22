@@ -68,3 +68,15 @@
     margin-top: 20px;
     padding: 5px;
 }
+@media (max-width:1367px){
+    .wrapper {
+        margin: 10px;
+        /* margin-left: 50px;
+        margin-top: 10px; */
+    }
+    .productArea{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+}
